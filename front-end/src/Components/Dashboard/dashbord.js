@@ -21,6 +21,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import "./index.css";
 import Travellore from "../../assets/images/Travel Logo1.png"
+import Home from "../../pages/Home/index";
+import { Route, Routes, useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -89,10 +91,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const navigate =useNavigate();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -141,7 +144,7 @@ export default function MiniDrawer() {
         <Divider />
         <List>
 
-            <ListItem  spacing={3} disablePadding>
+            <ListItem   disablePadding  onClick={()=>{ navigate("/")}}> 
                 <ListItemButton>
                     <ListItemIcon>
                         <HomeIcon/>
@@ -186,7 +189,12 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-  
+
+      //seting up all the components
+        <Routes>
+            <Route exact path='/' element={<Home/>}></Route>
+
+        </Routes>
       </Box>
     </Box>
   );
