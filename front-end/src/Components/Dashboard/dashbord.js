@@ -18,6 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
 import "./index.css";
 import Travellore from "../../assets/images/Travel Logo1.png"
 const drawerWidth = 240;
@@ -139,9 +140,48 @@ export default function MiniDrawer() {
             </Box>
         <Divider />
         <List>
-          
+
+            <ListItem  spacing={3} disablePadding>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <HomeIcon/>
+                     
+                    </ListItemIcon>
+                    <ListItemText>Home</ListItemText>
+                </ListItemButton>
+            </ListItem>
+         
+            <ListItem disablePadding>
+                <ListItemButton>
+                    <ListItemIcon >
+                        <HomeIcon/>
+                    </ListItemIcon>
+                    <ListItemText>Home</ListItemText>
+                </ListItemButton>
+            </ListItem>
         </List>
         <Divider />
+        <List>
+
+        <ListItem  spacing={3} disablePadding>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <HomeIcon/>
+                     
+                    </ListItemIcon>
+                    <ListItemText>Home</ListItemText>
+                </ListItemButton>
+            </ListItem>
+         
+            <ListItem disablePadding>
+                <ListItemButton>
+                    <ListItemIcon >
+                        <HomeIcon/>
+                    </ListItemIcon>
+                    <ListItemText>Home</ListItemText>
+                </ListItemButton>
+            </ListItem>
+</List>
      
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
