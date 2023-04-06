@@ -16,16 +16,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import "./index.css";
 import Travellore from "../../assets/images/Travel Logo1.png"
 import Home from "../../pages/Home/index";
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import TreeItem from '@mui/lab/TreeItem';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import TreeView from '@mui/lab/TreeView';
+
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
@@ -36,6 +32,8 @@ import LocalB from '../../pages/LocalBussiness/LocalB';
 import FeedIcon from '@mui/icons-material/Feed';
 import Blogs from '../../pages/Blogs/Blogs';
 import Recipes from '../../pages/Recipes/Recipes';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -117,6 +115,8 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -152,7 +152,7 @@ export default function MiniDrawer() {
       
         </DrawerHeader>
          <Box >
-             <img src={Travellore} id="Travellore" lt="tavelologo" />
+             <img src={Travellore} id="Travellore" alt="tavelologo" />
             </Box>
         <Divider />
         <List>
@@ -204,40 +204,33 @@ export default function MiniDrawer() {
                     <FeedIcon/>
                     </ListItemIcon>
                     <ListItemText>Blogs</ListItemText>
-                    {/* <TreeView
-                aria-label="file system navigator"
-               defaultCollapseIcon={<ExpandMoreIcon />}
-               defaultExpandIcon={<ChevronRightIcon />}
-              // sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'none' }} 
-            >
-              
- 
-          <TreeItem nodeId="5" label="Blogs" >
-    <TreeItem nodeId="10" label="OSS"  />
-    <TreeItem nodeId="6" label="MUI">
-      <TreeItem nodeId="8" label="index.js" />
-    </TreeItem>
-  </TreeItem>
-</TreeView>  */}
                 </ListItemButton>
             </ListItem>
-            
+           
          
         </List>
         <Divider />
+
         <List>
+       {/* //list */}
+       <ListItem disablePadding   >
+                <ListItemButton>
+                    <ListItemIcon >
+                    <LogoutIcon/>
+                    </ListItemIcon>
+                    <ListItemText>Logout</ListItemText>
+                </ListItemButton>
+            </ListItem>
 
-     
-        
-
-
-          
-</List>
+      </List>
+      
      
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
 
+     
+     
       {/* //seting up all the components */}
         <Routes>
           
