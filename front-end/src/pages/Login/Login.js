@@ -13,6 +13,7 @@ import jwt_decode from "jwt-decode";
 import { setlogin } from '../../Redux/actions/authAction';
 
 const Login = () => {
+
     const dispatch =useDispatch();
     const navigate = useNavigate();
     const {values,errors,touched,handleBlur,handleSubmit,handleChange} = useFormik({
@@ -24,80 +25,100 @@ const Login = () => {
         },
         validationSchema:basicLoginvalidation,
         onSubmit: values => {
-          // console.log("Login details",values);
+           console.log("Login details",values);
     
-          axios.post("/login",values).then( async (response)=>{
-           const status=await response.status
-            if( status==200){
-              const accessToken= await response.data.accessToken;
-              const refeshtoken= await response.data.refreshToken;
-              const message= await response.data.message;
+    
+           if(values.email=="avishkachanaka@gmail.com"){
+            const accessToken="response.data.accessToken;"
+              const refeshtoken=  "response.data.refreshToken;"
+               const username= "avishka"
+               const roles= "admin"
+               dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+        navigate("/a")
+     }else{
+        navigate("/b")
+        const accessToken=  "response.data.accessToken;"
+        const refeshtoken=  "response.data.refreshToken;"
+         const username= "avishka22"
+         const roles= "user"
+         dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+     }
+
+
+
+        
+    //       axios.post("https://dummyjson.com/auth/login",values).then( async (response)=>{
+    //        const status=await response.status
+    //         if( status==200){
+    //           const accessToken= await response.data.accessToken;
+    //           const refeshtoken= await response.data.refreshToken;
+    //           const message= await response.data.message;
          
-              toast.success(message, {
-                position: toast.POSITION.TOP_RIGHT
-              });
+    //           toast.success(message, {
+    //             position: toast.POSITION.TOP_RIGHT
+    //           });
         
-              console.log("refeshtoken",refeshtoken);
-            const decoded = jwt_decode(accessToken);
-            console.log("decode date",decoded.roles);
-            const username=decoded.username;
-            const roles= decoded.roles
-            setAuthToken(accessToken);
-            //  localStorage.setItem("accessToken",accessToken)
-            //  localStorage.setItem("refreshToken",refeshtoken)
-            //  localStorage.setItem('username',username)
-            //  localStorage.setItem('role',roles)
+    //           console.log("refeshtoken",refeshtoken);
+    //         const decoded = jwt_decode(accessToken);
+    //         console.log("decode date",decoded.roles);
+    //         const username=decoded.username;
+    //         const roles= decoded.roles
+    //         setAuthToken(accessToken);
+    //         //  localStorage.setItem("accessToken",accessToken)
+    //         //  localStorage.setItem("refreshToken",refeshtoken)
+    //         //  localStorage.setItem('username',username)
+    //         //  localStorage.setItem('role',roles)
              
-             dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+    //          dispatch(setlogin({accessToken,username,roles,refeshtoken}))
              
-             if(roles=='user'){
-              console.log("user login");
-              navigate('/')
-             }
-             else if(roles=='admin'){
-              console.log("admin login");
+    //          if(roles=='user'){
+    //           console.log("user login");
+    //           navigate('/')
+    //          }
+    //          else if(roles=='admin'){
+    //           console.log("admin login");
     
-              navigate('/adminpanel')
-             }
+    //           navigate('/adminpanel')
+    //          }
     
             
     
-            }
-    
-    
-           //window.location.href = '/'
-          }).catch((error) => {
-            if(error.response.status === 400){
-              const massege=error.response.data.error;
-              console.log(error.response.data.error);
-              toast.error(massege, {
-                position: toast.POSITION.TOP_RIGHT  
-              });
-            //   Swal.fire('Any fool can use a computer')
-            }
-            if(error.response.status === 401){
-                const massege=error.response.data.error;
-              console.log(error.response.data.error);
-              toast.error(massege, {
-                position: toast.POSITION.TOP_RIGHT
+    //         }
+
+    //       }).catch((error) => {
+    //         if(error.response.status === 400){
+    //           const massege=error.response.data.error;
+    //           console.log(error.response.data.error);
+    //           toast.error(massege, {
+    //             position: toast.POSITION.TOP_RIGHT  
+    //           });
+     
+    //         }
+    //         if(error.response.status === 401){
+    //             const massege=error.response.data.error;
+    //           console.log(error.response.data.error);
+    //           toast.error(massege, {
+    //             position: toast.POSITION.TOP_RIGHT
         
             
-              });
-           }
-           if(error.response.status === 500){
-            const massege=error.response.data.error;
-            console.log(error.response.data.error);
-            toast.error(massege, {
-              position: toast.POSITION.TOP_RIGHT
+    //           });
+    //        }
+    //        if(error.response.status === 500){
+    //         const massege=error.response.data.error;
+    //         console.log(error.response.data.error);
+    //         toast.error(massege, {
+    //           position: toast.POSITION.TOP_RIGHT
           
-            });
-         }
-          });
+    //         });
+    //      }
+    //       });
+
+
         
     
-        },
+   },
       
-      });
+       });
     
   return (
     <div>
