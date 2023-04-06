@@ -156,7 +156,7 @@ export default function MiniDrawer() {
             </Box>
         <Divider />
         <List>
-            <ListItem   disablePadding  onClick={()=>{ navigate("/")}}> 
+            <ListItem   disablePadding  onClick={()=>{ navigate("/home")}}> 
                 <ListItemButton>
                     <ListItemIcon>
                         <HomeIcon/>
@@ -241,7 +241,7 @@ export default function MiniDrawer() {
       {/* //seting up all the components */}
         <Routes>
           
-            <Route exact path='/' element={<Home/>}></Route>
+            <Route exact path='/home' element={<Home/>}></Route>
             <Route exact path='/tuorism' element={<Tourism/>}></Route>
             <Route exact path='/event' element={<Event/>}></Route>
             <Route exact path='/localB' element={<LocalB/>}></Route>
