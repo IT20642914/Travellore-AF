@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme ,} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -23,6 +23,19 @@ import "./index.css";
 import Travellore from "../../assets/images/Travel Logo1.png"
 import Home from "../../pages/Home/index";
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import TreeItem from '@mui/lab/TreeItem';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import TreeView from '@mui/lab/TreeView';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import Tourism from '../../pages/Tourism/tourism';
+import Event from '../../pages/Events/Event'
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import LocalB from '../../pages/LocalBussiness/LocalB';
+import FeedIcon from '@mui/icons-material/Feed';
+import Blogs from '../../pages/Blogs/Blogs';
+import Recipes from '../../pages/Recipes/Recipes';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -143,57 +156,97 @@ export default function MiniDrawer() {
             </Box>
         <Divider />
         <List>
-
             <ListItem   disablePadding  onClick={()=>{ navigate("/")}}> 
                 <ListItemButton>
                     <ListItemIcon>
                         <HomeIcon/>
-                     
                     </ListItemIcon>
                     <ListItemText>Home</ListItemText>
+                </ListItemButton>
+            </ListItem>
+            <ListItem  spacing={3} disablePadding  onClick={()=>{ navigate("/tuorism")}}>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <EmojiTransportationIcon/>
+                     
+                    </ListItemIcon>
+                    <ListItemText>Tourism Places</ListItemText>
                 </ListItemButton>
             </ListItem>
          
-            <ListItem disablePadding>
+            <ListItem disablePadding  onClick={()=>{ navigate("/event")}}>
                 <ListItemButton>
                     <ListItemIcon >
-                        <HomeIcon/>
+                    <EventAvailableIcon/>
                     </ListItemIcon>
-                    <ListItemText>Home</ListItemText>
+                    <ListItemText>Events</ListItemText>
                 </ListItemButton>
             </ListItem>
+            <ListItem disablePadding onClick={()=>{ navigate("/localb")}} >
+                <ListItemButton>
+                    <ListItemIcon >
+                    <AttachMoneyIcon/>
+                    </ListItemIcon>
+                    <ListItemText>Local Businesses</ListItemText>
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding onClick={()=>{ navigate("/recipes")}} >
+                <ListItemButton>
+                    <ListItemIcon >
+                    <MenuBookIcon/>
+                    </ListItemIcon>
+                    <ListItemText>Recipes</ListItemText>
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding onClick={()=>{ navigate("/blogs")}}  >
+                <ListItemButton>
+                    <ListItemIcon >
+                    <FeedIcon/>
+                    </ListItemIcon>
+                    <ListItemText>Blogs</ListItemText>
+                    {/* <TreeView
+                aria-label="file system navigator"
+               defaultCollapseIcon={<ExpandMoreIcon />}
+               defaultExpandIcon={<ChevronRightIcon />}
+              // sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'none' }} 
+            >
+              
+ 
+          <TreeItem nodeId="5" label="Blogs" >
+    <TreeItem nodeId="10" label="OSS"  />
+    <TreeItem nodeId="6" label="MUI">
+      <TreeItem nodeId="8" label="index.js" />
+    </TreeItem>
+  </TreeItem>
+</TreeView>  */}
+                </ListItemButton>
+            </ListItem>
+            
+         
         </List>
         <Divider />
         <List>
 
-        <ListItem  spacing={3} disablePadding>
-                <ListItemButton>
-                    <ListItemIcon>
-                        <HomeIcon/>
-                     
-                    </ListItemIcon>
-                    <ListItemText>Home</ListItemText>
-                </ListItemButton>
-            </ListItem>
-         
-            <ListItem disablePadding>
-                <ListItemButton>
-                    <ListItemIcon >
-                        <HomeIcon/>
-                    </ListItemIcon>
-                    <ListItemText>Home</ListItemText>
-                </ListItemButton>
-            </ListItem>
+     
+        
+
+
+          
 </List>
      
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
 
-      //seting up all the components
+      {/* //seting up all the components */}
         <Routes>
+          
             <Route exact path='/' element={<Home/>}></Route>
-
+            <Route exact path='/tuorism' element={<Tourism/>}></Route>
+            <Route exact path='/event' element={<Event/>}></Route>
+            <Route exact path='/localB' element={<LocalB/>}></Route>
+            <Route exact path='/recipes' element={<Recipes/>}></Route>
+            <Route exact path='/blogs' element={<Blogs/>}></Route>
         </Routes>
       </Box>
     </Box>
