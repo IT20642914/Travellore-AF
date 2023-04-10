@@ -18,7 +18,7 @@ function App() {
   return (
     <BrowserRouter>
      {IsLogin&& Adminuser && <Dashbord/>}
-     {IsLogin&& !Adminuser && <Home/>}
+     {/* {IsLogin&& !Adminuser && <Home/>} */}
       <Routes>
      
         <Route path="/" element={<Login/>} />
