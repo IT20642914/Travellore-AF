@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import { useSelector } from 'react-redux';
+import PublicRoutes from "./routes/PublicRoutes"
 function App() {
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
   const  role =useSelector((state)=> state.login.roles)
@@ -17,11 +18,13 @@ function App() {
   
   return (
     <BrowserRouter>
-     {IsLogin&& Adminuser && <Dashbord/>}
+     {/* {IsLogin&& Adminuser && <Dashbord/>} */}
      {/* {IsLogin&& !Adminuser && <Home/>} */}
       <Routes>
      
-        <Route path="/" element={<Login/>} />
+      <Route path="/" element={<PublicRoutes/>} > 
+      <Route path="/" element={<Login/>} /> 
+      </Route>
       </Routes>
     </BrowserRouter>
   );
