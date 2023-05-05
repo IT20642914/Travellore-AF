@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,13 +14,19 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { headerNavigations } from '../../constants';
 import Travellore from "../../assets/images/Travel Logo1.png"
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import React, { useState, useEffect, MouseEvent } from 'react';
+import { useLocation, useNavigate } from 'react-router';
+const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [currentPath, setCurrentPath] = useState('/');
 
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [navigations, setNavigations] = useState(headerNavigations);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -36,8 +42,36 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+
+  const onNavClick=(path)=>{
+    
+        navigate(path);
+    
+  }
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+  }, [location]);
+
+  useEffect(() => {
+    const currentNavigations = headerNavigations.map((nav) => {
+      if (nav.path === currentPath) {
+        return {
+          ...nav,
+          selected: true,
+        };
+      }
+
+      return {
+        ...nav,
+        selected: false,
+      };
+    });
+
+    setNavigations(currentNavigations);
+  }, [currentPath]);
+
   return (
-    <AppBar position="static" sx={{background:"#046380"}}>
+    <AppBar position="static" sx={{background:"linear-gradient(to bottom, #046380 0%, #012935 100%)"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
 
@@ -90,7 +124,7 @@ function ResponsiveAppBar() {
             >
               {headerNavigations.map((item) => (
                 <MenuItem key={item.key} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{item.name}</Typography>
+                  <Typography  sx={{ mr: item.key !== 6 ? 8 : 0, fontWeight: item.selected ? 600 : 400 }} textAlign="center" onClick={() => onNavClick(item.path)}>{item.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -119,8 +153,9 @@ function ResponsiveAppBar() {
             {headerNavigations.map((item) => (
               <Button
                 key={item.key}
-                onClick={handleCloseNavMenu}
+                // onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => onNavClick(item.path)}
               >
                 {item.name}
               </Button>
