@@ -5,5 +5,9 @@
   "main": "app.js",
   "author": "avishka",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/node": "^7.20.7"
+  }
 }
