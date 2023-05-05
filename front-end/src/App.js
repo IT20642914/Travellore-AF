@@ -6,25 +6,25 @@ import Login from "./pages/Login/Login";
 import { useSelector } from 'react-redux';
 import PublicRoutes from "./routes/PublicRoutes"
 function App() {
-  const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
-  const  role =useSelector((state)=> state.login.roles)
-  let Adminuser=false
-  if(role=='admin'){
-     Adminuser=true
+  // const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
+  // const  role =useSelector((state)=> state.login.roles)
+  // let Adminuser=false
+  // if(role=='admin'){
+  //    Adminuser=true
   
-  }else{
-     Adminuser=false
-  } 
+  // }else{
+  //    Adminuser=false
+  // } 
   
   return (
     <BrowserRouter>
-     {/* {IsLogin&& Adminuser && <Dashbord/>} */}
+    <Dashbord/>
      {/* {IsLogin&& !Adminuser && <Home/>} */}
       <Routes>
      
-      <Route path="/" element={<PublicRoutes/>} > 
-      <Route path="/" element={<Login/>} /> 
-      </Route>
+      {/* <Route path="/" element={<PublicRoutes/>} > 
+          <Route path="/" element={<Login/>} /> 
+      </Route> */}
       </Routes>
     </BrowserRouter>
   );
