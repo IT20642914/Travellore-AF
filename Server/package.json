@@ -1,0 +1,9 @@
+{
+  "name": "Travellore",
+  "version": "1.0.0",
+  "description": "travele managemnet and blog",
+  "main": "app.js",
+  "author": "avishka",
+  "license": "MIT",
+  "private": false
+}
