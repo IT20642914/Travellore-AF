@@ -22,29 +22,20 @@ const userSchema = new Schema({
     required: false,
     
  },
- country:{
+ phoneNumber:{
     type: String,
-    required: true,
-    
- },
- phone:{
-    type: String,
-    required: false,
-    
+    required: false,  
  }, 
- desc:{
-    type: String,
-    required: false,
+
+  isAdmin:{
+    type: Boolean,
+    default: false,
     
  },
- roles: {
-    type: [String],
-    enum: ["user", "admin",],
-    default: ["user"],
-},
 },
 {
     timestamps: true,
 });
-const Users= mongoose.model("Users", UserSchema);
+
+const Users= mongoose.model("Users", userSchema);
 module.exports = Users;

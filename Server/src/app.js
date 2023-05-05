@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import {connect} from "./utils/database.connection"
 import logger from './utils/logger';
-
+import authRoutes from "./routes/auth.route"
 const app= express();
 const PORT= process.env.prot||"9090";
 const corsConfig = {
@@ -21,3 +21,5 @@ app.listen(PORT, ()=>{
     logger.info(`🚀 Server is up and running on PORT ${PORT}`);
     connect();
 })
+
+app.use("/api", authRoutes);
