@@ -18,13 +18,13 @@ function App() {
   
   return (
     <BrowserRouter>
-    <Dashbord/>
+    {/* <Dashbord/> */}
      {/* {IsLogin&& !Adminuser && <Home/>} */}
       <Routes>
      
-      {/* <Route path="/" element={<PublicRoutes/>} > 
+      <Route path="/" element={<PublicRoutes/>} > 
           <Route path="/" element={<Login/>} /> 
-      </Route> */}
+      </Route>
       </Routes>
     </BrowserRouter>
   );

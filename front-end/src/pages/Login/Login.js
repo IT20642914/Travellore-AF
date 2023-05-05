@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form,Button,Container,Row,Col } from 'react-bootstrap';
+import {Form,Row,Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import {basicLoginvalidation} from '../../Schemas/index'
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import jwt_decode from "jwt-decode";
 import { setlogin } from '../../Redux/actions/authAction';
 
+import { TextField, Button, Container, Grid } from '@mui/material';
 const Login = () => {
 
     const dispatch =useDispatch();
@@ -46,71 +47,71 @@ const Login = () => {
 
 
         
-    //       axios.post("https://dummyjson.com/auth/login",values).then( async (response)=>{
-    //        const status=await response.status
-    //         if( status==200){
-    //           const accessToken= await response.data.accessToken;
-    //           const refeshtoken= await response.data.refreshToken;
-    //           const message= await response.data.message;
+        //   axios.post("https://dummyjson.com/auth/login",values).then( async (response)=>{
+        //    const status=await response.status
+        //     if( status==200){
+        //       const accessToken= await response.data.accessToken;
+        //       const refeshtoken= await response.data.refreshToken;
+        //       const message= await response.data.message;
          
-    //           toast.success(message, {
-    //             position: toast.POSITION.TOP_RIGHT
-    //           });
+        //       toast.success(message, {
+        //         position: toast.POSITION.TOP_RIGHT
+        //       });
         
-    //           console.log("refeshtoken",refeshtoken);
-    //         const decoded = jwt_decode(accessToken);
-    //         console.log("decode date",decoded.roles);
-    //         const username=decoded.username;
-    //         const roles= decoded.roles
-    //         setAuthToken(accessToken);
-    //         //  localStorage.setItem("accessToken",accessToken)
-    //         //  localStorage.setItem("refreshToken",refeshtoken)
-    //         //  localStorage.setItem('username',username)
-    //         //  localStorage.setItem('role',roles)
+        //       console.log("refeshtoken",refeshtoken);
+        //     const decoded = jwt_decode(accessToken);
+        //     console.log("decode date",decoded.roles);
+        //     const username=decoded.username;
+        //     const roles= decoded.roles
+        //     setAuthToken(accessToken);
+        //     //  localStorage.setItem("accessToken",accessToken)
+        //     //  localStorage.setItem("refreshToken",refeshtoken)
+        //     //  localStorage.setItem('username',username)
+        //     //  localStorage.setItem('role',roles)
              
-    //          dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+        //      dispatch(setlogin({accessToken,username,roles,refeshtoken}))
              
-    //          if(roles=='user'){
-    //           console.log("user login");
-    //           navigate('/')
-    //          }
-    //          else if(roles=='admin'){
-    //           console.log("admin login");
+        //      if(roles=='user'){
+        //       console.log("user login");
+        //       navigate('/')
+        //      }
+        //      else if(roles=='admin'){
+        //       console.log("admin login");
     
-    //           navigate('/adminpanel')
-    //          }
+        //       navigate('/adminpanel')
+        //      }
     
             
     
-    //         }
+        //     }
 
-    //       }).catch((error) => {
-    //         if(error.response.status === 400){
-    //           const massege=error.response.data.error;
-    //           console.log(error.response.data.error);
-    //           toast.error(massege, {
-    //             position: toast.POSITION.TOP_RIGHT  
-    //           });
+        //   }).catch((error) => {
+        //     if(error.response.status === 400){
+        //       const massege=error.response.data.error;
+        //       console.log(error.response.data.error);
+        //       toast.error(massege, {
+        //         position: toast.POSITION.TOP_RIGHT  
+        //       });
      
-    //         }
-    //         if(error.response.status === 401){
-    //             const massege=error.response.data.error;
-    //           console.log(error.response.data.error);
-    //           toast.error(massege, {
-    //             position: toast.POSITION.TOP_RIGHT
+        //     }
+        //     if(error.response.status === 401){
+        //         const massege=error.response.data.error;
+        //       console.log(error.response.data.error);
+        //       toast.error(massege, {
+        //         position: toast.POSITION.TOP_RIGHT
         
             
-    //           });
-    //        }
-    //        if(error.response.status === 500){
-    //         const massege=error.response.data.error;
-    //         console.log(error.response.data.error);
-    //         toast.error(massege, {
-    //           position: toast.POSITION.TOP_RIGHT
+        //       });
+        //    }
+        //    if(error.response.status === 500){
+        //     const massege=error.response.data.error;
+        //     console.log(error.response.data.error);
+        //     toast.error(massege, {
+        //       position: toast.POSITION.TOP_RIGHT
           
-    //         });
-    //      }
-    //       });
+        //     });
+        //  }
+        //   });
 
 
         
