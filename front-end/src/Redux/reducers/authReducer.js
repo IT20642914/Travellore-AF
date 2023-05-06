@@ -24,7 +24,7 @@ const initialState = {
           ...state,
           isLoggedIn: true,
           accessKey: payload.accessToken,
-          roles:payload.roles,
+          IsAdmin:payload.IsAdmin,
           username:payload.username,
           refeshtoken:payload.refeshtoken,
         };
@@ -33,7 +33,7 @@ const initialState = {
             ...state,
             isLoggedIn:false,
             accessKey: null,
-            roles:null,
+            IsAdmin:null,
             username:null,
             refeshtoken:null,
           };
