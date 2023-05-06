@@ -1,18 +1,18 @@
 import React from 'react'
-import {Form,Row,Col, Card } from 'react-bootstrap';
+import {Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import {basicLoginvalidation} from '../../Schemas/index'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setAuthToken } from '../../Components/authTokens';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import jwt_decode from "jwt-decode";
 import { setlogin } from '../../Redux/actions/authAction';
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
-import {Typography,Link, TextField,Box, Button, Container, Grid } from '@mui/material';
+import {Typography,Link,Box, Button, Container, Grid } from '@mui/material';
 
 import backgroundImage from '../../assets/images/travelimge.jpg';
 
@@ -53,7 +53,7 @@ const Login = () => {
         
           axios.post("http://localhost:9090/api/login",values).then( async (response)=>{
            const status=await response.status
-            if( status==200){
+            if( status===200){
               const accessToken= await response.data.accessToken;
                const refeshtoken= await response.data.refreshToken;
                const message= await response.data.message;
@@ -84,7 +84,7 @@ const Login = () => {
              else{
               console.log("admin login");
     
-              navigate('/adminpanel');
+              navigate('/adminhome');
              }
     
             

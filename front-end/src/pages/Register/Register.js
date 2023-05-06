@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Form, Row, Col } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useFormik } from "formik";
 //import {useNavigate } from "react-router-dom";
 import { basicValidation } from "../../Schemas/index";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import {
   Typography,
-  Link,
-  TextField,
   Box,
   Button,
   Container,
@@ -262,6 +260,3 @@ const SignupScreen = () => {
 };
 
 export default SignupScreen;
-function async(response: any) {
-  throw new Error("Function not implemented.");
-}

@@ -2,14 +2,12 @@
 import {
     Box,
     Button,
-    Container,
+
     Grid,
     Link,
     List,
     ListItem,
-    ListItemButton,
     ListItemText,
-    Stack,
     TextField,
     ListItemIcon,
     Typography,
@@ -17,7 +15,6 @@ import {
   import React from "react";
   import Styles from "./Footer.module.scss"
   import webLogo from "../../assets/images/Travel Logo1.png";
-  import { useNavigate } from "react-router-dom";
   import Facebook from '@mui/icons-material/Facebook'; // or any other social media icon
   import Instagram from '@mui/icons-material/Instagram';
   import Twitter from '@mui/icons-material/Twitter';
