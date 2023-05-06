@@ -5,7 +5,7 @@ export default function LocalBClientHome() {
   return (
     <div className="clientHome">
        <Posts/>
-      
+      Local Business
     </div>
   )
 }
