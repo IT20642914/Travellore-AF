@@ -84,7 +84,7 @@ const Login = () => {
              else{
               console.log("admin login");
     
-              navigate('/adminpanel');
+              navigate('/adminhome');
              }
     
             
