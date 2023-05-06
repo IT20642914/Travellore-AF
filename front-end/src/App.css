@@ -1,0 +1,21 @@
+/* Navbar */
+.navbar-nav a{
+  font-size:18px; 
+}
+main{
+  margin-top: 3rem;
+  position: relative;
+  min-height: 75vh;
+
+
+}
+input.input-error,
+select.input-error{
+  border-color: #fc8181;
+}
+.error{
+  color: #fc8181;
+}
+button:disabled{
+  opacity: 0.35;
+}
