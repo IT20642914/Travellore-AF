@@ -4,28 +4,27 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import PublicRoutes from "./routes/PublicRoutes"
 function App() {
-  // const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
-  // const  role =useSelector((state)=> state.login.roles)
-  // let Adminuser=false
-  // if(role=='admin'){
-  //    Adminuser=true
-  
-  // }else{
-  //    Adminuser=false
-  // } 
-  
+  const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
+  const  isAdmin =useSelector((state)=> state.login.IsAdmin)
+  console.log("Admi",isAdmin)
+  console.log("IsLogin",IsLogin)
+ 
   return (
     <BrowserRouter>
-    {/* <Dashbord/> */}
-     {/* {IsLogin&& !Adminuser && <Home/>} */}
+    <ToastContainer/>
+ {   IsLogin&& isAdmin &&<Dashbord/>}
+ {IsLogin&& !isAdmin && <Home/>}
       <Routes>
-     
-      <Route path="/" element={<PublicRoutes/>} > 
-          <Route path="/" element={<Login/>} /> 
-      </Route>
+    
+      {  !IsLogin &&<Route path="/" element={<PublicRoutes/>} > 
+      <Route path="/" element={<Login/>} /> 
+      </Route>}
+ 
       </Routes>
+
     </BrowserRouter>
   );
 }
