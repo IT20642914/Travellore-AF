@@ -11,10 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { headerNavigations } from '../../constants';
 import Travellore from "../../assets/images/Travel Logo1.png"
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { setlogout } from '../../Redux/actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,6 +32,7 @@ console.log("IMAG",ImgUrl);
   const navigate = useNavigate();
   const location = useLocation();
   const [navigations, setNavigations] = useState(headerNavigations);
+  console.log("navigations",navigations)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -50,7 +50,7 @@ console.log("IMAG",ImgUrl);
 
 
   const onNavClick=(path)=>{
-    
+
         navigate(path);
     
   }

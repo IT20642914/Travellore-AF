@@ -1,15 +1,13 @@
 import "./App.css";
 import Dashbord from "./Components/Dashboard/dashbord"
-import { BrowserRouter, Routes, Route ,Navigate   } from "react-router-dom";
+import {  Routes, Route ,   } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import LocalBussiness from "./pages/LocalBussiness/LocalB";
 import SignupScreen from "./pages/Register/Register" 
 import { useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import PublicRoutes from "./routes/PublicRoutes"
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
 import { Box } from "@mui/material";
 
 function App() {

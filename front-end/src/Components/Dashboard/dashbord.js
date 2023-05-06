@@ -19,21 +19,14 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import "./index.css";
 import Travellore from "../../assets/images/traveloradmin.png"
-import Home from "../../pages/Home/index";
-import { Route, Routes, useNavigate } from 'react-router-dom';
-
+import {  useNavigate } from 'react-router-dom';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import Tourism from '../../pages/Tourism/tourism';
-import Event from '../../pages/Events/Event'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LocalB from '../../pages/LocalBussiness/LocalB';
 import FeedIcon from '@mui/icons-material/Feed';
-import Blogs from '../../pages/Blogs/Blogs';
-import Recipes from '../../pages/Recipes/Recipes';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setlogout } from '../../Redux/actions/authAction';
 const drawerWidth = 240;
 
