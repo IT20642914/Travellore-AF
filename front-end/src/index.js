@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { store,persistore } from './Redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter, Routes, Route ,Navigate   } from "react-router-dom";
+import { BrowserRouter  } from "react-router-dom";
 // Importing the Bootstrap CSS
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/font-awesome/css/font-awesome.css'
