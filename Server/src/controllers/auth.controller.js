@@ -33,14 +33,13 @@ const handleLogin = async (req, res) => {
       } else {
         const { accessToken, refreshToken } = await generateTokens(user);
         const userName = user.username;
-
-        const role = user.roles;
+        const img = user.img;
         res.status(200).json({
           error: false,
           accessToken,
           refreshToken,
           userName,
-          role,
+          img,
           message: `${user.username} Logged in sucessfully`,
         });
       }

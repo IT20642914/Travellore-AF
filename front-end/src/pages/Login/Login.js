@@ -13,6 +13,9 @@ import { setlogin } from '../../Redux/actions/authAction';
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import {Typography,Link, TextField,Box, Button, Container, Grid } from '@mui/material';
+
+import backgroundImage from '../../assets/images/travelimge.jpg';
+
 const Login = () => {
 
     const dispatch =useDispatch();
@@ -53,8 +56,8 @@ const Login = () => {
             if( status==200){
               const accessToken= await response.data.accessToken;
                const refeshtoken= await response.data.refreshToken;
-              const message= await response.data.message;
-         
+               const message= await response.data.message;
+               const ImgUrl=await response.data.img
               toast.success(message, {
                 position: toast.POSITION.TOP_RIGHT
               });
@@ -64,13 +67,15 @@ const Login = () => {
             console.log("decode IsAdmin",decoded.isAdmin);
             const username=decoded.username;
             const IsAdmin= decoded.isAdmin
+        
             setAuthToken(accessToken);
              localStorage.setItem("accessToken",accessToken)
              localStorage.setItem("refreshToken",refeshtoken)
              localStorage.setItem('username',username)
              localStorage.setItem('IsAdmin',IsAdmin)
+             localStorage.setItem('ImgUrl',ImgUrl)
              
-             dispatch(setlogin({accessToken,username,IsAdmin,refeshtoken}))
+             dispatch(setlogin({accessToken,username,IsAdmin,ImgUrl}))
              
              if(!IsAdmin){
               console.log("user login");
@@ -137,14 +142,14 @@ const Login = () => {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: "url(https://source.unsplash.com/random)",
+              backgroundImage:  `url(${backgroundImage})`,
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
                   ? t.palette.grey[50]
                   : t.palette.grey[900],
               backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundPosition: "right",
             }}
           />
       <Grid  item
@@ -165,7 +170,7 @@ const Login = () => {
                 alignItems: "center",
               }}
             >        
-     <Typography component="h1" variant="h5">
+     <Typography sx={{fontWeight:"600", fontSize:"2rem",color:"#046380"}}>
                 Sign in
               </Typography>
   
