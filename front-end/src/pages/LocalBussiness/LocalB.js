@@ -2,7 +2,7 @@ import React from 'react'
 
 const LocalB = () => {
   return (
-    <div>LocalBussiness page </div>
+    <div>LocalBussiness pageeee</div>
   )
 }
 
