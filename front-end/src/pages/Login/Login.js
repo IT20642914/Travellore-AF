@@ -13,6 +13,9 @@ import { setlogin } from '../../Redux/actions/authAction';
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import {Typography,Link, TextField,Box, Button, Container, Grid } from '@mui/material';
+
+import backgroundImage from '../../assets/images/travelimge.jpg';
+
 const Login = () => {
 
     const dispatch =useDispatch();
@@ -139,14 +142,14 @@ const Login = () => {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: "url(https://source.unsplash.com/random)",
+              backgroundImage:  `url(${backgroundImage})`,
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
                   ? t.palette.grey[50]
                   : t.palette.grey[900],
               backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundPosition: "right",
             }}
           />
       <Grid  item

@@ -19,6 +19,8 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import upload from "../../utils/upload";
+import backgroundImage from '../../assets/images/travelimge.jpg';
+
 // const onSubmit = async (values: any, action: any) => {
 //   console.log("sumbited data is", values);
 //   console.log("sumbited action is", action);
@@ -85,6 +87,7 @@ const SignupScreen = () => {
         <Container component="main" maxWidth="xl">
           <Box sx={{
           marginTop: 8,
+          
         }}>
           <Grid container>
           <CssBaseline />
@@ -95,14 +98,14 @@ const SignupScreen = () => {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: "url(https://source.unsplash.com/random)",
+              backgroundImage: `url(${backgroundImage})`,
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
                   ? t.palette.grey[50]
                   : t.palette.grey[900],
               backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundPosition: "right",
             }}
           />
           <Grid item
@@ -122,8 +125,7 @@ const SignupScreen = () => {
               sx={{
                 // background:"red",
                 paddingInline:"6rem",
-                my: 1,
-                mx: 1,
+          marginBottom:"4rem",
                 justifyContent:"center",
                  justifyItems:"center",
                 flexDirection: "column",
