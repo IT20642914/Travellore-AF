@@ -8,6 +8,7 @@ import SignupScreen from "./pages/Register/Register"
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import PublicRoutes from "./routes/PublicRoutes"
+import Event from "./pages/Events/Event"
 import { Box } from "@mui/material";
 
 function App() {
@@ -16,14 +17,14 @@ function App() {
   console.log("Admi",isAdmin)
   console.log("IsLogin",IsLogin)
 
-
+//sachin modya
   return (
   <Box>
     <ToastContainer/>
       <Routes>
-
       <Route path="/" element={<PublicRoutes/>} > 
       <Route path="/" element={<Home/>} /> 
+      <Route path="/event" element={<Event/>} /> 
       </Route>
   
 {IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 

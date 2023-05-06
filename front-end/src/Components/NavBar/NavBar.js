@@ -68,7 +68,10 @@ console.log("IMAG",ImgUrl);
 
   const onsettingsClick=(name)=>{
     console.log(name)
-    dispatch(setlogout())
+    if(name==="Logout"){
+      dispatch(setlogout())
+
+    }
 
   }
   useEffect(() => {
