@@ -37,3 +37,4 @@ export const settings = [
   { key: 1, name: "Profile" },
   { key: 2, name: "Logout"},
 ];
+

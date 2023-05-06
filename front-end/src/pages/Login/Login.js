@@ -83,7 +83,6 @@ const Login = () => {
              }
              else{
               console.log("admin login");
-    
               navigate('/adminhome');
              }
     
