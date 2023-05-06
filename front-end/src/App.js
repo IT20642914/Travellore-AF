@@ -22,19 +22,20 @@ function App() {
   return (
   <Box>
     <ToastContainer/>
-
       <Routes>
-      <Route path="/" element={<PublicRoutes/>} > 
+      {/* <Route path="/" element={<PublicRoutes/>} > 
       <Route path="/" element={<Home/>} /> 
-      </Route>
+      </Route> */}
   
-{  IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 
+{IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 
       <Route path="/adminhome" element={<Home/>} /> 
       <Route path="/adminhome/localb" element={<LocalBussiness/>} /> 
-      </Route>}
+      </Route>
+}
 
 
-      { !IsLogin &&<Route path="/" element={<PublicRoutes/>} > 
+      { !IsLogin &&<Route path="/" element={<PublicRoutes/>} >
+      <Route path="/" element={<Home/>} />  
       <Route path="/login" element={<Login/>} /> 
       <Route path="/register" element={<SignupScreen/>} /> 
       </Route>}
