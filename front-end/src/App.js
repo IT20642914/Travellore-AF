@@ -23,9 +23,10 @@ function App() {
   <Box>
     <ToastContainer/>
       <Routes>
-      {/* <Route path="/" element={<PublicRoutes/>} > 
+
+      <Route path="/" element={<PublicRoutes/>} > 
       <Route path="/" element={<Home/>} /> 
-      </Route> */}
+      </Route>
   
 {IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 
       <Route path="/adminhome" element={<Home/>} /> 
@@ -35,7 +36,6 @@ function App() {
 
 
       { !IsLogin &&<Route path="/" element={<PublicRoutes/>} >
-      <Route path="/" element={<Home/>} />  
       <Route path="/login" element={<Login/>} /> 
       <Route path="/register" element={<SignupScreen/>} /> 
       </Route>}
