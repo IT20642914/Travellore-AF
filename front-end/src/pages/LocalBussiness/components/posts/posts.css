@@ -1,0 +1,6 @@
+.posts{
+    flex: 9;   /*spilt into 9 uits*/
+    display: flex;
+    flex-wrap: wrap; /* mekedi tmy harahta post enna dmme. ethkn column ekk wge yatata ytata post awe*/
+    margin: 20px;
+}
