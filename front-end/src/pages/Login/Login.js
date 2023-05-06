@@ -53,8 +53,8 @@ const Login = () => {
             if( status==200){
               const accessToken= await response.data.accessToken;
                const refeshtoken= await response.data.refreshToken;
-              const message= await response.data.message;
-         
+               const message= await response.data.message;
+               const ImgUrl=await response.data.img
               toast.success(message, {
                 position: toast.POSITION.TOP_RIGHT
               });
@@ -64,13 +64,15 @@ const Login = () => {
             console.log("decode IsAdmin",decoded.isAdmin);
             const username=decoded.username;
             const IsAdmin= decoded.isAdmin
+        
             setAuthToken(accessToken);
              localStorage.setItem("accessToken",accessToken)
              localStorage.setItem("refreshToken",refeshtoken)
              localStorage.setItem('username',username)
              localStorage.setItem('IsAdmin',IsAdmin)
+             localStorage.setItem('ImgUrl',ImgUrl)
              
-             dispatch(setlogin({accessToken,username,IsAdmin,refeshtoken}))
+             dispatch(setlogin({accessToken,username,IsAdmin,ImgUrl}))
              
              if(!IsAdmin){
               console.log("user login");
@@ -165,7 +167,7 @@ const Login = () => {
                 alignItems: "center",
               }}
             >        
-     <Typography component="h1" variant="h5">
+     <Typography sx={{fontWeight:"600", fontSize:"2rem",color:"#046380"}}>
                 Sign in
               </Typography>
   

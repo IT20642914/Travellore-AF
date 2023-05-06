@@ -16,13 +16,19 @@ import { headerNavigations } from '../../constants';
 import Travellore from "../../assets/images/Travel Logo1.png"
 import React, { useState, useEffect, MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-const settings = ['Profile', 'Logout'];
-
+import { setlogout } from '../../Redux/actions/authAction';
+import { useDispatch, useSelector } from 'react-redux';
+// const settings = ['Profile', 'Logout'];
+import {settings }from "../../constants/index"
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [currentPath, setCurrentPath] = useState('/');
+  const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
+  const  ImgUrl= useSelector((state)=> state.login.ImgUrl)
 
+
+console.log("IMAG",ImgUrl);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,6 +53,23 @@ function ResponsiveAppBar() {
     
         navigate(path);
     
+  }
+
+
+  const handlesighup =()=>{
+    navigate("/register");
+  }
+  const handlesighin =()=>{
+    navigate("/login");
+  }
+
+
+  const dispatch =useDispatch();
+
+  const onsettingsClick=(name)=>{
+    console.log(name)
+    dispatch(setlogout())
+
   }
   useEffect(() => {
     setCurrentPath(location.pathname);
@@ -162,10 +185,10 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+       {  IsLogin&& <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt='sss' src={ImgUrl} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -185,12 +208,17 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.key} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" onClick={() => onsettingsClick(setting.name)} >{setting.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>}
+
+        { !IsLogin && <Box sx={{ flexGrow: 0 }}>
+          <Button onClick={handlesighup} sx={{  fontWeight: "300", fontSize: "1rem", color: "white"}}variant="text">Sign Up</Button>
+          <Button onClick={handlesighin}sx={{  fontWeight: "300", fontSize: "1rem", color: "white"}}variant="text">Sign In</Button>
+          </Box>}
         </Toolbar>
       </Container>
     </AppBar>

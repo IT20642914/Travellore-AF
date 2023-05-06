@@ -26,7 +26,7 @@ const initialState = {
           accessKey: payload.accessToken,
           IsAdmin:payload.IsAdmin,
           username:payload.username,
-          refeshtoken:payload.refeshtoken,
+          ImgUrl:payload.ImgUrl,
         };
         case authActionTypes.LOG_OUT:
           return {
@@ -35,7 +35,7 @@ const initialState = {
             accessKey: null,
             IsAdmin:null,
             username:null,
-            refeshtoken:null,
+            ImgUrl:null,
           };
           case authActionTypes.CHECK_AUTH:
             return {
