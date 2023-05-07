@@ -23,6 +23,7 @@ function App() {
 //sachin modya
   return (
     <Box>
+    
       <ToastContainer />
       <Routes>
         <Route path="/" element={<PublicRoutes />}>
@@ -30,7 +31,7 @@ function App() {
           <Route path="/event" element={<Event />} />
           <Route path="/event/:propertyId" element={<EventDetails />} />
 
-          <Route path="/recipe/:propertyId" element={<RecipeDetails />} />
+          {/* <Route path="/recipe/:propertyId" element={<RecipeDetails />} /> */}
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/addrecipes" element={<AddRecipes />} />
 
@@ -46,6 +47,7 @@ function App() {
           </Route>
         )}
       </Routes>
+
     </Box>
   );
 }
