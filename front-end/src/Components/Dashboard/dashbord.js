@@ -34,6 +34,7 @@ import Event from '../../pages/Events/Event'
 import LocalB from '../../pages/LocalBussiness/LocalB';
 import Blogs from '../../pages/Blogs/Blogs';
 import Recipes from '../../pages/Recipes/Recipes';
+import AddRecipes from "../../pages/Recipes/adminRecipes/AddRecipes";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -128,11 +129,10 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{background:"#046380"}}  open={open}>
+      <AppBar position="fixed" sx={{ background: "#046380" }} open={open}>
         <Toolbar>
-          
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -140,116 +140,142 @@ export default function MiniDrawer() {
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
+              ...(open && { display: "none" }),
             }}
           >
-            
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-         
-          Travellore
+            Travellore
           </Typography>
         </Toolbar>
       </AppBar>
-      
+
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-           
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
-      
         </DrawerHeader>
-         <Box >
-             <img src={Travellore} id="Travellore" alt="tavelologo" />
-            </Box>
+        <Box>
+          <img src={Travellore} id="Travellore" alt="tavelologo" />
+        </Box>
         <Divider />
         <List>
-            <ListItem   disablePadding  onClick={()=>{ handleClick("adminhome")}}> 
-                <ListItemButton>
-                    <ListItemIcon>
-                        <HomeIcon sx={{ color:"#046380 "}}/>
-                    </ListItemIcon>
-                    <ListItemText sx={{ color:"#046380 "}}>Home</ListItemText>
-                </ListItemButton>
-            </ListItem>
-            <ListItem  spacing={3} disablePadding  onClick={()=>{ handleClick("tuorism")}}>
-                <ListItemButton>
-                    <ListItemIcon>
-                        <EmojiTransportationIcon sx={{ color:"#046380 "}}/>
-                     
-                    </ListItemIcon>
-                    <ListItemText sx={{ color:"#046380 "}}>Tourism Places</ListItemText>
-                </ListItemButton>
-            </ListItem>
-         
-            <ListItem disablePadding  onClick={()=>{ handleClick("event")}}>
-                <ListItemButton>
-                    <ListItemIcon >
-                    <EventAvailableIcon sx={{ color:"#046380 "}}/>
-                    </ListItemIcon>
-                    <ListItemText sx={{ color:"#046380 "}}>Events</ListItemText>
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding onClick={()=>{ handleClick("localb")}} >
-                <ListItemButton>
-                    <ListItemIcon >
-                    <AttachMoneyIcon sx={{ color:"#046380 "}}/>
-                    </ListItemIcon>
-                    <ListItemText sx={{ color:"#046380 "}}>Local Businesses</ListItemText>
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding onClick={()=>{ handleClick("recipes")}} >
-                <ListItemButton>
-                    <ListItemIcon >
-                    <MenuBookIcon sx={{ color:"#046380 "}}/>
-                    </ListItemIcon>
-                    <ListItemText sx={{ color:"#046380 "}}>Recipes</ListItemText>
-                </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding onClick={()=>{ handleClick("blogs")}}  >
-                <ListItemButton>
-                    <ListItemIcon >
-                    <FeedIcon sx={{ color:"#046380 "}}/>
-                    </ListItemIcon>
-                    <ListItemText sx={{ color:"#046380 "}}>Blogs</ListItemText>
-                </ListItemButton>
-            </ListItem>
-           
-         
+          <ListItem
+            disablePadding
+            onClick={() => {
+              handleClick("adminhome");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <HomeIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>Home</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            spacing={3}
+            disablePadding
+            onClick={() => {
+              handleClick("tuorism");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <EmojiTransportationIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>
+                Tourism Places
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem
+            disablePadding
+            onClick={() => {
+              handleClick("event");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <EventAvailableIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>Events</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              handleClick("localb");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <AttachMoneyIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>
+                Local Businesses
+              </ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              handleClick("addrecipes");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <MenuBookIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>Recipes</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              handleClick("blogs");
+            }}
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <FeedIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>Blogs</ListItemText>
+            </ListItemButton>
+          </ListItem>
         </List>
         <Divider />
 
         <List>
-       {/* //list */}
-       <ListItem disablePadding   >
-                <ListItemButton onClick={handlelogout}>
-                    <ListItemIcon >
-                    <LogoutIcon sx={{ color:"#046380 "}}/>
-                    </ListItemIcon >
-                    <ListItemText   sx={{ color:"#046380 "}}>Logout</ListItemText>
-                </ListItemButton>
-            </ListItem>
-
-      </List>
-      
-     
+          {/* //list */}
+          <ListItem disablePadding>
+            <ListItemButton onClick={handlelogout}>
+              <ListItemIcon>
+                <LogoutIcon sx={{ color: "#046380 " }} />
+              </ListItemIcon>
+              <ListItemText sx={{ color: "#046380 " }}>Logout</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
 
-  
-      <Box>
-               {page === "adminhome" && <Home/>}
-               {page === "tuorism" && <Tourism/>}
-               {page === "event" && <Event/>}
-               {page === "localb" && <LocalB/>}
-               {page === "blogs" && <Blogs/>}
-               {page === "recipes" && <Recipes/>}
-      </Box>
-
-    
+        <Box>
+          {page === "adminhome" && <Home />}
+          {page === "tuorism" && <Tourism />}
+          {page === "event" && <Event />}
+          {page === "localb" && <LocalB />}
+          {page === "blogs" && <Blogs />}
+          {page === "addrecipes" && <AddRecipes />}
+        </Box>
       </Box>
     </Box>
   );

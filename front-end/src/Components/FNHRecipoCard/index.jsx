@@ -8,7 +8,6 @@ import FNHText from "../FNHText/index";
 import { useNavigate } from "react-router-dom";
 
 
-//// yatin oyage valiuew da ganna
 
 const FNHRecipoCard = ({
   propertyId,
@@ -19,9 +18,8 @@ const FNHRecipoCard = ({
   backgroundImage,
   recipeDetails,
   address,
-  date,
-  time,
-  location,
+  
+
 }: FNHRecipoCardProps) => {
   const [isFilled, setIsFilled] = React.useState(false);
 
