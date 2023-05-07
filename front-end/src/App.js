@@ -31,9 +31,6 @@ function App() {
 {IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 
     </Route>
 }
-
-
-
       { !IsLogin &&<Route path="/" element={<PublicRoutes/>} >
       <Route path="/login" element={<Login/>} /> 
       <Route path="/register" element={<SignupScreen/>} /> 
