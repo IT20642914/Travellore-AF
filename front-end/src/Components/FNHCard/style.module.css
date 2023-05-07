@@ -1,0 +1,17 @@
+.Card {
+  width: 23rem;
+  height: 32rem;
+  border-radius: 1.25rem;
+  margin: 1rem 0 3rem 0;
+}
+
+@media (max-width: 1300px) {
+  .Card {
+    width: 90%;
+  }
+}
+@media (max-width: 800px) {
+  .Card {
+    width: auto;
+  }
+}/*# sourceMappingURL=style.module.css.map */
