@@ -12,6 +12,7 @@ import { Box } from "@mui/material";
 import EventDetails from "./pages/Events/EventDetails/EventDetails"
 import Recipes from "./pages/Recipes/Recipes";
 import AddRecipes from "./pages/Recipes/adminRecipes/AddRecipes";
+import RecipeDetails from "./pages/Recipes/RecipeDetails/RecipeDetails";
 
 function App() {
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
