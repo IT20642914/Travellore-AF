@@ -7,7 +7,6 @@ import { Events } from '../../../constants';
 import {Googlemap} from "../../../Components/map/index";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { height } from '@mui/system';
 import LocationIcon from "../../../assets/icon/LocationIcon";
 const EventDetails = () => {
   const { propertyId  } = useParams();
@@ -21,7 +20,6 @@ const EventDetails = () => {
 
 
   const {
-    id,
     name,
     date,
     time,

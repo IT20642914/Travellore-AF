@@ -29,6 +29,7 @@ const FNHSlider = () => {
   const isMd = useMediaQuery("(min-width:961px) and (max-width:1280px)");
   const isLg = useMediaQuery("(min-width:1281px)and (max-width:1580px)");
   const isXl = useMediaQuery("(min-width:1580)");
+  console.log("isXl",isXl);
   const currentBreakpoint = isXs
     ? "xs"
     : isSm

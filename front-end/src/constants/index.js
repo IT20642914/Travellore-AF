@@ -1,6 +1,4 @@
 
-import festival  from "../assets/images/festival.jpg" 
-
 export const headerNavigations = [
   {
     key: 1,
