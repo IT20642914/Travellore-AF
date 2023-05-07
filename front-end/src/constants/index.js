@@ -162,3 +162,53 @@ export const Events = [
     }
   }
 ];
+
+
+export const Recipe = [
+  {
+    id: 1,
+    name: "Motichur Laddu",
+    ingredients: "gram flour, semolina (rava), whole wheat flour..",
+    description:
+      "Laddu or laddoo is a spherical sweet from the Indian subcontinent..",
+    category: "Tamil",
+    image: "./images/recipes1.jpg",
+  },
+
+  {
+    id: 2,
+    name: "Asmi",
+    ingredients: "Rice Flour, Thick Coconut Milk, Salt, Cooking Oi..",
+    description:
+      "Asami is a Sri Lankan traditional sweet snack that is especially..",
+    category: "Sinhala & Hindu ",
+    image: "./images/recipes2.jpg",
+  },
+  {
+    id: 3,
+    name: "Kokis",
+    ingredients: "Egg, Rice flour, Turmeric, Salt, Litre oil..",
+    description:
+      "kokis or rosette cookies are a traditional Sri Lankan savoury treat that adorns ever..",
+    category: "Sinhala & Hindu ",
+    image: "./images/recipes3.jpg",
+  },
+  {
+    id: 4,
+    name: "Sri Lankan Kottu",
+    ingredients: "vegetable oil · ½ medium onion, garlic cloves..",
+    description: "Kottu is one of the national dishes of Sri Lanka..",
+    category: "Sri Lankan",
+    image: "./images/recipes4.jpg",
+  },
+  {
+    id: 5,
+    name: "Rice & Curry",
+    ingredients:
+      "sambol (a Sri Lankan relish), a gravy or hodda with spices.. ",
+    description:
+      "The standard ingredient in Sri Lankan sambols is chilli, either freshly..",
+    category: "Sri Lankan",
+    image: "./images/recipes5.jpg",
+  },
+];

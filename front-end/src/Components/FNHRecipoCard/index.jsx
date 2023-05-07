@@ -12,23 +12,22 @@ import { useNavigate } from "react-router-dom";
 
 const FNHRecipoCard = ({
   propertyId,
-  eventTopic,
-  eventDetails,
+  name,
+  ingredients,
   communityBy,
-  eventType,
+  recipeCate,
   backgroundImage,
-  price,
+  recipeDetails,
   address,
   date,
   time,
   location,
-
 }: FNHRecipoCardProps) => {
   const [isFilled, setIsFilled] = React.useState(false);
 
-  const handleFavoriteClick = (event: any) => {
-    event.stopPropagation();
-    if (event.type === "click") {
+  const handleFavoriteClick = (recipe: any) => {
+    recipe.stopPropagation();
+    if (recipe.type === "click") {
       setIsFilled(!isFilled);
     }
   };
@@ -36,9 +35,9 @@ const FNHRecipoCard = ({
   const navigate: any = useNavigate();
 
   const handleCardClick = () => {
-    console.log("key",propertyId)
+    console.log("key", propertyId);
 
-    navigate(`/event/${propertyId}`);
+    navigate(`/recipe/${propertyId}`);
   };
   return (
     <Card
@@ -108,7 +107,7 @@ const FNHRecipoCard = ({
         >
           <Box>
             <FNHText
-              text={eventTopic}
+              text={name}
               color="black"
               fontWeight="700"
               fontSize="1.5rem"
@@ -120,41 +119,34 @@ const FNHRecipoCard = ({
             sx={{
               textAlign: "start",
             }}
-          > 
+          >
             <FNHText
-            //color="#1460BA"
-              text={location}
+              //color="#1460BA"
+              text={recipeCate}
               fontWeight="700"
               fontSize="0.875rem"
             />
-               <Box sx={{marginTop:"1rem",display:"flex"}}>
-             <FNHText
-            //  color="#1460BA"
-              text={eventDetails}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
+            <Box sx={{ marginTop: "1rem", display: "flex" }}>
+              <FNHText
+                //  color="#1460BA"
+                text={recipeDetails}
+                fontWeight="700"
+                fontSize="0.875rem"
+              />
             </Box>
-            </Box>
-          
-    <Box sx={{marginTop:"1rem",display:"flex"}}>
+          </Box>
 
-    <FNHText
-              color="#1460BA"
-              text= {date}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
-             <Box sx={{marginLeft:"1rem", display:"flex"}}>
-             <FNHText
-              color="#1460BA"
-              text= {time}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
+          <Box sx={{ marginTop: "1rem", display: "flex" }}>
+            <Box sx={{ marginLeft: "1rem", display: "flex" }}>
+              <FNHText
+                color="#1460BA"
+                text={ingredients}
+                fontWeight="700"
+                fontSize="0.875rem"
+              />
             </Box>
-    </Box>
-    
+          </Box>
+
           <Box
             sx={{
               textAlign: "start",
@@ -168,22 +160,9 @@ const FNHRecipoCard = ({
               minWidth: "50%",
               textAlign: "start",
               margin: "0 0 2rem 0",
-              display:"flex"
+              display: "flex",
             }}
-          >
-            <FNHText
-              fontSize="1rem"
-              text="Rs  "
-              color="black"
-              fontWeight="700"
-            />
-            <FNHText
-              fontSize="1rem"
-              text={price}
-              color="#1460BA"
-              fontWeight="700"
-            />
-          </Box>
+          ></Box>
         </Box>
       </Box>
     </Card>

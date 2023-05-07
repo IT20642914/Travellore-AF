@@ -1,0 +1,213 @@
+.footer {
+  background: linear-gradient(to bottom, #046380 0%, #012935 100%);
+  position: relative;
+  margin-top: 14rem;
+  width: 100%;
+  padding: 5rem 2rem;
+}
+
+.logo {
+  width: 8rem;
+}
+
+.logoBox {
+  height: 25%;
+  display: flex;
+}
+
+.logoText1 {
+  font-weight: 400;
+  position: relative;
+  padding-top: 3rem;
+  padding-left: 2rem;
+  color: white;
+}
+
+.conatiner {
+  max-width: 100%;
+  padding-left: 7rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+}
+
+.footercol1 {
+  width: 30%;
+}
+
+.col1text1 {
+  color: white;
+}
+
+.footercol2 {
+  display: flex;
+  width: 50%;
+}
+
+.footercol2inside {
+  width: 100%;
+}
+
+.footercol2inside2 {
+  width: 100%;
+}
+
+.footercol4 {
+  width: 20%;
+}
+
+.footer h4 {
+  font-size: 24px;
+  color: white;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.texteFeild {
+  background: white;
+  border-radius: 9px !important;
+  width: 15.5rem;
+  height: 3.3125rem;
+  margin-top: 1rem !important;
+}
+
+.formgroup {
+  display: inline-flex;
+  width: auto;
+}
+
+.buttongo {
+  margin-left: -0.8rem !important;
+  height: 3.3125rem;
+  width: 4.25rem;
+  background: #017599 !important;
+  margin-top: 1rem !important;
+  border-radius: 9px !important;
+}
+
+.footercol2inside {
+  width: 100%;
+}
+
+.footercol1 {
+  width: 30%;
+}
+
+.footercol2 {
+  display: flex;
+  width: 50%;
+}
+
+.serviceLIst {
+  color: white !important;
+  font-size: 1.25rem !important;
+}
+
+.serviceLIst1 {
+  margin-top: 3rem !important;
+  color: white !important;
+}
+
+.serviceLIst1 .css-1nzf0f7-MuiTypography-root {
+  color: white !important;
+  font-size: 1.25rem !important;
+}
+
+.serviceLIst4 {
+  margin: 0% !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.linklist {
+  color: white !important;
+  text-underline-offset: none;
+}
+
+#footerform {
+  height: 1.26rem;
+  border-width: 0;
+  padding-right: 3rem;
+}
+
+.socicallinks {
+  color: aliceblue;
+}
+
+@media (max-width: 1300px) {
+  .footercol1 {
+    width: 50%;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .footercol2 {
+    width: 50%;
+    display: inline;
+  }
+  .footercol3 {
+    width: 50%;
+  }
+  .footercol4 {
+    width: 50%;
+    margin-top: -15rem !important;
+  }
+  .serviceLIst1 {
+    margin-top: -1rem !important;
+  }
+  .logoBox {
+    display: inline-block;
+  }
+  .logoText1 {
+    font-weight: 400;
+    position: relative;
+    padding-top: 0rem;
+    padding-left: 0rem;
+    color: white;
+  }
+}
+@media (max-width: 810px) {
+  .conatiner {
+    padding-left: 1rem;
+  }
+  .footercol1 {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .formgroup {
+    max-width: 100%;
+  }
+  .footercol2 {
+    width: 100%;
+    padding-top: auto;
+    margin-top: 1rem;
+  }
+  .footercol3 {
+    width: 100%;
+    padding-top: auto;
+    margin-top: 0% !important;
+  }
+  .footercol4 {
+    margin-top: 1rem !important;
+    padding-top: 1rem;
+    width: 100%;
+  }
+  .logoBox {
+    display: inline-block;
+  }
+  .logoText1 {
+    font-weight: 400;
+    position: relative;
+    padding-top: 0rem;
+    padding-left: 0rem;
+    color: white;
+  }
+}/*# sourceMappingURL=Footer.module.css.map */
