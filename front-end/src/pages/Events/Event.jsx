@@ -25,6 +25,7 @@ const Event = () => {
       <FNHText
         text="Find Your Events.Today"
         color="#046380"
+        fontSize='3rem'
         textAlign="left"
         variant="h6"
       />
@@ -40,7 +41,7 @@ const Event = () => {
         <Grid item>
           <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
 
-          <AllFilltersIcon fill="#1460BA" width="25" height="25" />
+          <AllFilltersIcon fill="#046380" width="25" height="25" />
      <input
     type="text"
     placeholder="Filter by name"
@@ -48,7 +49,7 @@ const Event = () => {
     onChange={(e) => setNameFilter(e.target.value)}
     style={{ 
       padding: '8px',
-      border: '1px solid #1460BA',
+      border: '1px solid #046380',
       borderRadius: '4px',
       fontSize: '16px',
       width: '100%',
@@ -60,7 +61,7 @@ const Event = () => {
 </Grid>
 <Grid item>
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
-  <DateIcon fill="#1460BA" width="25" height="25" />
+  <DateIcon fill="#046380" width="25" height="25" />
   <input
     type="text"
     placeholder="Filter by date"
@@ -68,7 +69,7 @@ const Event = () => {
     onChange={(e) => setDateFilter(e.target.value)}
     style={{ 
       padding: '8px',
-      border: '1px solid #1460BA',
+      border: '1px solid #046380',
       borderRadius: '4px',
       fontSize: '16px',
       width: '100%',
@@ -79,7 +80,7 @@ const Event = () => {
 </Grid>
 <Grid item>
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
-<AllFilltersIcon fill="#1460BA" width="25" height="25" />
+<AllFilltersIcon fill="#046380" width="25" height="25" />
   <input
     type="text"
     placeholder="Filter by category"
@@ -87,7 +88,7 @@ const Event = () => {
     onChange={(e) => setCategoryFilter(e.target.value)}
     style={{ 
       padding: '8px',
-      border: '1px solid #1460BA',
+      border: '1px solid #046380',
       borderRadius: '4px',
       fontSize: '16px',
       width: '100%',
@@ -98,7 +99,7 @@ const Event = () => {
 </Grid>
 <Grid  item>
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
-<LocationIcon fill="#1460BA" width="25" height="25"/>
+<LocationIcon fill="#046380" width="25" height="25"/>
   <input
     type="text"
     placeholder="Filter by location"
@@ -106,7 +107,7 @@ const Event = () => {
     onChange={(e) => setlocationFilter(e.target.value)}
     style={{ 
       padding: '8px',
-      border: '1px solid #1460BA',
+      border: '1px solid #046380',
       borderRadius: '4px',
       fontSize: '16px',
       width: '100%',
@@ -149,7 +150,7 @@ const Event = () => {
         >
           <FNHText
             text="Events"
-            color="#1460BA"
+            color="#046380"
             textAlign="left"
             variant="h6"
           />
