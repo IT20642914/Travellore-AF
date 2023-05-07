@@ -1,0 +1,100 @@
+.myProducts {
+   
+    display: flex;
+    justify-content: center;
+    color: #555;
+  }
+  body {
+    background-color: var(--color-black);
+  }
+  .container {
+    width: 1400px;
+    padding: 50px 0px;
+  }
+  
+  .title {
+    font-family: var(--font-base);
+    color: var(--color-golden);
+    font-size: 25px;
+    line-height: 35px;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: space-between;
+  }
+  tr {
+    text-align: center;
+    font-size: 30px;
+  }
+  td {
+    margin-bottom: 100px;
+    text-align: center;
+    font-size: 25px;
+  }
+  sup {
+    font-size: 12px;
+  }
+  
+  .img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .title button {
+    background-color: var(--color-crimson);
+    color: var(--color-black);
+    font-family: var(--font-base);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 28px;
+    font-size: 16px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .actionBtn .deleteIcon {
+    padding: 10px;
+    width: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .myProducts .container table {
+    width: 100%;
+  }
+  
+  .myProducts .container table tr {
+    height: 50px;
+  }
+  
+  .myProducts .container table tr th {
+    text-align: center;
+  }
+  
+  .myProducts .container table tr td {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+  
+  .myProducts .container table tr td sup {
+    font-size: 12px;
+  }
+  table {
+    width: 100%;
+    background-color: rgba(216, 172, 172, 0.082);
+  }
+  
+  th,
+  td {
+    background-color: transparent;
+  }
+  .myProducts .container table tr:nth-child(even) {
+    background-color: #80dbb11a;
+  }

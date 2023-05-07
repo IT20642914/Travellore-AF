@@ -24,6 +24,7 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [currentPath, setCurrentPath] = useState('/');
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
+  const  isAdmin =useSelector((state)=> state.login.IsAdmin)
   const  ImgUrl= useSelector((state)=> state.login.ImgUrl)
 
 
@@ -62,7 +63,9 @@ console.log("IMAG",ImgUrl);
   const handlesighin =()=>{
     navigate("/login");
   }
-
+ const admiddash=()=>{
+  navigate("/adminhome");
+ }
 
   const dispatch =useDispatch();
 
@@ -217,7 +220,7 @@ console.log("IMAG",ImgUrl);
               ))}
             </Menu>
           </Box>}
-
+         { IsLogin && isAdmin&& <Button onClick={admiddash} sx={{  fontWeight: "300", fontSize: "1rem", color: "white"}}variant="text">Admin View</Button>}
         { !IsLogin && <Box sx={{ flexGrow: 0 }}>
           <Button onClick={handlesighup} sx={{  fontWeight: "300", fontSize: "1rem", color: "white"}}variant="text">Sign Up</Button>
           <Button onClick={handlesighin}sx={{  fontWeight: "300", fontSize: "1rem", color: "white"}}variant="text">Sign In</Button>
