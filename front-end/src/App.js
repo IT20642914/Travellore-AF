@@ -10,7 +10,6 @@ import PublicRoutes from "./routes/PublicRoutes"
 import Event from "./pages/Events/Event"
 import { Box } from "@mui/material";
 import EventDetails from "./pages/Events/EventDetails/EventDetails"
-import RecipeDetails from "./pages/Recipes/RecipeDetails/RecipeDetails";
 import Recipes from "./pages/Recipes/Recipes";
 import AddRecipes from "./pages/Recipes/adminRecipes/AddRecipes";
 
@@ -29,9 +28,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/event" element={<Event />} />
           <Route path="/event/:propertyId" element={<EventDetails />} />
+
           <Route path="/recipe/:propertyId" element={<RecipeDetails />} />
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/addrecipes" element={<AddRecipes />} />
+
         </Route>
 
         {IsLogin && isAdmin && (

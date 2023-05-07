@@ -16,9 +16,6 @@ const EventDetails = () => {
   if (!property) {
     return <div>Property not found</div>;
   }
-
-
-
   const {
     name,
     date,
