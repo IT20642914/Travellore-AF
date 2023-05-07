@@ -1,6 +1,6 @@
-import "./postb.css"
+import "../commonCSS/post.css"
 
-export default function PostB() {
+export default function PostK() {
     return (
         <div className="post">
 
@@ -9,16 +9,13 @@ export default function PostB() {
 
             <div className="postInfo">     {/* .postInfor + enter = div tag with classname*/}
                 
-                <div className="postCat">
-                   <span className="postCat">Music</span>
-                   <span className="postCat">Life</span>
-                </div>
+                
 
-                <span className="postTitle">Lorem ipsum sdfgnhjytyr fsdfgd</span>
+                <span className="postTitle">Lorem ipsum </span>
 
                 <hr/>
 
-                <span className="postDate"> 1 hour ago</span>
+              
 
             </div>
 

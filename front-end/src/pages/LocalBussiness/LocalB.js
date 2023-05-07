@@ -1,9 +1,11 @@
-import React from 'react'
+import Tab from "./components/localBTabs/Tab"
 
-const LocalB = () => {
+export default function LocalB() {
   return (
-    <div>LocalBussiness pageeee</div>
+   
+    <div>
+       <Tab/>
+       LocalB
+       </div>
   )
 }
-
-export default LocalB

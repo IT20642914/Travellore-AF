@@ -25,13 +25,15 @@
     line-height: 30px;
     text-align: center;
 }
-.sidebar >  img{   /*we didnt give class name for imae=ge.inside this sidebar every images these styles willbe added*/
+img{   /*we didnt give class name for imae=ge.inside this sidebar every images these styles willbe added*/
 
     margin-top: 15px;
+    width: 20vw;
 
 }
 .sidebarItem > p{
      padding: 30px;
+     text-align: justify;
 }
 
 .sidebarList{
