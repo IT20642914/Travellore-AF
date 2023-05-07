@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+
+html {
+  font-size: 90%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.icon {
+  font-size: var(--h2FontSize);
+  cursor: pointer;
+}
+
+img, video {
+  height: auto;
+  width: 100%;
+}
+
+.message {
+  display: none;
+}
+
+.showMessage {
+  display: block;
+  color: var(--whiteColor);
+  background: rgb(255, 0, 0);
+  border-radius: 3px;
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 5px;
+  color: var(--greyText);
+}
+
+.btn.icon {
+  margin-left: 5rem;
+}
+
+.btn:hover {
+  color: hsl(330, 12%, 97%);
+  background: hsl(96, 75%, 89%);
+}
+
+.RecipesPage {
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 7px 50px rgb(214, 223, 213);
+}
+.RecipesPage .container {
+  height: 75vh;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: hsl(0, 0%, 91%);
+}
+.RecipesPage .formDiv {
+  flex-basis: 50%;
+  margin: auto;
+  flex-direction: column;
+  gap: 0.5rem;
+  transform: translateY(-1rem);
+}
+.RecipesPage .formDiv .headerDiv {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.RecipesPage .formDiv .headerDiv img {
+  width: 60px;
+  padding-bottom: 0.2rem;
+}
+.RecipesPage .formDiv .headerDiv h1 {
+  font-size: 25px;
+  color: black;
+  font-weight: 600;
+}
+.RecipesPage .formDiv .form {
+  gap: 1rem;
+}
+.RecipesPage .formDiv .form .inputDiv .icon {
+  color: gray;
+}
+.RecipesPage .formDiv .form .inputDiv input {
+  background: none;
+  outline: none;
+  border: none;
+  width: 200px;
+}
+.RecipesPage .formDiv .form .inputDiv label {
+  color: black;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0.3rem 0;
+  display: block;
+}
+.RecipesPage .formDiv .form .inputDiv .input {
+  gap: 0.5rem;
+  padding: 0.7rem;
+  background: hsl(330, 12%, 97%);
+  border-radius: 10px;
+}
+.RecipesPage .formDiv .form .btn {
+  padding: 0.5rem;
+  background-color: #34A853;
+  border-radius: 10px;
+  color: white;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  font-size: 16px;
+  width: 100%;
+  gap: 0.5rem;
+  transition: 0.3s ease;
+}
+.RecipesPage .formDiv .form .btn .icon {
+  font-size: 25px;
+  transition: 0.3s ease;
+}
+.RecipesPage .formDiv .form .btn:hover {
+  background: #b5e7a0;
+  color: black;
+}
+.RecipesPage .formDiv .form .btn:hover .icon {
+  color: black;
+  transform: translateX(5px);
+}
+.RecipesPage .formDiv .form .forgotPassword {
+  font-size: 13px;
+  color: black;
+  opacity: 0.7;
+  text-align: center;
+}
+.RecipesPage .formDiv .form .forgotPassword a {
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 1;
+}
+
+@media screen and (max-width: 602px) {
+  .loginPage .container, .RegisterPage .container {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  .loginPage .container .gif, .RegisterPage .container .gif {
+    width: 100%;
+  }
+  .loginPage .container .gif .textDev .title, .RegisterPage .container .gif .textDev .title {
+    font-size: 20px;
+  }
+  .loginPage .container .gif .textDev p, .RegisterPage .container .gif .textDev p {
+    padding: 1rem;
+  }
+  .loginPage .container .gif .footerDiv .text, .RegisterPage .container .gif .footerDiv .text {
+    font-size: 12px;
+  }
+  .loginPage .container .gif .footerDiv .btn, .RegisterPage .container .gif .footerDiv .btn {
+    padding: 0.4rem 1.5rem;
+  }
+  .loginPage .container .formDiv, .RegisterPage .container .formDiv {
+    gap: 1rem;
+    transform: translateY(-0.5rem);
+  }
+  .loginPage .container .formDiv .headerDiv, .RegisterPage .container .formDiv .headerDiv {
+    padding: 1rem 0;
+  }
+  .loginPage .container .formDiv .headerDiv img, .RegisterPage .container .formDiv .headerDiv img {
+    width: 40px;
+  }
+  .loginPage .container .formDiv .headerDiv h1, .RegisterPage .container .formDiv .headerDiv h1 {
+    font-size: 20px;
+  }
+  .loginPage .container .formDiv .form, .RegisterPage .container .formDiv .form {
+    gap: 0.5rem;
+  }
+  .loginPage .container .formDiv .form .inputDiv input, .RegisterPage .container .formDiv .form .inputDiv input {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 927px) {
+  .RecipesPage .container .formDiv .headerDiv {
+    padding: 1.5rem 0;
+  }
+  .RecipesPage .container .formDiv .headerDiv h1 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 678px) {
+  .loginPage .container, .RegisterPage .container {
+    width: 85%;
+  }
+}/*# sourceMappingURL=Recipes.css.map */

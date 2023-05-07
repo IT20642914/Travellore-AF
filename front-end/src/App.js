@@ -10,6 +10,8 @@ import PublicRoutes from "./routes/PublicRoutes"
 import Event from "./pages/Events/Event"
 import { Box } from "@mui/material";
 import EventDetails from "./pages/Events/EventDetails/EventDetails"
+import RecipeDetails from "./pages/Recipes/RecipeDetails/RecipeDetails";
+import Recipes from "./pages/Recipes/Recipes";
 
 function App() {
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
@@ -19,32 +21,30 @@ function App() {
 
 //sachin modya
   return (
-  <Box>
-    <ToastContainer/>
+    <Box>
+      <ToastContainer />
       <Routes>
-      <Route path="/" element={<PublicRoutes/>} > 
-      <Route path="/" element={<Home/>} /> 
-      <Route path="/event" element={<Event/>} /> 
-      <Route path="/event/:propertyId" element={<EventDetails/>} /> 
-      </Route>
-  
-{IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 
-    </Route>
-}
-      { !IsLogin &&<Route path="/" element={<PublicRoutes/>} >
-      <Route path="/login" element={<Login/>} /> 
-      <Route path="/register" element={<SignupScreen/>} /> 
-      </Route>}
- 
+        <Route path="/" element={<PublicRoutes />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/event/:propertyId" element={<EventDetails />} />
+          <Route
+            path="/recipes"
+            element={<Recipes />}
+          />
+        </Route>
 
-
-
+        {IsLogin && isAdmin && (
+          <Route path="/adminhome" element={<Dashbord />}></Route>
+        )}
+        {!IsLogin && (
+          <Route path="/" element={<PublicRoutes />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<SignupScreen />} />
+          </Route>
+        )}
       </Routes>
-
-
-
-      </Box>
-
+    </Box>
   );
 }
 
