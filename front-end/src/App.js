@@ -21,6 +21,7 @@ function App() {
 //sachin modya
   return (
     <Box>
+    
       <ToastContainer />
       <Routes>
         <Route path="/" element={<PublicRoutes />}>
@@ -40,6 +41,7 @@ function App() {
           </Route>
         )}
       </Routes>
+
     </Box>
   );
 }

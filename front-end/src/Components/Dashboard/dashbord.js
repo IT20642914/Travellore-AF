@@ -30,10 +30,10 @@ import { useDispatch } from 'react-redux';
 import { setlogout } from '../../Redux/actions/authAction';
 import Home from '../../pages/Home/index';
 import Tourism from '../../pages/Tourism/tourism';
-import Event from '../../pages/Events/Event'
 import LocalB from '../../pages/LocalBussiness/LocalB';
 import Blogs from '../../pages/Blogs/Blogs';
 import Recipes from '../../pages/Recipes/Recipes';
+import  EventAd from '../../pages/admin/Events/EventAd'
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -243,7 +243,7 @@ export default function MiniDrawer() {
       <Box>
                {page === "adminhome" && <Home/>}
                {page === "tuorism" && <Tourism/>}
-               {page === "event" && <Event/>}
+               {page === "event" && <EventAd/>}
                {page === "localb" && <LocalB/>}
                {page === "blogs" && <Blogs/>}
                {page === "recipes" && <Recipes/>}
