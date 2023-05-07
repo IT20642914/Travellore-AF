@@ -8,9 +8,9 @@ import FNHText from "../FNHText/index";
 import { useNavigate } from "react-router-dom";
 
 
+//// yatin oyage valiuew da ganna
 
-
-const FNHSearchPropertyCard = ({
+const FNHRecipoCard = ({
   propertyId,
   eventTopic,
   eventDetails,
@@ -23,7 +23,7 @@ const FNHSearchPropertyCard = ({
   time,
   location,
 
-}: FNHSearchPropertyCardProps) => {
+}: FNHRecipoCardProps) => {
   const [isFilled, setIsFilled] = React.useState(false);
 
   const handleFavoriteClick = (event: any) => {
@@ -190,4 +190,4 @@ const FNHSearchPropertyCard = ({
   );
 };
 
-export default FNHSearchPropertyCard;
+export default FNHRecipoCard;

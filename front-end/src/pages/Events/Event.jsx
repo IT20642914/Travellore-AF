@@ -6,12 +6,16 @@ import styles from "./style.module.scss";
 import FNHText from "../../Components/FNHText/index";
 import { Box } from "@mui/system";
 import {Googlemap} from "../../Components/map/index";
+import LocationIcon from "../../assets/icon/LocationIcon";
+import AllFilltersIcon from "../../assets/icon/AllFilltersIcon";
+import DateIcon from "../../assets/icon/DateIcon";
+
 const Event = () => {
   const [nameFilter, setNameFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
-
-
+  const [locationfilter, setlocationFilter] = useState("");
+  
 
   return (
     <Grid className={styles.SerchlistGrid} >
@@ -26,36 +30,90 @@ const Event = () => {
       />
     </Box>
 
-    <Grid   className={styles.barGird} >
+    <Grid  sx={{ justifyContent:"center",justifyItems:"center",alignItems:"center"}}  className={styles.barGird} >
 
        <Grid   className={styles.inputGrid}>
         {/* <FNHLiconInput /> */}
       </Grid>
-   
+
         <Grid  container className={styles.FilterGrid}>
         <Grid item>
-  <input
+          <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
+
+          <AllFilltersIcon fill="#1460BA" width="25" height="25" />
+     <input
     type="text"
     placeholder="Filter by name"
     value={nameFilter}
     onChange={(e) => setNameFilter(e.target.value)}
+    style={{ 
+      padding: '8px',
+      border: '1px solid #1460BA',
+      borderRadius: '4px',
+      fontSize: '16px',
+      width: '100%',
+      margin: '16px'
+    }}
   />
+          </Box>
+       
 </Grid>
 <Grid item>
+<Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
+  <DateIcon fill="#1460BA" width="25" height="25" />
   <input
     type="text"
     placeholder="Filter by date"
     value={dateFilter}
     onChange={(e) => setDateFilter(e.target.value)}
+    style={{ 
+      padding: '8px',
+      border: '1px solid #1460BA',
+      borderRadius: '4px',
+      fontSize: '16px',
+      width: '100%',
+      margin: '16px'
+    }}
   />
+   </Box>
 </Grid>
 <Grid item>
+<Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
+<AllFilltersIcon fill="#1460BA" width="25" height="25" />
   <input
     type="text"
     placeholder="Filter by category"
     value={categoryFilter}
     onChange={(e) => setCategoryFilter(e.target.value)}
+    style={{ 
+      padding: '8px',
+      border: '1px solid #1460BA',
+      borderRadius: '4px',
+      fontSize: '16px',
+      width: '100%',
+      margin: '16px'
+    }}
   />
+   </Box>
+</Grid>
+<Grid  item>
+<Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
+<LocationIcon fill="#1460BA" width="25" height="25"/>
+  <input
+    type="text"
+    placeholder="Filter by location"
+    value={locationfilter}
+    onChange={(e) => setlocationFilter(e.target.value)}
+    style={{ 
+      padding: '8px',
+      border: '1px solid #1460BA',
+      borderRadius: '4px',
+      fontSize: '16px',
+      width: '100%',
+      margin: '16px'
+    }}
+  />
+   </Box>
 </Grid>
         </Grid>
     
@@ -97,13 +155,12 @@ const Event = () => {
           />
         </Box>
 
-       
-
         <Grid container spacing={7} sx={{ justifyContent: "center" }}>
               {Events.filter((event) => {
   return (
     event.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
     event.date.includes(dateFilter) &&
+    event.location.includes(locationfilter.toLowerCase()) &&
     event.category.toLowerCase().includes(categoryFilter.toLowerCase())
   );
 }).map((event, index) => (
