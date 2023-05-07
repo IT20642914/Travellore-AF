@@ -1,15 +1,20 @@
 import React from 'react'
-import {Form,Button,Container,Row,Col } from 'react-bootstrap';
+import {Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import {basicLoginvalidation} from '../../Schemas/index'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setAuthToken } from '../../Components/authTokens';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import jwt_decode from "jwt-decode";
 import { setlogin } from '../../Redux/actions/authAction';
+import CssBaseline from "@mui/material/CssBaseline";
+import Paper from "@mui/material/Paper";
+import {Typography,Link,Box, Button, Container, Grid } from '@mui/material';
+
+import backgroundImage from '../../assets/images/travelimge.jpg';
 
 const Login = () => {
 
@@ -27,90 +32,91 @@ const Login = () => {
            console.log("Login details",values);
     
     
-           if(values.email=="avishkachanaka@gmail.com"){
-            const accessToken="response.data.accessToken;"
-              const refeshtoken=  "response.data.refreshToken;"
-               const username= "avishka"
-               const roles= "admin"
-               dispatch(setlogin({accessToken,username,roles,refeshtoken}))
-        navigate("/a")
-     }else{
-        navigate("/b")
-        const accessToken=  "response.data.accessToken;"
-        const refeshtoken=  "response.data.refreshToken;"
-         const username= "avishka22"
-         const roles= "user"
-         dispatch(setlogin({accessToken,username,roles,refeshtoken}))
-     }
+    //        if(values.email=="avishkachanaka@gmail.com"){
+    //         const accessToken="response.data.accessToken;"
+    //           const refeshtoken=  "response.data.refreshToken;"
+    //            const username= "avishka"
+    //            const roles= "admin"
+    //            dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+    //     navigate("/a")
+    //  }else{
+    //     navigate("/b")
+    //     const accessToken=  "response.data.accessToken;"
+    //     const refeshtoken=  "response.data.refreshToken;"
+    //      const username= "avishka22"
+    //      const roles= "user"
+    //      dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+    //  }
 
 
 
         
-    //       axios.post("https://dummyjson.com/auth/login",values).then( async (response)=>{
-    //        const status=await response.status
-    //         if( status==200){
-    //           const accessToken= await response.data.accessToken;
-    //           const refeshtoken= await response.data.refreshToken;
-    //           const message= await response.data.message;
-         
-    //           toast.success(message, {
-    //             position: toast.POSITION.TOP_RIGHT
-    //           });
+          axios.post("http://localhost:9090/api/login",values).then( async (response)=>{
+           const status=await response.status
+            if( status===200){
+              const accessToken= await response.data.accessToken;
+               const refeshtoken= await response.data.refreshToken;
+               const message= await response.data.message;
+               const ImgUrl=await response.data.img
+              toast.success(message, {
+                position: toast.POSITION.TOP_RIGHT
+              });
         
-    //           console.log("refeshtoken",refeshtoken);
-    //         const decoded = jwt_decode(accessToken);
-    //         console.log("decode date",decoded.roles);
-    //         const username=decoded.username;
-    //         const roles= decoded.roles
-    //         setAuthToken(accessToken);
-    //         //  localStorage.setItem("accessToken",accessToken)
-    //         //  localStorage.setItem("refreshToken",refeshtoken)
-    //         //  localStorage.setItem('username',username)
-    //         //  localStorage.setItem('role',roles)
+            console.log("accessToken",accessToken);
+            const decoded = jwt_decode(accessToken);
+            console.log("decode IsAdmin",decoded.isAdmin);
+            const username=decoded.username;
+            const IsAdmin= decoded.isAdmin
+        
+            setAuthToken(accessToken);
+             localStorage.setItem("accessToken",accessToken)
+             localStorage.setItem("refreshToken",refeshtoken)
+             localStorage.setItem('username',username)
+             localStorage.setItem('IsAdmin',IsAdmin)
+             localStorage.setItem('ImgUrl',ImgUrl)
              
-    //          dispatch(setlogin({accessToken,username,roles,refeshtoken}))
+             dispatch(setlogin({accessToken,username,IsAdmin,ImgUrl}))
              
-    //          if(roles=='user'){
-    //           console.log("user login");
-    //           navigate('/')
-    //          }
-    //          else if(roles=='admin'){
-    //           console.log("admin login");
-    
-    //           navigate('/adminpanel')
-    //          }
+             if(!IsAdmin){
+              console.log("user login");
+              navigate('/');
+             }
+             else{
+              console.log("admin login");
+              navigate('/adminhome');
+             }
     
             
     
-    //         }
+            }
 
-    //       }).catch((error) => {
-    //         if(error.response.status === 400){
-    //           const massege=error.response.data.error;
-    //           console.log(error.response.data.error);
-    //           toast.error(massege, {
-    //             position: toast.POSITION.TOP_RIGHT  
-    //           });
+          }).catch((error) => {
+            if(error.response.status === 400){
+              const massege=error.response.data.error;
+              console.log(error.response.data.error);
+              toast.error(massege, {
+                position: toast.POSITION.TOP_RIGHT  
+              });
      
-    //         }
-    //         if(error.response.status === 401){
-    //             const massege=error.response.data.error;
-    //           console.log(error.response.data.error);
-    //           toast.error(massege, {
-    //             position: toast.POSITION.TOP_RIGHT
+            }
+            if(error.response.status === 401){
+                const massege=error.response.data.error;
+              console.log(error.response.data.error);
+              toast.error(massege, {
+                position: toast.POSITION.TOP_RIGHT
         
             
-    //           });
-    //        }
-    //        if(error.response.status === 500){
-    //         const massege=error.response.data.error;
-    //         console.log(error.response.data.error);
-    //         toast.error(massege, {
-    //           position: toast.POSITION.TOP_RIGHT
+              });
+           }
+           if(error.response.status === 500){
+            const massege=error.response.data.error;
+            console.log(error.response.data.error);
+            toast.error(massege, {
+              position: toast.POSITION.TOP_RIGHT
           
-    //         });
-    //      }
-    //       });
+            });
+         }
+          });
 
 
         
@@ -120,16 +126,57 @@ const Login = () => {
        });
     
   return (
-    <div>
-    <Container className='py-3'>
-    <Row  className='justify-content-md-center card shadow mb-4' >
-      <Col className="card-header py-3" >
-      <h1 className="m-2 card-title">Login</h1>
-       {/* <FormContainer> */}
+    <Box sx={{background:"white"}}>
+    <Container component="main" maxWidth="lg" >
+    <Box
+        sx={{
+          marginTop: 8,
+        }}
+      >
+   <Grid container>
+   <CssBaseline />
+   <Grid
+            item
+            xs={false}
+            sm={4}
+            md={7}
+            sx={{
+              backgroundImage:  `url(${backgroundImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundColor: (t) =>
+                t.palette.mode === "light"
+                  ? t.palette.grey[50]
+                  : t.palette.grey[900],
+              backgroundSize: "cover",
+              backgroundPosition: "right",
+            }}
+          />
+      <Grid  item
+            xs={12}
+            sm={8}
+            md={5}
+            component={Paper}
+            elevation={6}
+            square>
+
+
+<Box
+              sx={{
+                my: 8,
+                mx: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >        
+     <Typography sx={{fontWeight:"600", fontSize:"2rem",color:"#046380"}}>
+                Sign in
+              </Typography>
+  
       
-    <Form className="card-body" onSubmit={handleSubmit}  >
+    <Form sx={{ mt: 1 }}  onSubmit={handleSubmit}  >
    
-    <Form.Group className="my-3" controlId="email" >
+    <Form.Group  controlId="email" >
       <Form.Label>Email address</Form.Label>
       <Form.Control type="email" placeholder="Enter your email" 
       value={values.email}
@@ -146,18 +193,40 @@ const Login = () => {
       onChange={handleChange}
       onBlur={handleBlur}
       className={errors.password && touched.password  ? "input-error" :""} />
-   {errors.password && touched.password &&<p className='error'>{errors.password}</p> }
+    {errors.password && touched.password &&<p className='error'>{errors.password}</p> }
     </Form.Group>
     
-    <Button variant="dark" type="submit" >
-      Submit
-    </Button>
+    <Button 
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ background:"linear-gradient(to bottom, #046380 0%, #012935 100%)",mt: 3, mb: 2, '&:hover': {
+                    backgroundColor: '"linear-gradient(to bottom, #012935 45%, #046380 100%)"',
+                  },}}
+                >
+                  Sign In
+ </Button>
+ <Grid container>
+    <Grid sx={{margin:"1rem"}} item >
+                    <Link href="#" variant="body2">
+                      Forgot password?
+                    </Link>
+   </Grid>
+   <Grid sx={{margin:"1rem"}} item>
+                    <Link href="#" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
+                </Grid>
   </Form>
   {/* </FormContainer> */}
-  </Col>
-  </Row>
+  </Box>
+  </Grid>
+
+  </Grid>
+  </Box>
   </Container>
-  </div>
+  </Box>
   )
 }
 

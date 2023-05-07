@@ -18,22 +18,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import "./index.css";
-import Travellore from "../../assets/images/Travel Logo1.png"
-import Home from "../../pages/Home/index";
-import { Route, Routes, useNavigate } from 'react-router-dom';
-
+import Travellore from "../../assets/images/traveloradmin.png"
+import {  useNavigate } from 'react-router-dom';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import Tourism from '../../pages/Tourism/tourism';
-import Event from '../../pages/Events/Event'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LocalB from '../../pages/LocalBussiness/LocalB';
 import FeedIcon from '@mui/icons-material/Feed';
-import Blogs from '../../pages/Blogs/Blogs';
-import Recipes from '../../pages/Recipes/Recipes';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import { useDispatch } from 'react-redux';
+import { setlogout } from '../../Redux/actions/authAction';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -115,12 +109,19 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const dispatch =useDispatch();
 
+  const handlelogout=(name)=>{
+    console.log(name)
+    dispatch(setlogout())
+    navigate("/")
+  
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" sx={{background:"#046380"}}  open={open}>
         <Toolbar>
           
           <IconButton
@@ -156,54 +157,54 @@ export default function MiniDrawer() {
             </Box>
         <Divider />
         <List>
-            <ListItem   disablePadding  onClick={()=>{ navigate("/home")}}> 
+            <ListItem   disablePadding  onClick={()=>{ navigate("/adminhome")}}> 
                 <ListItemButton>
                     <ListItemIcon>
-                        <HomeIcon/>
+                        <HomeIcon sx={{ color:"#046380 "}}/>
                     </ListItemIcon>
-                    <ListItemText>Home</ListItemText>
+                    <ListItemText sx={{ color:"#046380 "}}>Home</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem  spacing={3} disablePadding  onClick={()=>{ navigate("/tuorism")}}>
+            <ListItem  spacing={3} disablePadding  onClick={()=>{ navigate("/adminhome/tuorism")}}>
                 <ListItemButton>
                     <ListItemIcon>
-                        <EmojiTransportationIcon/>
+                        <EmojiTransportationIcon sx={{ color:"#046380 "}}/>
                      
                     </ListItemIcon>
-                    <ListItemText>Tourism Places</ListItemText>
+                    <ListItemText sx={{ color:"#046380 "}}>Tourism Places</ListItemText>
                 </ListItemButton>
             </ListItem>
          
-            <ListItem disablePadding  onClick={()=>{ navigate("/event")}}>
+            <ListItem disablePadding  onClick={()=>{ navigate("/adminhome/event")}}>
                 <ListItemButton>
                     <ListItemIcon >
-                    <EventAvailableIcon/>
+                    <EventAvailableIcon sx={{ color:"#046380 "}}/>
                     </ListItemIcon>
-                    <ListItemText>Events</ListItemText>
+                    <ListItemText sx={{ color:"#046380 "}}>Events</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ navigate("/localb")}} >
+            <ListItem disablePadding onClick={()=>{ navigate("/adminhome/localb")}} >
                 <ListItemButton>
                     <ListItemIcon >
-                    <AttachMoneyIcon/>
+                    <AttachMoneyIcon sx={{ color:"#046380 "}}/>
                     </ListItemIcon>
-                    <ListItemText>Local Businesses</ListItemText>
+                    <ListItemText sx={{ color:"#046380 "}}>Local Businesses</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ navigate("/recipes")}} >
+            <ListItem disablePadding onClick={()=>{ navigate("/adminhome/recipes")}} >
                 <ListItemButton>
                     <ListItemIcon >
-                    <MenuBookIcon/>
+                    <MenuBookIcon sx={{ color:"#046380 "}}/>
                     </ListItemIcon>
-                    <ListItemText>Recipes</ListItemText>
+                    <ListItemText sx={{ color:"#046380 "}}>Recipes</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ navigate("/blogs")}}  >
+            <ListItem disablePadding onClick={()=>{ navigate("/adminhome/blogs")}}  >
                 <ListItemButton>
                     <ListItemIcon >
-                    <FeedIcon/>
+                    <FeedIcon sx={{ color:"#046380 "}}/>
                     </ListItemIcon>
-                    <ListItemText>Blogs</ListItemText>
+                    <ListItemText sx={{ color:"#046380 "}}>Blogs</ListItemText>
                 </ListItemButton>
             </ListItem>
            
@@ -214,11 +215,11 @@ export default function MiniDrawer() {
         <List>
        {/* //list */}
        <ListItem disablePadding   >
-                <ListItemButton>
+                <ListItemButton onClick={handlelogout}>
                     <ListItemIcon >
-                    <LogoutIcon/>
-                    </ListItemIcon>
-                    <ListItemText>Logout</ListItemText>
+                    <LogoutIcon sx={{ color:"#046380 "}}/>
+                    </ListItemIcon >
+                    <ListItemText   sx={{ color:"#046380 "}}>Logout</ListItemText>
                 </ListItemButton>
             </ListItem>
 
@@ -229,18 +230,7 @@ export default function MiniDrawer() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
 
-     
-     
-      {/* //seting up all the components */}
-        <Routes>
-          
-            <Route exact path='/home' element={<Home/>}></Route>
-            <Route exact path='/tuorism' element={<Tourism/>}></Route>
-            <Route exact path='/event' element={<Event/>}></Route>
-            <Route exact path='/localB' element={<LocalB/>}></Route>
-            <Route exact path='/recipes' element={<Recipes/>}></Route>
-            <Route exact path='/blogs' element={<Blogs/>}></Route>
-        </Routes>
+    
       </Box>
     </Box>
   );

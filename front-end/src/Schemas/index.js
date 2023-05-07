@@ -1,4 +1,4 @@
-import React from 'react'
+
 import * as yup from 'yup';
 import YupPassword from 'yup-password'
 YupPassword(yup) 
@@ -9,10 +9,8 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 
 export const basicValidation= yup.object().shape({
 username:yup.string().required("Required"),
-firstname:yup.string().required("Required"),
-lastname:yup.string().required("Required"),
 email:yup.string().email('please Enter valid email').required("Required"),
-phoneNumber:yup .string().required('please Enter mobile Number') 
+phoneNumber:yup.string().required('please Enter mobile Number') 
 .matches(phoneRegExp,'please enter valide phone number')
 .min(10, "too short")
 .max(10, "too long"),

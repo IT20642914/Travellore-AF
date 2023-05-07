@@ -1,22 +1,5 @@
 import { authActionTypes } from "../actionTypes/authActionTypes";
 
-const initialState = {
-    accessKey: null,
-    isLoggedIn: false ,
-  };
-  
-  // export const accessKey = (state = initialState, {type,payload}) => {
-  //   switch (type) {
-  //     case authActionTypes.SET_ACCESS_KEY:
-  //       return {
-  //         ...state,
-  //         accessKey: payload,
-  //       };
-  //     default:
-  //       return state;
-  //   }
-  // };
-
   export const loginReducer = (state = { isLoggedIn: false }, {type,payload}) => {
     switch (type) {
       case authActionTypes.LOG_IN:
@@ -24,18 +7,18 @@ const initialState = {
           ...state,
           isLoggedIn: true,
           accessKey: payload.accessToken,
-          roles:payload.roles,
+          IsAdmin:payload.IsAdmin,
           username:payload.username,
-          refeshtoken:payload.refeshtoken,
+          ImgUrl:payload.ImgUrl,
         };
         case authActionTypes.LOG_OUT:
           return {
             ...state,
             isLoggedIn:false,
             accessKey: null,
-            roles:null,
+            IsAdmin:null,
             username:null,
-            refeshtoken:null,
+            ImgUrl:null,
           };
           case authActionTypes.CHECK_AUTH:
             return {
