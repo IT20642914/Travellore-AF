@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import { styled, useTheme ,} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -28,6 +28,12 @@ import FeedIcon from '@mui/icons-material/Feed';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { setlogout } from '../../Redux/actions/authAction';
+import Home from '../../pages/Home/index';
+import Tourism from '../../pages/Tourism/tourism';
+import Event from '../../pages/Events/Event'
+import LocalB from '../../pages/LocalBussiness/LocalB';
+import Blogs from '../../pages/Blogs/Blogs';
+import Recipes from '../../pages/Recipes/Recipes';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -50,7 +56,6 @@ const closedMixin = (theme) => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -98,6 +103,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 export default function MiniDrawer() {
+  const [page, setPage] = useState("home");
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate =useNavigate();
@@ -112,11 +118,14 @@ export default function MiniDrawer() {
   const dispatch =useDispatch();
 
   const handlelogout=(name)=>{
-    console.log(name)
+ 
     dispatch(setlogout())
     navigate("/")
   
   }
+  const handleClick = (pageName) => {
+    setPage(pageName);
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -157,7 +166,7 @@ export default function MiniDrawer() {
             </Box>
         <Divider />
         <List>
-            <ListItem   disablePadding  onClick={()=>{ navigate("/adminhome")}}> 
+            <ListItem   disablePadding  onClick={()=>{ handleClick("adminhome")}}> 
                 <ListItemButton>
                     <ListItemIcon>
                         <HomeIcon sx={{ color:"#046380 "}}/>
@@ -165,7 +174,7 @@ export default function MiniDrawer() {
                     <ListItemText sx={{ color:"#046380 "}}>Home</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem  spacing={3} disablePadding  onClick={()=>{ navigate("/adminhome/tuorism")}}>
+            <ListItem  spacing={3} disablePadding  onClick={()=>{ handleClick("tuorism")}}>
                 <ListItemButton>
                     <ListItemIcon>
                         <EmojiTransportationIcon sx={{ color:"#046380 "}}/>
@@ -175,7 +184,7 @@ export default function MiniDrawer() {
                 </ListItemButton>
             </ListItem>
          
-            <ListItem disablePadding  onClick={()=>{ navigate("/adminhome/event")}}>
+            <ListItem disablePadding  onClick={()=>{ handleClick("event")}}>
                 <ListItemButton>
                     <ListItemIcon >
                     <EventAvailableIcon sx={{ color:"#046380 "}}/>
@@ -183,7 +192,7 @@ export default function MiniDrawer() {
                     <ListItemText sx={{ color:"#046380 "}}>Events</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ navigate("/adminhome/localb")}} >
+            <ListItem disablePadding onClick={()=>{ handleClick("localb")}} >
                 <ListItemButton>
                     <ListItemIcon >
                     <AttachMoneyIcon sx={{ color:"#046380 "}}/>
@@ -191,7 +200,7 @@ export default function MiniDrawer() {
                     <ListItemText sx={{ color:"#046380 "}}>Local Businesses</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ navigate("/adminhome/recipes")}} >
+            <ListItem disablePadding onClick={()=>{ handleClick("recipes")}} >
                 <ListItemButton>
                     <ListItemIcon >
                     <MenuBookIcon sx={{ color:"#046380 "}}/>
@@ -199,7 +208,7 @@ export default function MiniDrawer() {
                     <ListItemText sx={{ color:"#046380 "}}>Recipes</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ navigate("/adminhome/blogs")}}  >
+            <ListItem disablePadding onClick={()=>{ handleClick("blogs")}}  >
                 <ListItemButton>
                     <ListItemIcon >
                     <FeedIcon sx={{ color:"#046380 "}}/>
@@ -229,6 +238,16 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+
+  
+      <Box>
+               {page === "adminhome" && <Home/>}
+               {page === "tuorism" && <Tourism/>}
+               {page === "event" && <Event/>}
+               {page === "localb" && <LocalB/>}
+               {page === "blogs" && <Blogs/>}
+               {page === "recipes" && <Recipes/>}
+      </Box>
 
     
       </Box>
