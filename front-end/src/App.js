@@ -25,7 +25,7 @@ function App() {
       <Route path="/" element={<PublicRoutes/>} > 
       <Route path="/" element={<Home/>} /> 
       <Route path="/event" element={<Event/>} /> 
-      <Route path="/event/:id" element={<EventDetails/>} /> 
+      <Route path="/event/:propertyId" element={<EventDetails/>} /> 
       </Route>
   
 {IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 
