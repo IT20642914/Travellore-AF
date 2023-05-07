@@ -59,7 +59,7 @@ const Event = () => {
           </Box>
        
 </Grid>
-<Grid item>
+<Grid  item>
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
   <DateIcon fill="#046380" width="25" height="25" />
   <input
@@ -126,11 +126,11 @@ const Event = () => {
       <Grid
         sx={{
       
-          minHeight: "20rem",
+          minHeight: "80rem",
           minWidth: "65%",
           display: "flex",
           flexDirection: "column",
-           backgroundColor: "#EDF2F3",
+           background: "linear-gradient(to bottom, #046380 0%, #012935 100%)",
           borderRadius: "1rem",
           margin: "1rem 0",
         }}
@@ -172,7 +172,7 @@ const Event = () => {
                     propertyId={event.id}
                     name={event.name}
                     date={event.date}
-                    eventTopic={event.category}
+                    eventcategory={event.category}
                     eventType={event.eventType}
                     price={event.price}
                     time={event.time}

@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const FNHSearchPropertyCard = ({
   propertyId,
-  eventTopic,
+  name,
+  eventcategory,
   eventDetails,
   communityBy,
   eventType,
@@ -108,7 +109,7 @@ const FNHSearchPropertyCard = ({
         >
           <Box>
             <FNHText
-              text={eventTopic}
+              text={eventcategory}
               color="black"
               fontWeight="700"
               fontSize="1.5rem"
@@ -121,6 +122,12 @@ const FNHSearchPropertyCard = ({
               textAlign: "start",
             }}
           > 
+          <FNHText
+            color="#046380"
+              text={name}
+              fontWeight="700"
+              fontSize="0.875rem"
+            />
             <FNHText
             color="#046380"
               text={location}

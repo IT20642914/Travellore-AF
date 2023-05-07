@@ -46,7 +46,7 @@ export const Events = [
     name: "Coachella Music Festival",
     date: "2012/11/11",
     time: "All day",
-    location: "Indio, California",
+    location: "Srilanka",
     description: "A world-famous music festival featuring top artists and performers.",
     registrationLink: "https://www.coachella.com/",
     price: 429.00,
