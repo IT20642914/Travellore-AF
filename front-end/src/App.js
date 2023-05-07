@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import PublicRoutes from "./routes/PublicRoutes"
 import Event from "./pages/Events/Event"
 import { Box } from "@mui/material";
-
+import EventDetails from "./pages/Events/EventDetails/EventDetails"
 function App() {
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
   const  isAdmin =useSelector((state)=> state.login.IsAdmin)
@@ -25,6 +25,7 @@ function App() {
       <Route path="/" element={<PublicRoutes/>} > 
       <Route path="/" element={<Home/>} /> 
       <Route path="/event" element={<Event/>} /> 
+      <Route path="/event/:id" element={<EventDetails/>} /> 
       </Route>
   
 {IsLogin&& isAdmin && <Route path="/adminhome" element={<Dashbord/>} > 

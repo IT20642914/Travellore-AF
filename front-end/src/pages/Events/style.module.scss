@@ -1,0 +1,122 @@
+$colour: rgb(156, 30, 30);
+
+.SerchlistGrid {
+  background: #FFFFFF;
+  padding: 0 8rem;
+
+}
+
+.HeaderText {
+ padding: 1rem;
+}
+
+.barGird {
+  margin-top: 1rem;
+  display: inline-flex;
+  width: 100%;
+}
+
+.inputGrid {
+  margin: 1rem !important;
+  width: 30%;
+}
+
+.FilterGrid {
+
+  margin: 1rem;
+  display: flex;
+  width: 100%;
+
+}
+
+.BarBOx {
+  display: flex;
+}
+
+.DataGrid {
+  display: flex;
+}
+
+.mapGrid {
+  // background: rgb(0, 172, 29);
+  width: 70rem;
+  height: "100%";
+  padding: 1rem;
+
+}
+
+
+
+
+@media (max-width: 1600px) {
+  .SerchlistGrid {
+    padding: 0rem;
+
+  }
+
+  .inputGrid {
+    margin: 1rem !important;
+    width: 96%;
+  }
+
+  .barGird {
+    margin-top: 1rem;
+    // background: palegreen;
+    display: inline-block;
+    width: 98%;
+  }
+
+  .FilterGrid {
+
+    //  margin: 1rem;
+    display: flex;
+    width: 93%;
+  }
+
+}
+@media (max-width: 950px){
+  .DataGrid {
+    display: flex;
+    flex-direction: column-reverse !important;
+    
+  }
+  .mapGrid {
+    // background: rgb(0, 172, 29);
+    height: 20rem;
+  
+     width: 100%;
+   
+   
+   }
+
+}
+@media (max-width: 750px) {
+  .SerchlistGrid {
+    padding: 1rem;
+  }
+
+  .inputGrid {
+    margin: 1rem !important;
+    width: 93%;
+  }
+
+  .FilterGrid {
+    padding-left: 0rem;
+    margin: 1rem;
+    width: 93%;
+  }
+
+  .DataGrid {
+    display: flex;
+    flex-direction: column-reverse !important;
+    
+  }
+  .mapGrid {
+   // background: rgb(0, 172, 29);
+    min-height: 20rem;
+    min-width: 100%;
+  
+  
+  }
+
+}
