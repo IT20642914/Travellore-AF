@@ -113,7 +113,7 @@ export const Events = [
   {
     id: 5,
     name: "Carnaval de Rio",
-    date: "2012/11/11",
+    date: "2012/11/13",
     time: "All day",
     location: "Rio de Janeiro, Brazil",
     description: "A massive street party featuring samba dancing, music, and costumes.",

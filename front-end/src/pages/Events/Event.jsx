@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import FNHSearchPropertyCard from "../../Components/FNHSearchPropertyCard/index"
 import {  Grid } from "@mui/material";
 import {Events}  from "../../constants/index";
@@ -7,6 +7,12 @@ import FNHText from "../../Components/FNHText/index";
 import { Box } from "@mui/system";
 import {Googlemap} from "../../Components/map/index";
 const Event = () => {
+  const [nameFilter, setNameFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
+
+
+
   return (
     <Grid className={styles.SerchlistGrid} >
     {/* SearchBar and Filter Grid Start*/}
@@ -27,11 +33,30 @@ const Event = () => {
       </Grid>
    
         <Grid  container className={styles.FilterGrid}>
-          {/* <FNHIconDropDown placeholder="Property Type" startIcon="property" />
-          <FNHIconDropDown placeholder="Price Range" startIcon="price" />
-          <FNHIconDropDown placeholder="Rooms" startIcon="rooms" />
-          <FNHIconDropDown placeholder="Baths" startIcon="bath" />
-          <FNHIconDropDown placeholder="All Filters " startIcon="filter" /> */}
+        <Grid item>
+  <input
+    type="text"
+    placeholder="Filter by name"
+    value={nameFilter}
+    onChange={(e) => setNameFilter(e.target.value)}
+  />
+</Grid>
+<Grid item>
+  <input
+    type="text"
+    placeholder="Filter by date"
+    value={dateFilter}
+    onChange={(e) => setDateFilter(e.target.value)}
+  />
+</Grid>
+<Grid item>
+  <input
+    type="text"
+    placeholder="Filter by category"
+    value={categoryFilter}
+    onChange={(e) => setCategoryFilter(e.target.value)}
+  />
+</Grid>
         </Grid>
     
 
@@ -75,7 +100,13 @@ const Event = () => {
        
 
         <Grid container spacing={7} sx={{ justifyContent: "center" }}>
-              {Events.map((event, index) => (
+              {Events.filter((event) => {
+  return (
+    event.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
+    event.date.includes(dateFilter) &&
+    event.category.toLowerCase().includes(categoryFilter.toLowerCase())
+  );
+}).map((event, index) => (
                
                 <Grid item  key={index}>
                 
