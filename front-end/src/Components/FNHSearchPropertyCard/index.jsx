@@ -45,7 +45,7 @@ const FNHSearchPropertyCard = ({
       onClick={handleCardClick}
       sx={{
         width: "20rem",
-        height: "30rem",
+        height: "32rem",
         borderRadius: "1rem",
         padding: "0.5rem",
       }}
@@ -122,14 +122,14 @@ const FNHSearchPropertyCard = ({
             }}
           > 
             <FNHText
-            //color="#1460BA"
+            color="#046380"
               text={location}
               fontWeight="700"
               fontSize="0.875rem"
             />
                <Box sx={{marginTop:"1rem",display:"flex"}}>
              <FNHText
-            //  color="#1460BA"
+              color="#046380"
               text={eventDetails}
               fontWeight="700"
               fontSize="0.875rem"
@@ -140,14 +140,14 @@ const FNHSearchPropertyCard = ({
     <Box sx={{marginTop:"1rem",display:"flex"}}>
 
     <FNHText
-              color="#1460BA"
+              color="#046380"
               text= {date}
               fontWeight="700"
               fontSize="0.875rem"
             />
              <Box sx={{marginLeft:"1rem", display:"flex"}}>
              <FNHText
-              color="#1460BA"
+              color="#046380"
               text= {time}
               fontWeight="700"
               fontSize="0.875rem"
@@ -180,7 +180,7 @@ const FNHSearchPropertyCard = ({
             <FNHText
               fontSize="1rem"
               text={price}
-              color="#1460BA"
+              color="#046380"
               fontWeight="700"
             />
           </Box>
