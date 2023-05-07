@@ -6,7 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import FNHText from "../../Components/FNHText/index";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
 
 
@@ -28,7 +28,7 @@ const FNHCard = ({
     }
   };
 
-  const navigate: any = useNavigate();
+  // const navigate: any = useNavigate();
 
   const handleCardClick = () => {
     // navigate("/property");
