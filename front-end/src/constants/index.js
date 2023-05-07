@@ -31,7 +31,6 @@ export const headerNavigations = [
     path: "/tourism",
     Selected: false,
   },
-  
 ];
 
 export const settings = [

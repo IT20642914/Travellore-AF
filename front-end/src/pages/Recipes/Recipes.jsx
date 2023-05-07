@@ -5,6 +5,8 @@ import { Recipe } from "../../constants/index";
 import styles from "./style.module.scss";
 import FNHText from "../../Components/FNHText/index";
 import { Box } from "@mui/system";
+import AllFilltersIcon from "../../assets/icon/AllFilltersIcon";
+import DateIcon from "../../assets/icon/DateIcon";
 const Recipes = () => {
   const [nameFilter, setNameFilter] = useState("");
   const [ingredientsFilter, setingredientsFilter] = useState("");
@@ -23,33 +25,94 @@ const Recipes = () => {
         />
       </Box>
 
-      <Grid className={styles.barGird}>
+      <Grid
+        sx={{
+          justifyContent: "center",
+          justifyItems: "center",
+          alignItems: "center",
+        }}
+        className={styles.barGird}
+      >
         <Grid className={styles.inputGrid}>{/* <FNHLiconInput /> */}</Grid>
 
         <Grid container className={styles.FilterGrid}>
           <Grid item>
-            <input
-              type="text"
-              placeholder="Filter by name"
-              value={nameFilter}
-              onChange={(e) => setNameFilter(e.target.value)}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <AllFilltersIcon fill="#1460BA" width="25" height="25" />
+              <input
+                type="text"
+                placeholder="Filter by name"
+                value={nameFilter}
+                onChange={(e) => setNameFilter(e.target.value)}
+                style={{
+                  padding: "8px",
+                  border: "1px solid #1460BA",
+                  borderRadius: "4px",
+                  fontSize: "16px",
+                  width: "100%",
+                  margin: "16px",
+                }}
+              />
+            </Box>
           </Grid>
           <Grid item>
-            <input
-              type="text"
-              placeholder="Filter by ingredients"
-              value={ingredientsFilter}
-              onChange={(e) => setingredientsFilter(e.target.value)}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <DateIcon fill="#1460BA" width="25" height="25" />
+              <input
+                type="text"
+                placeholder="Filter by ingredients"
+                value={ingredientsFilter}
+                onChange={(e) => setingredientsFilter(e.target.value)}
+                style={{
+                  padding: "8px",
+                  border: "1px solid #1460BA",
+                  borderRadius: "4px",
+                  fontSize: "16px",
+                  width: "100%",
+                  margin: "16px",
+                }}
+              />
+            </Box>
           </Grid>
           <Grid item>
-            <input
-              type="text"
-              placeholder="Filter by category"
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-            />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+              }}
+            >
+              <AllFilltersIcon fill="#1460BA" width="25" height="25" />
+              <input
+                type="text"
+                placeholder="Filter by category"
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+                style={{
+                  padding: "8px",
+                  border: "1px solid #1460BA",
+                  borderRadius: "4px",
+                  fontSize: "16px",
+                  width: "100%",
+                  margin: "16px",
+                }}
+              />
+            </Box>
           </Grid>
         </Grid>
       </Grid>
