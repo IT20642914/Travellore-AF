@@ -3,27 +3,22 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import FNHText from "../FNHText/index";
+
+import FNHText from "../../Components/FNHText/index";
 
 import { useNavigate } from "react-router-dom";
+import styles from "./style.module.scss";
 
 
-
-
-const FNHSearchPropertyCard = ({
-  propertyId,
-  eventTopic,
-  eventDetails,
-  communityBy,
-  eventType,
-  backgroundImage,
+const FNHCard = ({
+  category,
+  name,
   price,
-  address,
-  date,
-  time,
+  houseType,
+  backgroundImage,
   location,
-
-}: FNHSearchPropertyCardProps) => {
+  eventDetails,
+}: FNHCardProps) => {
   const [isFilled, setIsFilled] = React.useState(false);
 
   const handleFavoriteClick = (event: any) => {
@@ -36,26 +31,21 @@ const FNHSearchPropertyCard = ({
   const navigate: any = useNavigate();
 
   const handleCardClick = () => {
-    console.log("key",propertyId)
-
-    navigate(`/event/${propertyId}`);
+    // navigate("/property");
   };
   return (
-    <Card
+    <Card className={styles.Card}
       onClick={handleCardClick}
-      sx={{
-        width: "20rem",
-        height: "32rem",
-        borderRadius: "1rem",
-        padding: "0.5rem",
-      }}
-    >
+      sx={{minWidth:"15rem"}}
+  
+      >
+      
       <Box
         sx={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "15rem",
+          height: "20rem",
           backgroundPosition: "center center",
           position: "relative",
           borderRadius: "1rem",
@@ -91,13 +81,19 @@ const FNHSearchPropertyCard = ({
             </Box>
           </Box>
         </CardContent>
+
+        <Box
+          sx={{
+            position: "absolute",
+            color: "primary",
+            margin: "13.75rem 0 0 0.75rem ",
+          }}
+        >
+         
+        </Box>
       </Box>
 
-      <Box
-        sx={{
-          padding: "0 0.5rem 0.5rem 0",
-        }}
-      >
+      <Box>
         <Box
           sx={{
             display: "flex",
@@ -106,88 +102,70 @@ const FNHSearchPropertyCard = ({
             marginTop: "1rem",
           }}
         >
+          <Box
+            sx={{
+              display: "flex",
+              minWidth: "20%",
+              textAlign: "start",
+              height: "4rem",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+        
+          </Box>
           <Box>
             <FNHText
-              text={eventTopic}
-              color="black"
+              text={category}
+              color="#046380"
               fontWeight="700"
-              fontSize="1.5rem"
+              fontSize="1rem"
             />
           </Box>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex" }}>
           <Box
             sx={{
-              textAlign: "start",
-            }}
-          > 
-            <FNHText
-            color="#046380"
-              text={location}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
-               <Box sx={{marginTop:"1rem",display:"flex"}}>
-             <FNHText
-              color="#046380"
-              text={eventDetails}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
-            </Box>
-            </Box>
-          
-    <Box sx={{marginTop:"1rem",display:"flex"}}>
-
-    <FNHText
-              color="#046380"
-              text= {date}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
-             <Box sx={{marginLeft:"1rem", display:"flex"}}>
-             <FNHText
-              color="#046380"
-              text= {time}
-              fontWeight="700"
-              fontSize="0.875rem"
-            />
-            </Box>
-    </Box>
-    
-          <Box
-            sx={{
-              textAlign: "start",
-              marginBottom: "0.5rem",
-            }}
-          >
-            <FNHText text={address} fontWeight="400" fontSize="0.75rem" />
-          </Box>
-          <Box
-            sx={{
+              display:"flex",
               minWidth: "50%",
               textAlign: "start",
-              margin: "0 0 2rem 0",
-              display:"flex"
+              padding: "0 0 0 1rem",
             }}
           >
-            <FNHText
-              fontSize="1rem"
-              text="Rs  "
-              color="black"
+              <FNHText
+              variant="h6"
+              text="Rs."
+              color="#046380"
               fontWeight="700"
             />
             <FNHText
-              fontSize="1rem"
+              variant="h6"
               text={price}
               color="#046380"
               fontWeight="700"
             />
           </Box>
+          <Box
+            sx={{
+              textAlign: "start",
+            }}
+          >
+           
+          </Box>
+          
+        </Box>
+        <Box sx={{
+              display:"flex",
+              minWidth: "50%",
+              textAlign: "start",
+              padding: "0 0 0 1rem",
+            }}>
+        <FNHText  color="#046380 " text={eventDetails} fontWeight="700" fontSize="0.875rem" />
+  
         </Box>
       </Box>
     </Card>
   );
 };
 
-export default FNHSearchPropertyCard;
+export default FNHCard;

@@ -1,8 +1,10 @@
 import React from 'react'
-
+import FNHSlider from "../../Components/FNHSlider/index"
 const index = () => {
   return (
-    <div>home</div>
+    <div>
+      <FNHSlider/>
+    </div>
   )
 }
 
