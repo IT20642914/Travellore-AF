@@ -13,7 +13,7 @@ const generateTokens = async (user) => {
 			payload,
 			process.env.JWT_TOKEN_PRIVATE_KEY,
 			{ expiresIn: "30d" }
-		);
+		); 
 
 		const userToken = await UserToken.findOne({ username: user.username });
 		if (userToken) {
@@ -26,9 +26,9 @@ else{
 	await new UserToken({ userId: user._id, token: refreshToken }).save();
 		return Promise.resolve({ accessToken, refreshToken });
 	}
-	} catch (err) {
-		return Promise.reject(err);
-	}
+	} catch (err) { 
+		return Promise.reject(err); 
+	} 
 };
-
-export default generateTokens;
+ 
+export default generateTokens; 
