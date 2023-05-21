@@ -34,6 +34,7 @@ import LocalB from '../../pages/LocalBussiness/LocalB';
 import Blogs from '../../pages/Blogs/Blogs';
 import Recipes from '../../pages/Recipes/Recipes';
 import  EventAd from '../../pages/admin/Events/EventAd'
+import DashboardHome from "../../pages/admin/dashboard-item/builder-pages/DashboardHome"
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -103,7 +104,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 export default function MiniDrawer() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("adminhome");
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate =useNavigate();
@@ -241,7 +242,10 @@ export default function MiniDrawer() {
 
   
       <Box>
+            <DashboardHome/>
+           
                {page === "adminhome" && <Home/>}
+            
                {page === "tuorism" && <Tourism/>}
                {page === "event" && <EventAd/>}
                {page === "localb" && <LocalB/>}

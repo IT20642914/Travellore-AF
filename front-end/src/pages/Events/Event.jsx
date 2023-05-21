@@ -130,7 +130,7 @@ const Event = () => {
           minWidth: "65%",
           display: "flex",
           flexDirection: "column",
-           background: "linear-gradient(to bottom, #046380 0%, #012935 100%)",
+           background:   "linear-gradient(323.85deg, #012935.14%, #046380 99.41%, #012935 99.41%)",
           borderRadius: "1rem",
           margin: "1rem 0",
         }}

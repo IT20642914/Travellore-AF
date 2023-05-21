@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 const AddEevent = () => {
   return (
-    <Box sx={{ height:"50rem" ,background:"linear-gradient(to bottom, #046380 0%, #012935 100%)", borderRadius:"4rem", margin:"2rem"}}>
+    <Box sx={{ height:"50rem" ,background:  "linear-gradient(323.85deg, #012935.14%, #046380 99.41%, #012935 99.41%)", borderRadius:"4rem", margin:"2rem"}}>
        <Box className="RecipesPage flex">
 
 
