@@ -8,7 +8,7 @@ import AddLocationIcon from '@mui/icons-material/AddLocation';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import ViewCompactIcon from '@mui/icons-material/ViewCompact';
 const EventAd = () => {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("AllEvents");
 
   const handleClick = (pageName) => {
     setPage(pageName);
