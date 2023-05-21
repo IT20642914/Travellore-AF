@@ -100,7 +100,7 @@ console.log("IMAG",ImgUrl);
   }, [currentPath]);
 
   return (
-    <AppBar position="static" sx={{background:"linear-gradient(to bottom, #046380 0%, #012935 100%)"}}>
+    <AppBar position="static" sx={{background:   "linear-gradient(323.85deg, #012935.14%, #046380 99.41%, #012935 99.41%)",}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
 

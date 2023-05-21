@@ -1,8 +1,7 @@
 import React from 'react';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
-import imge from "../../../../assets/images/BuilderDashbordIMG.png"
-import { Houses } from '../../../../constants/constants';
+
 const columns: GridColDef[] = [
   { field: 'address', headerName: 'Address', width: 200,  renderCell: (params) => <img src={params.value} alt="Address" style={{ width: '5rem', height: '5rem' }} /> },
   { field: 'firstName', headerName: 'First name', width: 130 },

@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box'
-import FNHText from '../../../../components/atoms/FNHText';
+import FNHText from '../../../../components/FNHText';
 import MyListingTable from '../Table/MyListingTable';
 interface TabPanelProps {
   children?: React.ReactNode;

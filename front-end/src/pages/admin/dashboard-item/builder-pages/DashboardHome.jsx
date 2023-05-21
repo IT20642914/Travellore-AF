@@ -8,21 +8,26 @@ import {
 } from "@mui/material";
 import React from "react";
 import BuilderDashbordIMG from "../../../../assets/images/BuilderDashbordIMG.png";
-import FNHText from "../../../../components/atoms/FNHText";
-import FNHBCard from "../../../../components/organisms/Builder/FNHBCard/FNHBCard";
+import FNHBCard from "../../../../Components/FNHBCard/FNHBCard";
 import LeadsIcon from "../../../../assets/images/LeadsIcon.png";
 import ViewsIcon from "../../../../assets/images/ViewsIcon.png";
 import ImpretionIcon from "../../../../assets/images/impreicon.png";
+import FNHText from "../../../../Components/FNHText";
+import { useDispatch, useSelector } from 'react-redux';
 const DashboardHome = () => {
-  const userName = "John Doe";
+  const isAdmin=useSelector((state)=> state.login)
+const userName =useSelector((state)=> state.login.username)
+
+  console.log("IMAG",isAdmin);
+
   return (
-    <Box sx={{ width: "100%", margin: "1rem" }}>
+    <Box sx={{ marginLeft:"5rem" ,marginBottom:"2rem"}}>
       <Box sx={{ width: "100%", display: {md:"inline",lg:"flex"} }}>
         <Box sx={{margin:{xs:"1rem",lg:"0"}}}>
         <Grid
           sx={{
             background:"red",
-            width: { xs: "30rem", md: "40rem",lg:"36rem"  },
+            width: { xs: "30rem", md: "40rem",lg:"40rem",xl:"60rem"  },
             height: "12rem",
             borderRadius: "1rem",
            
@@ -32,7 +37,7 @@ const DashboardHome = () => {
             sx={{
               display: "flex",
               background:
-                "linear-gradient(323.85deg, #99C5F9 43.14%, #1460BA 99.41%, #1460BA 99.41%)",
+                "linear-gradient(323.85deg, #012935.14%, #046380 99.41%, #012935 99.41%)",
               height: "12rem",
               borderRadius: "1rem",
               position: "relative", // Add relative positioning
