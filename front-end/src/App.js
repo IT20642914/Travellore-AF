@@ -12,6 +12,8 @@ import { Box } from "@mui/material";
 import EventDetails from "./pages/Events/EventDetails/EventDetails"
 import Recipes from "./pages/Recipes/Recipes";
 import AddRecipes from "./pages/Recipes/adminRecipes/AddRecipes";
+import Business from "./pages/LocalBusinesses/Business";
+import LocalBusinessesDetails from "./pages/LocalBusinesses/LocalBusinessesDetails/LocalBusinessesDetails";
 
 function App() {
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
@@ -19,7 +21,7 @@ function App() {
   console.log("Admi",isAdmin)
   console.log("IsLogin",IsLogin)
 
-//sachin modya
+
   return (
     <Box>
     
@@ -33,6 +35,9 @@ function App() {
           {/* <Route path="/recipe/:propertyId" element={<RecipeDetails />} /> */}
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/addrecipes" element={<AddRecipes />} />
+
+          <Route path="/localbusinesses" element={<Business />} />
+          <Route path="/localbusinessess/:propertyId" element={<LocalBusinessesDetails />} />
 
         </Route>
 
