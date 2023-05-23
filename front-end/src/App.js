@@ -14,6 +14,8 @@ import Recipes from "./pages/Recipes/Recipes";
 import AddRecipes from "./pages/Recipes/adminRecipes/AddRecipes";
 import Business from "./pages/LocalBusinesses/Business";
 import LocalBusinessesDetails from "./pages/LocalBusinesses/LocalBusinessesDetails/LocalBusinessesDetails";
+import RecipeDetails from "./pages/Recipes/RecipeDetails/RecipeDetails";
+
 
 function App() {
   const  IsLogin= useSelector((state)=> state.login.isLoggedIn)
