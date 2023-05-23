@@ -1,0 +1,10 @@
+.DetailGrid {
+  margin: 3rem;
+  display: flex;
+}
+
+.HeaderText {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  display: flex;
+}/*# sourceMappingURL=styles.module.css.map */

@@ -1,14 +1,15 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
-const AddEevent = () => {
+const AddLocalBusinesses = () => {
   return (
-    <Box sx={{ height:"50rem" ,background:  "linear-gradient(323.85deg, #012935.14%, #046380 99.41%, #012935 99.41%)", borderRadius:"4rem", margin:"2rem"}}>
+    <Box sx={{ height:"50rem" ,background:"linear-gradient(to bottom, #046380 0%, #012935 100%)", borderRadius:"4rem", margin:"2rem"}}>
        <Box className="RecipesPage flex">
 
 
       <Box sx={{marginTop:"1rem", paddingTop:"2rem"}} className="container flex">
         <form action="" className="form grid">
+            
           <Box class="form-group">
             <Typography sx={{color:"white"}} for="Title">Category</Typography >
             <input
@@ -30,46 +31,6 @@ const AddEevent = () => {
           </Box>
 
           <Box class="form-group">
-            <Typography sx={{color:"white"}} for="Title">Date</Typography >
-            <input
-              type="text"
-              class="form-control"
-              id="inputTitle"
-              placeholder="Enter Date"
-            />
-          </Box>
-
-       
-
-          <Box class="form-group">
-            <Typography sx={{color:"white"}} for="inputAddress">location</Typography >
-            <input
-              type="text"
-              class="form-control"
-              id="ingredients"
-              placeholder="Enter location"
-            />
-          </Box>
-          <Box class="form-group">
-            <Typography sx={{color:"white"}} for="inputAddress">Price</Typography >
-            <input
-              type="text"
-              class="form-control"
-              id="ingredients"
-              placeholder="Enter Price"
-            />
-          </Box>
-          <Box class="form-group">
-            <Typography sx={{color:"white"}} for="inputAddress">Select a Pitcture</Typography >
-            <input
-              type="file"
-              class="form-control"
-              id="ingredients"
-              placeholder="Enter Price"
-            />
-          </Box>
-
-          <Box class="form-group">
             <Typography sx={{color:"white"}} for="comment">Description:</Typography >
             <textarea
               class="form-control"
@@ -78,6 +39,48 @@ const AddEevent = () => {
               placeholder="add  Description"
             ></textarea>
           </Box>
+       
+
+          <Box class="form-group">
+            <Typography sx={{color:"white"}} for="inputAddress">Location 1</Typography >
+            <input
+              type="text"
+              class="form-control"
+              id="ingredients"
+              placeholder="Enter location1 and Contact Number"
+            />
+          </Box>
+
+          <Box class="form-group">
+            <Typography sx={{color:"white"}} for="inputAddress">Location 2</Typography >
+            <input
+              type="text"
+              class="form-control"
+              id="ingredients"
+              placeholder="Enter location2 and Contact Number"
+            />
+          </Box>
+
+          <Box class="form-group">
+            <Typography sx={{color:"white"}} for="inputAddress">Location 3</Typography >
+            <input
+              type="text"
+              class="form-control"
+              id="ingredients"
+              placeholder="Enter location3 and Contact Number"
+            />
+          </Box>
+          <Box class="form-group">
+            <Typography sx={{color:"white"}} for="inputAddress">Select a Pitcture</Typography >
+            <input
+              type="file"
+              class="form-control"
+              id="ingredients"
+              placeholder="Select Picture"
+            />
+          </Box>
+
+          
 
        
             <button type="submit" className="btn flex">
@@ -93,4 +96,4 @@ const AddEevent = () => {
   )
 }
 
-export default AddEevent
+export default AddLocalBusinesses

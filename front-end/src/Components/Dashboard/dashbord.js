@@ -31,9 +31,11 @@ import { setlogout } from '../../Redux/actions/authAction';
 import Home from '../../pages/Home/index';
 import Tourism from '../../pages/Tourism/tourism';
 import LocalB from '../../pages/LocalBussiness/LocalB';
+import LocalBusinessesAd from "../../pages/admin/LocalBusinesses/LocalBusinessesAd";
 import Blogs from '../../pages/Blogs/Blogs';
 import Recipes from '../../pages/Recipes/Recipes';
 import  EventAd from '../../pages/admin/Events/EventAd'
+import DashboardHome from "../../pages/admin/dashboard-item/builder-pages/DashboardHome"
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -103,7 +105,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 export default function MiniDrawer() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("adminhome");
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate =useNavigate();
@@ -200,6 +202,14 @@ export default function MiniDrawer() {
                     <ListItemText sx={{ color:"#046380 "}}>Local Businesses</ListItemText>
                 </ListItemButton>
             </ListItem>
+            <ListItem disablePadding onClick={()=>{ handleClick("lbProducts")}} >
+                <ListItemButton>
+                    <ListItemIcon >
+                    <AttachMoneyIcon sx={{ color:"#046380 "}}/>
+                    </ListItemIcon>
+                    <ListItemText sx={{ color:"#046380 "}}>Local Businesses</ListItemText>
+                </ListItemButton>
+            </ListItem>
             <ListItem disablePadding onClick={()=>{ handleClick("recipes")}} >
                 <ListItemButton>
                     <ListItemIcon >
@@ -241,12 +251,16 @@ export default function MiniDrawer() {
 
   
       <Box>
+            <DashboardHome/>
+           
                {page === "adminhome" && <Home/>}
+            
                {page === "tuorism" && <Tourism/>}
                {page === "event" && <EventAd/>}
                {page === "localb" && <LocalB/>}
                {page === "blogs" && <Blogs/>}
                {page === "recipes" && <Recipes/>}
+               {page ==="lbProducts"&&<LocalBusinessesAd/>}
       </Box>
 
     

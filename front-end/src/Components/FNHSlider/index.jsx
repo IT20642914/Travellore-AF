@@ -21,7 +21,7 @@ const FNHSlider = () => {
     sm: { slidesPerView: 2 },
     md: { slidesPerView: 2},
     lg: { slidesPerView: 3 },
-    xl: { slidesPerView: 3 },
+    xl: { slidesPerView: 4 },
   };
 
   const isXs = useMediaQuery("(max-width:800px)");
@@ -70,7 +70,7 @@ const FNHSlider = () => {
         >
           {Events.map((event, id) => {
             return (
-              <SwiperSlide className={styles.swiper_outer_card_border}>
+              <SwiperSlide  key={id} className={styles.swiper_outer_card_border}>
                 <FNHCard
                   key={id}
                   category={event.category}

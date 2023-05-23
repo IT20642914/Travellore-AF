@@ -32,6 +32,12 @@ export const headerNavigations = [
     path: "/tourism",
     Selected: false,
   },
+  {
+    key: 5,
+    name: "Local Products",
+    path: "/localbusinesses",
+    Selected: false,
+  },
 ];
 
 export const settings = [
@@ -210,5 +216,92 @@ export const Recipe = [
       "The standard ingredient in Sri Lankan sambols is chilli, either freshly..",
     category: "Sri Lankan",
     image: "./images/recipes5.jpg",
+  },
+];
+
+export const LocalBusinesses = [
+  {
+    id: 1,
+    category: "HandCrafts",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
+  },
+  {
+    id: 2,
+    category: "HandCrafts",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
+  },
+  {
+    id: 3,
+    category: "HandCrafts",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
+  },
+  {
+    id: 4,
+    category: "HandCrafts",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
+  },
+  {
+    id: 8,
+    category: "HandCrafts",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
+  },
+  {
+    id: 6,
+    category: "HandCrafts",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
+  },
+  {
+    id: 7,
+    category: "AKKKKK",
+    name: "Mask",
+    description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    location1:"aaaaaaaaa :07708894358349",
+    location2:"aaaaa     :0234553535",
+    location3:"aaaaa:2345643253",
+
+    image: "./images/festival4.jpg",
+    
   },
 ];
