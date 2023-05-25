@@ -8,11 +8,13 @@ import {Googlemap} from "../../../Components/map/index";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import LocationIcon from "../../../assets/icon/LocationIcon";
+import { useDispatch,useSelector } from 'react-redux';
 const EventDetails = () => {
   const { propertyId  } = useParams();
-
+  const EventList = useSelector((state) => state.events.events);
+  console.log(EventList)
   console.log("propertyId",propertyId)
-  const property = Events.find((p) => p.id === Number(propertyId));
+  const property = EventList.find((p) => p._id === propertyId);
   if (!property) {
     return <div>Property not found</div>;
   }
