@@ -41,13 +41,7 @@ const LocalBusinessesDetails = () => {
     >
 
       <Box className={Styles.HeaderText}>
-        <FNHText
-          text="Find Local Products"
-          fontSize='3rem'
-          color="#046380"
-          textAlign="left"
-          variant="h6"
-        />
+       
       </Box>
 
       <Box sx={{ alignItems: "center", justifyContent: "center", display: "flex", borderRadius: "2rem", height: "60rem", width: "100%", margin: "4rem", background: "linear-gradient(to bottom, #046380 0%, #012935 100%)" }}>
