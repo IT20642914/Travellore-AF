@@ -202,7 +202,7 @@ const Event = () => {
                     eventType={event.eventType}
                     price={event.price}
                     time={event.time}
-                    backgroundImage={event.image}
+                    backgroundImage={event.img}
                     eventDetails={event.description}
                     address={event.address}
                     location={event.location}

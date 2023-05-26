@@ -20,7 +20,7 @@ const AllEvents = () => {
   const EventList = useSelector((state) => state.events.events);
   const accessKey = useSelector((state) => state.login.accessKey);
     const navigate = useNavigate();
-
+console.log(EventList)
    const handleDelete = (id) => {
   console.log("delete",accessKey);
  dispatch(deleteEvent(id,accessKey));
@@ -50,7 +50,7 @@ const AllEvents = () => {
             {EventList.map((add) => (
               <tr key={add.id}>
                 <td>
-                  <img className='img' src={add.image} alt={add.image} />
+                  <img className='img' src={add.img} alt={add.image} />
                 </td>
            
                 <td>{add.date}</td>

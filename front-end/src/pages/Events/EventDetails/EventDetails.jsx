@@ -27,7 +27,7 @@ const EventDetails = () => {
     registrationLink,
     price,
     category,
-    image,
+    img,
     contactInfo,
       
   
@@ -85,7 +85,7 @@ const EventDetails = () => {
       /></Box>
       <Box
         sx={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${img})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           height: "15rem",
