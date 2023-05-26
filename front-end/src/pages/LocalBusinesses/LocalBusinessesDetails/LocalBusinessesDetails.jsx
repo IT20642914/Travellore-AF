@@ -8,22 +8,26 @@ import { Googlemap } from "../../../Components/map/index";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import LocationIcon from "../../../assets/icon/LocationIcon";
+import { useDispatch,useSelector } from 'react-redux';
+
+
 const LocalBusinessesDetails = () => {
   const { propertyId } = useParams();
-
+  const LbproductList = useSelector((state) => state.lbproducts.lbproducts);
+  console.log(LbproductList)
   console.log("propertyId", propertyId)
-  const property = LocalBusinesses.find((p) => p.id === Number(propertyId));
+  const property = LbproductList.find((p) => p._id === propertyId);
   if (!property) {
     return <div>Property not found</div>;
   }
   const {
     category,
     name,
-    description,
+    desc,
     location1,
     location2,
     location3,
-    image,
+    img,
 
 
 
@@ -78,7 +82,7 @@ const LocalBusinessesDetails = () => {
 
               <Box
                 sx={{
-                  backgroundImage: `url(${image})`,
+                  backgroundImage: `url(${img})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   height: "15rem",
@@ -196,7 +200,7 @@ const LocalBusinessesDetails = () => {
 
                       <FNHText
                         color="#046380"
-                        text={description}
+                        text={desc}
                         fontWeight="500"
                         fontSize="1rem"
                       />
