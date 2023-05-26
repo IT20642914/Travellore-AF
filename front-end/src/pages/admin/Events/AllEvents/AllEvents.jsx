@@ -12,19 +12,20 @@ import IconButton from '@mui/material/IconButton';
 import { Events } from '../../../../constants';
 import { Box, Typography } from '@mui/material'
 import MyListingTable from '../../../admin/dashboard-item/Table/MyListingTable'
+import { useDispatch,useSelector } from 'react-redux';
+import { deleteEvent } from '../../../../Redux/actions/eventAction';
 const AllEvents = () => {
-
-    // const queryClient = useQueryClient();
-   
-
-
-
+  const dispatch = useDispatch();
+  const EventList = useSelector((state) => state.events.events);
+  const accessKey = useSelector((state) => state.login.accessKey);
     const navigate = useNavigate();
-   const handleDelete =()=>{
-console.log("delete")
-   }
+
+   const handleDelete = (id) => {
+  console.log("delete",accessKey);
+ dispatch(deleteEvent(id,accessKey));
+};
     const handlUpdate = (id) => {
-      navigate("/")
+      // navigate("/")
     }
   return (
     <Box>
@@ -44,18 +45,19 @@ console.log("delete")
               <th><Typography color={"#046380"} sx={{fontWeight:"700"}} variant='h5'>Action</Typography ></th>
             </tr>
 
-            {Events.map((add) => (
+            {EventList.map((add) => (
               <tr key={add.id}>
                 <td>
                   <img className='img' src={add.image} alt='item img' />
                 </td>
+                <td>{add._id}</td>
                 <td>{add.date}</td>
                 <td>{add.category}</td>
                 <td>{add.description}</td>
                
                 <td>
                 <Box className="actionBtn">
-                <IconButton  onClick={() => handleDelete(add.id)}> <DeleteForeverIcon style={{ color: 'red' }} /></IconButton>
+                <IconButton  onClick={() => handleDelete(add._id)}> <DeleteForeverIcon style={{ color: 'red' }} /></IconButton>
                 <IconButton  onClick={() => handlUpdate(add.id)}> <EditIcon style={{ color: '#046380' }} /></IconButton>
 
                   </Box>

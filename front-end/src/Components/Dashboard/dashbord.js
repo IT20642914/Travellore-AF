@@ -194,14 +194,14 @@ export default function MiniDrawer() {
                     <ListItemText sx={{ color:"#046380 "}}>Events</ListItemText>
                 </ListItemButton>
             </ListItem>
-            <ListItem disablePadding onClick={()=>{ handleClick("localb")}} >
+            {/* <ListItem disablePadding onClick={()=>{ handleClick("localb")}} >
                 <ListItemButton>
                     <ListItemIcon >
                     <AttachMoneyIcon sx={{ color:"#046380 "}}/>
                     </ListItemIcon>
                     <ListItemText sx={{ color:"#046380 "}}>Local Businesses</ListItemText>
                 </ListItemButton>
-            </ListItem>
+            </ListItem> */}
             <ListItem disablePadding onClick={()=>{ handleClick("lbProducts")}} >
                 <ListItemButton>
                     <ListItemIcon >

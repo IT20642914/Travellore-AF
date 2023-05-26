@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect  } from 'react'
 import FNHSearchPropertyCard from "../../Components/FNHSearchPropertyCard/index"
 import {  Grid } from "@mui/material";
 import {Events}  from "../../constants/index";
@@ -9,6 +9,9 @@ import {Googlemap} from "../../Components/map/index";
 import LocationIcon from "../../assets/icon/LocationIcon";
 import AllFilltersIcon from "../../assets/icon/AllFilltersIcon";
 import DateIcon from "../../assets/icon/DateIcon";
+import { useDispatch,useSelector } from 'react-redux';
+import { getAllEvents, setEvents } from '../../Redux/actions/eventAction';
+import axios from 'axios';
 
 const Event = () => {
   const [nameFilter, setNameFilter] = useState("");
@@ -16,7 +19,30 @@ const Event = () => {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [locationfilter, setlocationFilter] = useState("");
   
+  const dispatch = useDispatch();
+  const EventList = useSelector((state) => state.events.events);
+  
 
+
+  useEffect(() => {
+
+
+  axios.get('http://localhost:9090/api/event')
+.then((response) => {
+  const events = response.data;
+  dispatch(setEvents(events));
+})
+.catch((error) => {
+  console.log('Error fetching events:', error);
+});
+    dispatch(getAllEvents());
+  }, [dispatch]);
+
+  console.log("EventList",EventList)
+
+
+
+  
   return (
     <Grid className={styles.SerchlistGrid} >
     {/* SearchBar and Filter Grid Start*/}
@@ -38,7 +64,7 @@ const Event = () => {
       </Grid>
 
         <Grid  container className={styles.FilterGrid}>
-        <Grid item>
+        <Grid >
           <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
 
           <AllFilltersIcon fill="#046380" width="25" height="25" />
@@ -59,7 +85,7 @@ const Event = () => {
           </Box>
        
 </Grid>
-<Grid  item>
+<Grid  >
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
   <DateIcon fill="#046380" width="25" height="25" />
   <input
@@ -78,7 +104,7 @@ const Event = () => {
   />
    </Box>
 </Grid>
-<Grid item>
+<Grid >
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
 <AllFilltersIcon fill="#046380" width="25" height="25" />
   <input
@@ -97,7 +123,7 @@ const Event = () => {
   />
    </Box>
 </Grid>
-<Grid  item>
+<Grid  >
 <Box sx={{display:"flex", justifyContent:"center",justifyItems:"center",alignItems:"center"}}>
 <LocationIcon fill="#046380" width="25" height="25"/>
   <input
@@ -157,19 +183,19 @@ const Event = () => {
         </Box>
 
         <Grid container spacing={7} sx={{ justifyContent: "center" }}>
-              {Events.filter((event) => {
+              {EventList && EventList.filter((event) => {
   return (
     event.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
     event.date.includes(dateFilter) &&
     event.location.includes(locationfilter.toLowerCase()) &&
     event.category.toLowerCase().includes(categoryFilter.toLowerCase())
   );
-}).map((event, index) => (
+}).map((event) => (
                
-                <Grid item  key={index}>
+                <Grid item  key={event.id}>
                 
                   <FNHSearchPropertyCard
-                    propertyId={event.id}
+                    propertyId={event._id}
                     name={event.name}
                     date={event.date}
                     eventcategory={event.category}

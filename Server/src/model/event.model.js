@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
@@ -6,9 +7,9 @@ const eventSchema = new Schema(
     userId: {
       type: String,
       required: true,
-      unique: true,
+      unique: false,
     },
-    name: {
+        name: {
       type: String,
       required: true,
     },
@@ -25,6 +26,22 @@ const eventSchema = new Schema(
       required: false,
     },
     img: {
+      type: String,
+      required: false,
+    },
+    time:{
+      type: String,
+      required: false,
+    },
+    registrationLink:{
+      type: String,
+      required: false,
+    },
+    category:{
+      type: String,
+      required: false,
+    },
+    contactInfo:{
       type: String,
       required: false,
     },
