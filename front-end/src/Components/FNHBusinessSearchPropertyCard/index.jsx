@@ -105,7 +105,7 @@ const FNHBusinessSearchPropertyCard = ({
         >
           <Box>
             <FNHText
-              text={category}
+              text={name}
               color="black"
               fontWeight="700"
               fontSize="1.5rem"
@@ -119,10 +119,10 @@ const FNHBusinessSearchPropertyCard = ({
             }}
           >
             <FNHText
-              color="#046380"
-              text={name}
+              color="black"
+              text={category}
               fontWeight="700"
-              fontSize="0.875rem"
+              fontSize="0.890rem"
             />
            
             <Box sx={{ marginTop: "1rem", display: "flex" }}>
