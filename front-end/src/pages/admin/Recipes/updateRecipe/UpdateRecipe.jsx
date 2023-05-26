@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Typography, IconButton, Button } from "@mui/material";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { recipeValidation } from "../../../../Schemas/recipeValitaionScheema";
 import { toast } from "react-toastify";
@@ -9,38 +9,45 @@ import { useFormik } from "formik";
 import upload from "../../../../utils/upload";
 import { Form } from "react-bootstrap";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-import { insertRecipe } from "../../../../Redux/actions/recipeAction";
+import { updateRecipe } from "../../../../Redux/actions/recipeAction";
 
-const AddRecipe = () => {
+const UpdateRecipe = () => {
+  const RecipeList = useSelector((state) => state.recipes.recipes);
 
- const accessKey = useSelector((state) => state.login.accessKey);
- const [file, setFile] = useState(null);
- const dispatch = useDispatch();
- const {
-   values,
-   errors,
-   touched,
-   isSubmitting,
-   handleBlur,
-   handleSubmit,
-   handleChange,
- } = useFormik({
-   initialValues: {
-     name: "",
-     ingredients: "",
-     category: "",
-     img: "",
-     desc: "",
-   },
-   validationSchema: recipeValidation,
-   onSubmit: async (values) => {
-     values.img = await upload(file);
+  const { recipeId } = useParams();
+  console.log("RecipeList1", RecipeList);
+  const accessKey = useSelector((state) => state.login.accessKey);
+  const [file, setFile] = useState(null);
+  const dispatch = useDispatch();
+  const recipe = RecipeList.find((p) => p._id === recipeId);
 
-     console.log("form  values", values);
-     dispatch(insertRecipe(values, accessKey));
-   },
- });
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleSubmit,
+    handleChange,
+  } = useFormik({
+    initialValues: {
+      name: recipe.name,
+      ingredients: recipe.date,
+      category: recipe.category,
+      img: recipe.img,
+      desc: recipe.desc,
+    },
+    validationSchema: recipeValidation,
+    onSubmit: async (values) => {
+      values.img = await upload(file);
 
+      console.log("updated values", values);
+      dispatch(updateRecipe(recipeId, values, accessKey));
+    },
+  });
+  if (!recipe) {
+    return <div>recipe not found</div>;
+  }
 
   return (
     <Box
@@ -63,7 +70,7 @@ const AddRecipe = () => {
             </Typography>
             <Form.Control
               type="name"
-              placeholder="Enter Recipe Name"
+              placeholder="Enter recipe Name"
               value={values.name}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -98,7 +105,7 @@ const AddRecipe = () => {
               Enter Ingredients
             </Typography>
             <Form.Control
-              type="ingredients"
+              type="text"
               placeholder="Enter ingredients"
               value={values.ingredients}
               onChange={handleChange}
@@ -129,11 +136,11 @@ const AddRecipe = () => {
               <p className="error">{errors.desc}</p>
             )}
           </Form.Group>
-          
+
           <Form.Group className="my-3" controlId="profile">
             <Box sx={{ display: "inline-block" }}>
-              <Typography sx={{ color: "white" }} htmlFor="img">
-                Select a Pitcture
+              <Typography sx={{ color: "white" }} htmlFor="image">
+                Select a Picture
               </Typography>
               <IconButton aria-label="upload picture" component="label">
                 <input
@@ -163,9 +170,8 @@ const AddRecipe = () => {
               },
             }}
           >
-            {" "}
             <SaveAltIcon style={{ color: "white" }} />
-            Add Details
+            Update Details
           </Button>
         </Form>
       </Box>
@@ -173,4 +179,4 @@ const AddRecipe = () => {
   );
 };
 
-export default AddRecipe;
+export default UpdateRecipe;

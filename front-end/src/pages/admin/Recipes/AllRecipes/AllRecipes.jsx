@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./recipes.css";
@@ -13,7 +13,7 @@ import { Recipe } from "../../../../constants";
 import { Box, Typography } from "@mui/material";
 import MyListingTable from "../../../admin/dashboard-item/Table/MyListingTable";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteRecipe } from "../../../../Redux/actions/recipeAction";
+import { deleteRecipe ,getAllRecipes } from "../../../../Redux/actions/recipeAction";
 const AllRecipes = () => {
   const dispatch = useDispatch();
   const RecipeList = useSelector((state) => state.recipes.recipes);
@@ -24,9 +24,15 @@ const AllRecipes = () => {
     console.log("delete", accessKey);
     dispatch(deleteRecipe(id, accessKey));
   };
-  const handlUpdate = (id) => {
-    // navigate("/")
-  };
+  const handlUpdate = (recipeId) => {
+    navigate(`/recipe/update/${recipeId}`);
+  }
+useEffect(() => {
+  dispatch(getAllRecipes());
+}, [dispatch]);
+
+console.log("RecipeList", RecipeList);
+
   return (
     <Box>
       <Box sx className="myProducts">
@@ -97,9 +103,8 @@ const AllRecipes = () => {
             {RecipeList.map((add) => (
               <tr key={add.id}>
                 <td>
-                  <img className="img" src={add.image} alt="item img" />
+                  <img className="img" src={add.img} alt={add.image} />
                 </td>
-                <td>{add._id}</td>
                 <td>{add.name}</td>
                 <td>{add.category}</td>
                 <td>{add.ingredients}</td>

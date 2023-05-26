@@ -20,7 +20,7 @@ const RecipeDetails = () => {
     return <div>Property not found</div>;
   }
 
-  const { id, name, ingredients, category, image, description } = property;
+  const { id, name, ingredients, category, img, description } = property;
 
   return (
     <Grid className={Styles.DetailGrid}>
@@ -56,7 +56,7 @@ const RecipeDetails = () => {
           <Box sx={{ display: "contents" }}>
             <Card
               sx={{
-                width: "30rem",
+                width: "32rem",
                 height: "50rem",
                 borderRadius: "1rem",
                 padding: "0.5rem",
@@ -80,10 +80,10 @@ const RecipeDetails = () => {
               </Box>
               <Box
                 sx={{
-                  backgroundImage: `url(${image})`,
+                  backgroundImage: `url(${img})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
-                  height: "15rem",
+                  height: "20rem",
                   backgroundPosition: "center center",
                   position: "relative",
                   borderRadius: "1rem",
