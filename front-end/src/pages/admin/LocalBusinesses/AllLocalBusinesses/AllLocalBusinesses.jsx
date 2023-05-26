@@ -12,8 +12,9 @@ import IconButton from '@mui/material/IconButton';
 import { LocalBusinesses } from '../../../../constants';
 import { Box, Typography } from '@mui/material'
 
-import MyListingTable from '../../../admin/dashboard-item/Table/MyListingTable'//-----------------------------------------meka hdnna oni
-
+import MyListingTable from '../../../admin/dashboard-item/Table/MyListingTable'
+import { useDispatch,useSelector } from 'react-redux';
+import { deleteLBProduct } from '../../../../Redux/actions/localBusinessesAction';
 const AllLocalBusinesses = () => {
 
   // const queryClient = useQueryClient();
