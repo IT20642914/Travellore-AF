@@ -11,7 +11,6 @@ import Event from "./pages/Events/Event"
 import { Box } from "@mui/material";
 import EventDetails from "./pages/Events/EventDetails/EventDetails"
 import Recipes from "./pages/Recipes/Recipes";
-import AddRecipes from "./pages/Recipes/adminRecipes/AddRecipes";
 import Business from "./pages/LocalBusinesses/Business";
 import LocalBusinessesDetails from "./pages/LocalBusinesses/LocalBusinessesDetails/LocalBusinessesDetails";
 import RecipeDetails from "./pages/Recipes/RecipeDetails/RecipeDetails";
@@ -34,9 +33,9 @@ function App() {
           <Route path="/event" element={<Event />} />
           <Route path="/event/:propertyId" element={<EventDetails />} />
 
-          {/* <Route path="/recipe/:propertyId" element={<RecipeDetails />} /> */}
+          <Route path="/recipe/:propertyId" element={<RecipeDetails />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/addrecipes" element={<AddRecipes />} />
+          
 
           <Route path="/localbusinesses" element={<Business />} />
           <Route path="/localbusinessess/:propertyId" element={<LocalBusinessesDetails />} />
