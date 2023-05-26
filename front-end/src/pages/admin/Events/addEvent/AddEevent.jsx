@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography ,IconButton} from "@mui/material";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import upload from "../../../../utils/upload";
 import { Form } from "react-bootstrap";
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 const AddEevent = () => {
   const [EventData, SetEvetData] = useState({
     name: "",
@@ -210,14 +211,15 @@ const AddEevent = () => {
               <p className="error">{errors.contactInfo}</p>
             )}
           </Form.Group>
-          
+
 
           <Form.Group className="my-3" controlId="description">
             <Typography sx={{ color: "white" }} for="description">
-             Enter Contact Information
+             Enter description
             </Typography>
             <Form.Control
-              type="description"
+              id="description"
+              type="Description"
               placeholder="Enter description"
               value={values.description}
               onChange={handleChange}
@@ -230,31 +232,19 @@ const AddEevent = () => {
               <p className="error">{errors.description}</p>
             )}
           </Form.Group>
-         
-         
-          <Box class="form-group">
-            <Typography sx={{ color: "white" }} for="image">
+          <Form.Group className="my-3" controlId="profile">
+              <Box sx={{display:"inline-block"}}> 
+              <Typography sx={{ color: "white" }} for="image">
               Select a Pitcture
             </Typography>
-
-            <input
-              accept="image/*"
-              onChange={(e) => setFile(e.target.files[0])}
-              type="file"
-            />
-          </Box>
-         
-          <Box class="form-group">
-            <Typography sx={{ color: "white" }} for="comment">
-              Description:
-            </Typography>
-            <textarea
-              class="form-control"
-              rows="5"
-              id="description"
-              placeholder="add  Description"
-            ></textarea>
-          </Box>
+               <IconButton aria-label="upload picture" component="label">
+               <input hidden accept="image/*"  onChange={(e) => setFile(e.target.files[0])} type="file" />
+               <AddPhotoAlternateIcon sx={{width:"5rem", color:"white",height:"5rem"}} />
+               </IconButton>
+            
+              </Box >
+              </Form.Group>
+        
 
           <button type="submit" className="btn flex">
             <SaveAltIcon style={{ color: "white" }} />
