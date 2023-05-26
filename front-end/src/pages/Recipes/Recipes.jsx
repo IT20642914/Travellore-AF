@@ -192,8 +192,8 @@ console.log("RecipeList", RecipeList);
                     name={recipe.name}
                     ingredients={recipe.ingredients}
                     recipeCate={recipe.category}
-                    backgroundImage={recipe.image}
-                    recipeDetails={recipe.description}
+                    backgroundImage={recipe.img}
+                    recipeDetails={recipe.desc}
                   />
                 </Grid>
               ))}
