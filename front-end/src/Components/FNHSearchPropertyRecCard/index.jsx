@@ -7,20 +7,16 @@ import FNHText from "../FNHText/index";
 
 import { useNavigate } from "react-router-dom";
 
-
-
-const FNHRecipoCard = ({
+const FNHSearchPropertyRecCard = ({
   propertyId,
   name,
   ingredients,
-  communityBy,
-  recipeCate,
-  backgroundImage,
   recipeDetails,
-  address,
-  
+  recipeCate,
+  eventType,
+  backgroundImage,
 
-}: FNHRecipoCardProps) => {
+}: FNHSearchPropertyCardProps) => {
   const [isFilled, setIsFilled] = React.useState(false);
 
   const handleFavoriteClick = (recipe: any) => {
@@ -42,7 +38,7 @@ const FNHRecipoCard = ({
       onClick={handleCardClick}
       sx={{
         width: "20rem",
-        height: "30rem",
+        height: "32rem",
         borderRadius: "1rem",
         padding: "0.5rem",
       }}
@@ -105,7 +101,7 @@ const FNHRecipoCard = ({
         >
           <Box>
             <FNHText
-              text={name}
+              text={recipeCate}
               color="black"
               fontWeight="700"
               fontSize="1.5rem"
@@ -119,14 +115,20 @@ const FNHRecipoCard = ({
             }}
           >
             <FNHText
-              //color="#1460BA"
+              color="#046380"
+              text={name}
+              fontWeight="700"
+              fontSize="0.875rem"
+            />
+            <FNHText
+              color="#046380"
               text={recipeCate}
               fontWeight="700"
               fontSize="0.875rem"
             />
             <Box sx={{ marginTop: "1rem", display: "flex" }}>
               <FNHText
-                //  color="#1460BA"
+                color="#046380"
                 text={recipeDetails}
                 fontWeight="700"
                 fontSize="0.875rem"
@@ -144,20 +146,10 @@ const FNHRecipoCard = ({
               />
             </Box>
           </Box>
-
-         
-          <Box
-            sx={{
-              minWidth: "50%",
-              textAlign: "start",
-              margin: "0 0 2rem 0",
-              display: "flex",
-            }}
-          ></Box>
         </Box>
       </Box>
     </Card>
   );
 };
 
-export default FNHRecipoCard;
+export default FNHSearchPropertyRecCard;

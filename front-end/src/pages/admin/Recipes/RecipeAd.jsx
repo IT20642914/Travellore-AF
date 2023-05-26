@@ -34,7 +34,7 @@ const RecipeAd = () => {
       <Box>
         {page === "AddRecipe" && <AddRecipe />}
         {page === "AllRecipes" && <AllRecipes />}
-        {page === "recipe" && <recipe />}
+        {page === "recipe" && <Recipe />}
       </Box>
     </Box>
   );
