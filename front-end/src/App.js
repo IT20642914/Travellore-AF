@@ -15,6 +15,7 @@ import Business from "./pages/LocalBusinesses/Business";
 import LocalBusinessesDetails from "./pages/LocalBusinesses/LocalBusinessesDetails/LocalBusinessesDetails";
 import RecipeDetails from "./pages/Recipes/RecipeDetails/RecipeDetails";
 import UpdateEvent from "./pages/admin/Events/updateEvent/UpdateEvent";
+import UpdateRecipe from "./pages/admin/Recipes/updateRecipe/UpdateRecipe";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/event/update/:eventId" element={<UpdateEvent />} />
           <Route path="/recipe/:propertyId" element={<RecipeDetails />} />
           <Route path="/recipes" element={<Recipes />} />
+           <Route path="/recipe/update/:recipeId" element={<UpdateRecipe />} />
   
           
 

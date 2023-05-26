@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import FNHSearchPropertyCard from "../../Components/FNHRecipoCard/index";
+import FNHRecipoCard from "../../Components/FNHRecipoCard/index";
 import { Grid } from "@mui/material";
 import { Recipe } from "../../constants/index";
 import styles from "./style.module.scss";
@@ -186,8 +186,8 @@ console.log("RecipeList", RecipeList);
                     .includes(categoryFilter.toLowerCase())
                 );
               }).map((recipe) => (
-                <Grid item key={recipe.id}>
-                  <FNHSearchPropertyCard
+                <Grid item key={recipe._id}>
+                  <FNHRecipoCard
                     propertyId={recipe._id}
                     name={recipe.name}
                     ingredients={recipe.ingredients}
