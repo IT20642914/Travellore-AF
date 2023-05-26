@@ -17,7 +17,19 @@ export const createRecipe = async (req, res, next) => {
     const savedRecipe = await newRecipe.save();
     res.status(201).json(savedRecipe);
   } catch (err) {
-    next(err);
+    if (err.code === 11000 && err.keyPattern && err.keyPattern.userId) {
+      // Duplicate key error for the userId field
+      const duplicateUserId = err.keyValue.userId;
+      // Handle the duplicate key error, such as displaying a message to the user
+      res
+        .status(409)
+        .json({
+          error: `User with userId ${duplicateUserId} already has an event.`,
+        });
+    } else {
+      // Handle other errors
+      next(err);
+    }
   }
 };
 
