@@ -25,8 +25,6 @@ const Event = () => {
 
 
   useEffect(() => {
-
-
   axios.get('http://localhost:9090/api/event')
 .then((response) => {
   const events = response.data;

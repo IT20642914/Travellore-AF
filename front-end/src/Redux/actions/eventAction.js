@@ -1,6 +1,7 @@
 import { eventActionType } from "../actionTypes/eventActionType";
 import { useDispatch,useSelector } from 'react-redux';
 import axios from 'axios';
+import {  toast } from 'react-toastify';
 export const insertEvent  = (newEventData,accessKey) =>{
   console.log("NEW EVENT: ",newEventData,accessKey)
   return (dispatch) => {
@@ -29,16 +30,41 @@ export const insertEvent  = (newEventData,accessKey) =>{
 
 };
 
-export const updateEvent =(eventID, updatedEventData)=>{
-console.log("eventID,updatedEventData",eventID,updatedEventData)
-    return{
-        type:eventActionType.UPDATE_EVENT,
-        payload:{
-            eventID,
-            updatedEventData
+export const updateEvent =(eventID, updatedEventData,accessKey)=>{
+console.log("eventID,updatedEventData,accessKey",eventID,updatedEventData,accessKey)
+const url = `http://localhost:9090/api/event/${eventID}`;
+return dispatch => {
+  axios.put(url, updatedEventData, {
+    headers: {
+      Authorization: `Bearer ${accessKey}`,// Assuming accessKey is the authentication token
+    },
+  })
+    .then(response => {
+      // Handle the response if needed
+      console.log("Event update response", response.data);
+      dispatch({
+        type: eventActionType.UPDATE_EVENT,
+        payload: {
+          eventID,
+          updatedEventData
         }
-    }
-}
+      });
+      toast.success(response.data.message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    })
+    .catch(error => {
+      // Handle the error if needed
+      console.log("Event update error", error);
+      const massege=error.response.data.error;
+      toast.error(massege, {
+        position: toast.POSITION.TOP_RIGHT  
+      });
+
+      // Dispatch an error action or perform any other necessary actions
+    });
+};
+};
 
 export const deleteEvent=(eventID,accessKey)=>{
    
@@ -59,9 +85,18 @@ export const deleteEvent=(eventID,accessKey)=>{
                   eventID,
                 },
               });
+              toast.success("Event Deleted SuccussFully", {
+                position: toast.POSITION.TOP_RIGHT
+              });
             } catch (error) {
               // Handle any errors
               console.log('Error deleting event:', error);
+                 // Handle the error if needed
+      console.log("Event update error", error);
+      const massege=error.response.data.error;
+      toast.error(massege, {
+        position: toast.POSITION.TOP_RIGHT  
+      });
             }
           };
 }

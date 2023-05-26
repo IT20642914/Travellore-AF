@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link } from "react-router-dom";
 
 import './events.css';
@@ -13,7 +13,7 @@ import { Events } from '../../../../constants';
 import { Box, Typography } from '@mui/material'
 import MyListingTable from '../../../admin/dashboard-item/Table/MyListingTable'
 import { useDispatch,useSelector } from 'react-redux';
-import { deleteEvent } from '../../../../Redux/actions/eventAction';
+import { deleteEvent ,getAllEvents} from '../../../../Redux/actions/eventAction';
 const AllEvents = () => {
   const dispatch = useDispatch();
   
@@ -25,9 +25,21 @@ console.log(EventList)
   console.log("delete",accessKey);
  dispatch(deleteEvent(id,accessKey));
 };
-    const handlUpdate = (id) => {
-      // navigate("/")
+    const handlUpdate = (eventId) => {
+      navigate(`/event/update/${eventId}`);
     }
+
+
+
+
+
+
+    useEffect(() => {
+   
+        dispatch(getAllEvents());
+      }, [dispatch]);
+    
+      console.log("EventList",EventList)
   return (
     <Box>
     
@@ -60,7 +72,7 @@ console.log(EventList)
                 <td>
                 <Box className="actionBtn">
                 <IconButton  onClick={() => handleDelete(add._id)}> <DeleteForeverIcon style={{ color: 'red' }} /></IconButton>
-                <IconButton  onClick={() => handlUpdate(add.id)}> <EditIcon style={{ color: '#046380' }} /></IconButton>
+                <IconButton  onClick={() => handlUpdate(add._id)}> <EditIcon style={{ color: '#046380' }} /></IconButton>
 
                   </Box>
                 </td>
