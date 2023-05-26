@@ -50,9 +50,9 @@ const AllEvents = () => {
             {EventList.map((add) => (
               <tr key={add.id}>
                 <td>
-                  <img className='img' src={add.image} alt='item img' />
+                  <img className='img' src={add.image} alt={add.image} />
                 </td>
-                <td>{add._id}</td>
+           
                 <td>{add.date}</td>
                 <td>{add.category}</td>
                 <td>{add.description}</td>

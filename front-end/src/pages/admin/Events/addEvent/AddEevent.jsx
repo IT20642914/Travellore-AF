@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Typography ,IconButton,Button} from "@mui/material";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { eventValidation } from "../../../../Schemas/eventValitaionScheema";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
@@ -10,8 +10,9 @@ import upload from "../../../../utils/upload";
 import { Form } from "react-bootstrap";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import {insertEvent } from "../../../../Redux/actions/eventAction"
-const AddEevent = () => {
 
+const AddEevent = () => {
+  const accessKey = useSelector((state) => state.login.accessKey);
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
   const {
@@ -39,7 +40,7 @@ const AddEevent = () => {
       values.img = await upload(file);
 
       console.log("form  values",values)
-      dispatch(insertEvent(values))
+      dispatch(insertEvent(values,accessKey))
 
 
     },
