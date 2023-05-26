@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Typography ,IconButton} from "@mui/material";
+import { Box, Typography ,IconButton,Button} from "@mui/material";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -9,19 +9,11 @@ import { useFormik } from "formik";
 import upload from "../../../../utils/upload";
 import { Form } from "react-bootstrap";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import {insertEvent } from "../../../../Redux/actions/eventAction"
 const AddEevent = () => {
-  const [EventData, SetEvetData] = useState({
-    name: "",
-    date: "",
-    location: "",
-    description: "",
-    registrationLink: "",
-    price: "",
-    category: "",
-    contactInfo: "",
-  });
-  const [file, setFile] = useState(null);
 
+  const [file, setFile] = useState(null);
+  const dispatch = useDispatch();
   const {
     values,
     errors,
@@ -40,19 +32,23 @@ const AddEevent = () => {
       category: "",
       time: "",
       contactInfo: "",
-      imge: "",
       registrationLink:"",
     },
     validationSchema: eventValidation,
     onSubmit: async (values) => {
       values.img = await upload(file);
+
+      console.log("form  values",values)
+      dispatch(insertEvent(values))
+
+
     },
   });
 
   return (
     <Box
       sx={{
-        height: "64rem",
+        height: "74rem",
         background:
           "linear-gradient(323.85deg, #012935.14%, #046380 99.41%, #012935 99.41%)",
         borderRadius: "4rem",
@@ -65,7 +61,7 @@ const AddEevent = () => {
       >
         <Form onSubmit={handleSubmit}>
           <Form.Group className="my-3" controlId="name">
-            <Typography sx={{ color: "white" }} for="name">
+            <Typography sx={{ color: "white" }} htmlFor="name">
               Event Name
             </Typography>
             <Form.Control
@@ -82,7 +78,7 @@ const AddEevent = () => {
           </Form.Group>
 
           <Form.Group className="my-3" controlId="category">
-            <Typography sx={{ color: "white" }} for="category">
+            <Typography sx={{ color: "white" }} htmlFor="category">
             Enter   Category
             </Typography>
             <Form.Control
@@ -101,7 +97,7 @@ const AddEevent = () => {
           </Form.Group>
 
           <Form.Group className="my-3" controlId="date">
-            <Typography sx={{ color: "white" }} for="category">
+            <Typography sx={{ color: "white" }} htmlFor="category">
               Enter Date
             </Typography>
             <Form.Control
@@ -118,7 +114,7 @@ const AddEevent = () => {
           </Form.Group>
 
           <Form.Group className="my-3" controlId="time">
-            <Typography sx={{ color: "white" }} for="time">
+            <Typography sx={{ color: "white" }} htmlFor="time">
             Enter Time
             </Typography>
             <Form.Control
@@ -138,7 +134,7 @@ const AddEevent = () => {
 
 
           <Form.Group className="my-3" controlId="location">
-            <Typography sx={{ color: "white" }} for="location">
+            <Typography sx={{ color: "white" }} htmlFor="location">
              Enter Location
             </Typography>
             <Form.Control
@@ -156,7 +152,7 @@ const AddEevent = () => {
             )}
           </Form.Group>
           <Form.Group className="my-3" controlId="registrationLink">
-            <Typography sx={{ color: "white" }} for="registrationLink">
+            <Typography sx={{ color: "white" }} htmlFor="registrationLink">
              Enter RegistrationLink
             </Typography>
             <Form.Control
@@ -175,7 +171,7 @@ const AddEevent = () => {
           </Form.Group>
 
           <Form.Group className="my-3" controlId="price">
-            <Typography sx={{ color: "white" }} for="price">
+            <Typography sx={{ color: "white" }} htmlFor="price">
              Enter price
             </Typography>
             <Form.Control
@@ -194,7 +190,7 @@ const AddEevent = () => {
           </Form.Group>
 
           <Form.Group className="my-3" controlId="contactInfo">
-            <Typography sx={{ color: "white" }} for="contactInfo">
+            <Typography sx={{ color: "white" }} htmlFor="contactInfo">
              Enter Contact Information
             </Typography>
             <Form.Control
@@ -214,7 +210,7 @@ const AddEevent = () => {
 
 
           <Form.Group className="my-3" controlId="description">
-            <Typography sx={{ color: "white" }} for="description">
+            <Typography sx={{ color: "white" }} htmlFor="description">
              Enter description
             </Typography>
             <Form.Control
@@ -234,7 +230,7 @@ const AddEevent = () => {
           </Form.Group>
           <Form.Group className="my-3" controlId="profile">
               <Box sx={{display:"inline-block"}}> 
-              <Typography sx={{ color: "white" }} for="image">
+              <Typography sx={{ color: "white" }} htmlFor="image">
               Select a Pitcture
             </Typography>
                <IconButton aria-label="upload picture" component="label">
@@ -245,14 +241,18 @@ const AddEevent = () => {
               </Box >
               </Form.Group>
         
-
-          <button type="submit" className="btn flex">
-            <SaveAltIcon style={{ color: "white" }} />
-            <Typography sx={{ color: "white" }} for="comment">
-              {" "}
-              Add Details
-            </Typography>
-          </button>
+              {isSubmitting}
+              <Button 
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ background:"#046380",mt: 3, mb: 2, '&:hover': {
+                    backgroundColor: '#014935',
+                  },}}
+                >    <SaveAltIcon style={{ color: "white" }} />
+                     Add Details
+               </Button>
+        
         </Form>
       </Box>
     </Box>

@@ -1,13 +1,31 @@
 import { eventActionType } from "../actionTypes/eventActionType";
 import { useDispatch,useSelector } from 'react-redux';
 import axios from 'axios';
-export const insertEvent  = (newEventData) =>{
-    return{
-        type: eventActionType.ADD_EVENT,
-        payload:{
+export const insertEvent  = (newEventData,accessKey) =>{
+  console.log("NEW EVENT: ",newEventData,accessKey)
+  return (dispatch) => {
+    
+
+    axios
+      .post('http://localhost:9090/api/event', newEventData, {
+        headers: {
+          Authorization: `Bearer ${accessKey}`, // Include the token in the headers
+        },
+      })
+      .then((response) => {
+        console.log('NEW EVENT:', newEventData);
+        dispatch({
+          type: eventActionType.ADD_EVENT,
+          payload: {
             newEventData,
-        }   
-    };
+          },
+        });
+      })
+      .catch((error) => {
+        // Handle error
+        console.error('Error inserting event:', error);
+      });
+  };
 
 };
 

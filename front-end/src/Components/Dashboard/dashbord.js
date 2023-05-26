@@ -120,7 +120,7 @@ export default function MiniDrawer() {
   const dispatch =useDispatch();
 
   const handlelogout=(name)=>{
- 
+  localStorage.clear();
     dispatch(setlogout())
     navigate("/")
   

@@ -31,13 +31,14 @@ const AllEvents = () => {
   return (
     <Box>
     
-    <Box sx className='myProducts'>
+    <Box className='myProducts'>
      
         <Box sx={{background:"white"}} className='container'>
           <Box className='title'>
             <Typography color={"#046380"}  variant='h3'>all Events</Typography  >
           </Box>
           <table>
+            <tbody>
             <tr>
               <th><Typography color={"#046380"} sx={{fontWeight:"700"}} variant='h5'>Image  Of  Event</Typography  > </th>
               <th><Typography color={"#046380"} sx={{fontWeight:"700"}} variant='h5'>Date</Typography ></th>
@@ -65,6 +66,7 @@ const AllEvents = () => {
                 </td>
               </tr>
             ))}
+            </tbody>
           </table>
         </Box>
  
