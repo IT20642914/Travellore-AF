@@ -22,12 +22,12 @@ const userName =useSelector((state)=> state.login.username)
 
   return (
     <Box sx={{ marginLeft:"5rem" ,marginBottom:"2rem"}}>
-      <Box sx={{ width: "100%", display: {md:"inline",lg:"flex"} }}>
+      <Box sx={{ width: "100%", display: {md:"inline",lg:"flex"} ,justifyContent:"space-between" }}>
         <Box sx={{margin:{xs:"1rem",lg:"0"}}}>
         <Grid
           sx={{
             background:"red",
-            width: { xs: "30rem", md: "40rem",lg:"40rem",xl:"60rem"  },
+            width: { xs: "30rem", md: "45rem",lg:"50rem",xl:"60rem"  },
             height: "12rem",
             borderRadius: "1rem",
            
