@@ -122,9 +122,24 @@ const FNHSearchPropertyCard = ({
               textAlign: "start",
             }}
           > 
+          <Box sx={{display:"flex"}}>
+          <FNHText
+           // color="#046380"
+              text="Name :"
+              fontWeight="700"
+              fontSize="0.875rem"
+            />
           <FNHText
             color="#046380"
               text={name}
+              fontWeight="700"
+              fontSize="0.875rem"
+            />
+            </Box>
+            <Box sx={{display:"flex"}}>
+            <FNHText
+           // color="#046380"
+              text="location :"
               fontWeight="700"
               fontSize="0.875rem"
             />
@@ -134,7 +149,14 @@ const FNHSearchPropertyCard = ({
               fontWeight="700"
               fontSize="0.875rem"
             />
-               <Box sx={{marginTop:"1rem",display:"flex"}}>
+               </Box>
+               <Box sx={{display:"flex"}}>
+               <FNHText
+            //  color="#046380" 
+              text="Description :"
+              fontWeight="700"
+              fontSize="0.875rem"
+            />
              <FNHText
               color="#046380"
               text={eventDetails}

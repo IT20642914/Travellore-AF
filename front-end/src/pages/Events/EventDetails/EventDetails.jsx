@@ -69,7 +69,7 @@ const EventDetails = () => {
 
       <Card
       sx={{
-        width: "30rem",
+        width: "32rem",
         height: "50rem",
         borderRadius: "1rem",
         padding: "0.5rem",
@@ -88,7 +88,7 @@ const EventDetails = () => {
           backgroundImage: `url(${img})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "15rem",
+          height: "20rem",
           backgroundPosition: "center center",
          position: "relative",
           borderRadius: "1rem",
@@ -271,7 +271,7 @@ const EventDetails = () => {
             />
         <FNHText
               fontSize="1rem"
-              text={contactInfo.name}
+              text="avishka chanaka"
               color="#046380"
               fontWeight="700"
             />
@@ -286,7 +286,7 @@ const EventDetails = () => {
     />
 <FNHText
       fontSize="1rem"
-      text={contactInfo.phone}
+      text={contactInfo}
       color="#046380"
       fontWeight="700"
     />
@@ -301,7 +301,7 @@ const EventDetails = () => {
     />
 <FNHText
       fontSize="1rem"
-      text={contactInfo.email}
+      text="avishkachanaka@gmail.com"
       color="#046380"
       fontWeight="700"
     />
