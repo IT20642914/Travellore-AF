@@ -25,8 +25,6 @@ const Event = () => {
 
 
   useEffect(() => {
-
-
   axios.get('http://localhost:9090/api/event')
 .then((response) => {
   const events = response.data;
@@ -202,7 +200,7 @@ const Event = () => {
                     eventType={event.eventType}
                     price={event.price}
                     time={event.time}
-                    backgroundImage={event.image}
+                    backgroundImage={event.img}
                     eventDetails={event.description}
                     address={event.address}
                     location={event.location}
