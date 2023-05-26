@@ -14,10 +14,18 @@ export const createLbproduct = async(req, res, next) => {
     console.log("userid controller", req.userId)
 
     try{
-        const saveLbproduct = await newLbproduct.save();
+        const savedLbproduct = await newLbproduct.save();
         res.status(201).json(savedLbproduct);
     }catch(err){
-        next(err);
+        if (err.code === 11000 && err.keyPattern && err.keyPattern.userId) {
+            // Duplicate key error for the userId field
+            const duplicateUserId = err.keyValue.userId;
+            // Handle the duplicate key error, such as displaying a message to the user
+            res.status(409).json({ error: `User with userId ${duplicateUserId} already has an event.` });
+          } else {
+            // Handle other errors
+            next(err);
+          }
     }
 };
 
@@ -39,7 +47,7 @@ export const deleteLbproduct = async(req, res, next) =>{
 //get selected add from add model
 export const getLbproduct = async (req, res, next) => {
     try {
-      const lbproduct = await Event.findById(req.params.id);
+      const lbproduct = await Lbproduct.findById(req.params.id);
       if (!lbproduct) return next(createError(404, 'lbproduct Not Found!'));
       res.status(200).send(lbproduct);
     } catch (err) {
