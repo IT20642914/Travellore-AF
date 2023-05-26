@@ -192,7 +192,7 @@ const Event = () => {
   );
 }).map((event) => (
                
-                <Grid item  key={event.id}>
+                <Grid item  key={event._id}>
                 
                   <FNHSearchPropertyCard
                     propertyId={event._id}
