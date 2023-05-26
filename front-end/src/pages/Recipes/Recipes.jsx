@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import FNHSearchPropertyCard from "../../Components/FNHRecipoCard/index";
 import { Grid } from "@mui/material";
 import { Recipe } from "../../constants/index";
@@ -7,10 +7,32 @@ import FNHText from "../../Components/FNHText/index";
 import { Box } from "@mui/system";
 import AllFilltersIcon from "../../assets/icon/AllFilltersIcon";
 import DateIcon from "../../assets/icon/DateIcon";
+import { useDispatch,useSelector } from 'react-redux';
+import { getAllRecipes, setRecipes } from '../../Redux/actions/recipeAction';
+import axios from 'axios';
+
 const Recipes = () => {
   const [nameFilter, setNameFilter] = useState("");
   const [ingredientsFilter, setingredientsFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
+
+ const dispatch = useDispatch();
+  const RecipeList = useSelector((state) => state.recipes.recipes);
+  
+useEffect(() => {
+  axios
+    .get("http://localhost:9090/api/recipe")
+    .then((response) => {
+      const recipes = response.data;
+      dispatch(setRecipes(recipes));
+    })
+    .catch((error) => {
+      console.log("Error fetching recipes:", error);
+    });
+  dispatch(getAllRecipes());
+}, [dispatch]);
+
+console.log("RecipeList", RecipeList);
 
   return (
     <Grid className={styles.SerchlistGrid}>
@@ -152,26 +174,29 @@ const Recipes = () => {
           </Box>
 
           <Grid container spacing={7} sx={{ justifyContent: "center" }}>
-            {Recipe.filter((recipe) => {
-              return (
-                recipe.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
-                recipe.ingredients.includes(ingredientsFilter) &&
-                recipe.category
-                  .toLowerCase()
-                  .includes(categoryFilter.toLowerCase())
-              );
-            }).map((recipe, index) => (
-              <Grid item key={index}>
-                <FNHSearchPropertyCard
-                  propertyId={recipe.id}
-                  name={recipe.name}
-                  ingredients={recipe.ingredients}
-                  recipeCate={recipe.category}
-                  backgroundImage={recipe.image}
-                  recipeDetails={recipe.description}
-                />
-              </Grid>
-            ))}
+            {RecipeList &&
+              RecipeList.filter((recipe) => {
+                return (
+                  recipe.name
+                    .toLowerCase()
+                    .includes(nameFilter.toLowerCase()) &&
+                  recipe.ingredients.includes(ingredientsFilter) &&
+                  recipe.category
+                    .toLowerCase()
+                    .includes(categoryFilter.toLowerCase())
+                );
+              }).map((recipe) => (
+                <Grid item key={recipe.id}>
+                  <FNHSearchPropertyCard
+                    propertyId={recipe._id}
+                    name={recipe.name}
+                    ingredients={recipe.ingredients}
+                    recipeCate={recipe.category}
+                    backgroundImage={recipe.image}
+                    recipeDetails={recipe.description}
+                  />
+                </Grid>
+              ))}
           </Grid>
         </Grid>
       </Grid>
