@@ -34,7 +34,7 @@ const MyListingTable = () => {
         // Return the desired row height in pixels
         return 100;
       };
-  return (
+ return (
     <Box style={{ height: 400, width: '100%' }}>
    
       <DataGrid
@@ -52,7 +52,8 @@ const MyListingTable = () => {
 
 
     </Box>
-  );
+   
+ );
 };
 
 export default MyListingTable;
