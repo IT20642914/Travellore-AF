@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link } from "react-router-dom";
 
 import './events.css';
@@ -13,21 +13,33 @@ import { Events } from '../../../../constants';
 import { Box, Typography } from '@mui/material'
 import MyListingTable from '../../../admin/dashboard-item/Table/MyListingTable'
 import { useDispatch,useSelector } from 'react-redux';
-import { deleteEvent } from '../../../../Redux/actions/eventAction';
+import { deleteEvent ,getAllEvents} from '../../../../Redux/actions/eventAction';
 const AllEvents = () => {
   const dispatch = useDispatch();
   
   const EventList = useSelector((state) => state.events.events);
   const accessKey = useSelector((state) => state.login.accessKey);
     const navigate = useNavigate();
-
+console.log(EventList)
    const handleDelete = (id) => {
   console.log("delete",accessKey);
  dispatch(deleteEvent(id,accessKey));
 };
-    const handlUpdate = (id) => {
-      // navigate("/")
+    const handlUpdate = (eventId) => {
+      navigate(`/event/update/${eventId}`);
     }
+
+
+
+
+
+
+    useEffect(() => {
+   
+        dispatch(getAllEvents());
+      }, [dispatch]);
+    
+      console.log("EventList",EventList)
   return (
     <Box>
     
@@ -50,7 +62,7 @@ const AllEvents = () => {
             {EventList.map((add) => (
               <tr key={add.id}>
                 <td>
-                  <img className='img' src={add.image} alt={add.image} />
+                  <img className='img' src={add.img} alt={add.image} />
                 </td>
            
                 <td>{add.date}</td>
@@ -60,7 +72,7 @@ const AllEvents = () => {
                 <td>
                 <Box className="actionBtn">
                 <IconButton  onClick={() => handleDelete(add._id)}> <DeleteForeverIcon style={{ color: 'red' }} /></IconButton>
-                <IconButton  onClick={() => handlUpdate(add.id)}> <EditIcon style={{ color: '#046380' }} /></IconButton>
+                <IconButton  onClick={() => handlUpdate(add._id)}> <EditIcon style={{ color: '#046380' }} /></IconButton>
 
                   </Box>
                 </td>
