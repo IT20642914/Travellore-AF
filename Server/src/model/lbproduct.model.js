@@ -26,15 +26,15 @@ const lbproductSchema = new Schema(
     },
     location1: {
       type: String,
-      required: true,
+      required: false,
     },
     location2: {
         type: String,
-        required: true,
+        required: false,
       },
     location3: {
         type: String,
-        required: true,
+        required: false,
     },
   },
   {
