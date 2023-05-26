@@ -7,12 +7,15 @@ import { Recipe } from "../../../constants";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { height } from "@mui/system";
+import { useDispatch, useSelector } from "react-redux";
 
 const RecipeDetails = () => {
   const { propertyId } = useParams();
+  const RecipeList = useSelector((state) => state.recipes.recipes);
+  console.log(RecipeList);
 
   console.log("propertyId", propertyId);
-  const property = Recipe.find((p) => p.id === Number(propertyId));
+  const property = RecipeList.find((p) => p._id === propertyId);
   if (!property) {
     return <div>Property not found</div>;
   }
