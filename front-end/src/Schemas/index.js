@@ -29,6 +29,7 @@ Cpassword:yup
 .required("Required")
 
 });
+
 export const basicLoginvalidation= yup.object().shape({
 
     email:yup.string().email('please Enter valid email').required("Required"),
