@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect  } from 'react'
 import FNHBusinessSearchPropertyCard from "../../Components/FNHBusinessSearchPropertyCard/index"
 import { Grid } from "@mui/material";
 import { LocalBusinesses } from "../../constants/index";
@@ -9,12 +9,36 @@ import { Googlemap } from "../../Components/map/index";
 //import LocationIcon from "../../assets/icon/LocationIcon";
 import AllFilltersIcon from "../../assets/icon/AllFilltersIcon";
 //import DateIcon from "../../assets/icon/DateIcon";
+import { useDispatch,useSelector } from 'react-redux';
+import { getAllLBProducts, setLBProducts } from '../../Redux/actions/localBusinessesAction';
+import axios from 'axios';
+
+
 
 const Business = () => {
     const [nameFilter, setNameFilter] = useState("");
     const [categoryFilter, setCategoryFilter] = useState("");
 
+    const dispatch = useDispatch();
+    const LbproductList = useSelector((state) => state.lbproducts.lbproducts);
 
+    useEffect(() => {
+
+
+        axios.get('http://localhost:9090/api/lbproduct')
+      .then((response) => {
+        const lbproducts = response.data;
+        dispatch(setLBProducts(lbproducts));
+      })
+      .catch((error) => {
+        console.log('Error fetching products:', error);
+      });
+          dispatch(getAllLBProducts());
+        }, [dispatch]);
+      
+        console.log("LbproductList",LbproductList)
+      
+      
 
     return (
         <Grid className={styles.SerchlistGrid} >
@@ -37,7 +61,7 @@ const Business = () => {
                 </Grid>
 
                 <Grid container className={styles.FilterGrid}>
-                    <Grid item>
+                    <Grid >
 
                         <Box sx={{ display: "flex", justifyContent: "center", justifyItems: "center", alignItems: "center" }}>
 
@@ -78,7 +102,7 @@ const Business = () => {
                             />
                         </Box>
                     </Grid> */}
-                    <Grid item>
+                    <Grid >
                         <Box sx={{ display: "flex", justifyContent: "center", justifyItems: "center", alignItems: "center" }}>
                             <AllFilltersIcon fill="#046380" width="25" height="25" />
                             <input
@@ -158,24 +182,24 @@ const Business = () => {
                     </Box>
 
                     <Grid container spacing={7} sx={{ justifyContent: "center" }}>
-                        {LocalBusinesses.filter((product) => {
+                        {LbproductList && LbproductList.filter((lbproduct) => {
                             return (
-                                product.name.toLocaleLowerCase().includes(nameFilter.toLowerCase()) &&
-                                product.category.toLowerCase().includes(categoryFilter.toLocaleLowerCase())
+                                lbproduct.name.toLocaleLowerCase().includes(nameFilter.toLowerCase()) &&
+                                lbproduct.category.toLowerCase().includes(categoryFilter.toLocaleLowerCase())
                             );
-                        }).map((product, index) => (
+                        }).map((lbproduct) => (
 
-                            <Grid item key={index}>
+                            <Grid item key={lbproduct.id}>
                                 {/* card ekk hdala eka import krl danna nm hdl danna-------------------------------------------------------------------------------------- */}
                                 <FNHBusinessSearchPropertyCard
-                                    propertyId={product.id}
-                                    name={product.name}
-                                    category={product.category}
-                                    description={product.description}
-                                    backgroundImage={product.image}
-                                    location1={product.location1}
-                                    location2={product.location2}
-                                    location3={product.location3}
+                                    propertyId={lbproduct._id}
+                                    name={lbproduct.name}
+                                    category={lbproduct.category}
+                                    description={lbproduct.desc}
+                                    backgroundImage={lbproduct.img}
+                                    location1={lbproduct.location1}
+                                    location2={lbproduct.location2}
+                                    location3={lbproduct.location3}
 
                                 />
                             </Grid>

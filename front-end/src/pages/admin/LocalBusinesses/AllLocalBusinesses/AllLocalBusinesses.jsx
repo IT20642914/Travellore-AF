@@ -16,16 +16,18 @@ import MyListingTable from '../../../admin/dashboard-item/Table/MyListingTable'
 import { useDispatch,useSelector } from 'react-redux';
 import { deleteLBProduct } from '../../../../Redux/actions/localBusinessesAction';
 const AllLocalBusinesses = () => {
-
-  // const queryClient = useQueryClient();
-
-
-
-
+//fghjhgfrtyuijhgf
+console.log("sdfrewfdd")
+  const dispatch = useDispatch();
+  const LbproductList = useSelector((state) => state.lbproducts.lbproducts);
+  const accessKey = useSelector((state) => state.login.accessKey);
   const navigate = useNavigate();
-  const handleDelete = () => {
-    console.log("delete")
-  }
+
+  const handleDelete = (id) => {
+    console.log("delete",accessKey);
+    dispatch(deleteLBProduct(id,accessKey));
+  };
+
   const handlUpdate = (id) => {
     navigate("/")
   }
@@ -41,6 +43,7 @@ const AllLocalBusinesses = () => {
           <table>
             <tr>
               <th><Typography color={"#046380"} sx={{ fontWeight: "700" }} variant='h5'>Image  Of  Product</Typography  > </th>
+              <th><Typography color={"#046380"} sx={{ fontWeight: "700" }} variant='h5'>UserID</Typography  > </th>
               <th><Typography color={"#046380"} sx={{ fontWeight: "700" }} variant='h5'>Name</Typography ></th>
               <th><Typography color={"#046380"} sx={{ fontWeight: "700" }} variant='h5'>Category</Typography > </th>
               <th><Typography color={"#046380"} sx={{ fontWeight: "700" }} variant='h5'>Description</Typography ></th>
@@ -52,14 +55,15 @@ const AllLocalBusinesses = () => {
 
             </tr>
 
-            {LocalBusinesses.map((add) => (
+            {LbproductList.map((add) => (
               <tr key={add.id}>
                 <td>
-                  <img className='img' src={add.image} alt='product img' />
+                  <img className='img' src={add.img} alt='product img' />
                 </td>
+                <td>{add._id}</td>
                 <td>{add.name}</td>
                 <td>{add.category}</td>
-                <td>{add.description}</td>
+                <td>{add.desc}</td>
                 <td>{add.location1}</td>
                 <td>{add.location2}</td>
                 <td>{add.location3}</td>
