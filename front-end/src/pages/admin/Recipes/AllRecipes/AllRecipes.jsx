@@ -19,7 +19,7 @@ const AllRecipes = () => {
   const RecipeList = useSelector((state) => state.recipes.recipes);
   const accessKey = useSelector((state) => state.login.accessKey);
   const navigate = useNavigate();
-
+ console.log("recipec", RecipeList);
   const handleDelete = (id) => {
     console.log("delete", accessKey);
     dispatch(deleteRecipe(id, accessKey));
@@ -94,7 +94,7 @@ const AllRecipes = () => {
               </th>
             </tr>
 
-            {Recipe.map((add) => (
+            {RecipeList.map((add) => (
               <tr key={add.id}>
                 <td>
                   <img className="img" src={add.image} alt="item img" />
