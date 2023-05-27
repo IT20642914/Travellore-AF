@@ -1,8 +1,7 @@
 import { eventActionType } from "../actionTypes/eventActionType";
 
 
-const initialState = {
-    
+const initialState = {  
   events: [],
 };
 
@@ -44,13 +43,6 @@ const eventReducer = (state = initialState, {type,payload}) => {
       return state;
   }
 };
-
-
-
-
-
-
-
 
 
 export default eventReducer;

@@ -21,13 +21,16 @@ const Event = () => {
   
   const dispatch = useDispatch();
   const EventList = useSelector((state) => state.events.events);
-  
+
+  console.log("EventList",EventList)
+
 
 
   useEffect(() => {
   axios.get('http://localhost:9090/api/event')
 .then((response) => {
   const events = response.data;
+  console.log(events)
   dispatch(setEvents(events));
 })
 .catch((error) => {
@@ -35,9 +38,6 @@ const Event = () => {
 });
     dispatch(getAllEvents());
   }, [dispatch]);
-
-  console.log("EventList",EventList)
-
 
 
   
