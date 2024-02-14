@@ -103,7 +103,7 @@ CREATE TABLE `DaiAdvisor`.`bd_core_account_information` (
    coy_cd tinytext,
    st_cd tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+```
 
 #### `bd_core_reconciliation_position`
 
