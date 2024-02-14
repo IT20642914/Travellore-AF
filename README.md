@@ -1,47 +1,59 @@
-AWS Lambda S3 File Upload Trigger and Data Transfer to RDS Setup Guide
-This application is designed to trigger an AWS Lambda function upon file upload to an S3 bucket. The Lambda function reads data from the uploaded files and stores it in temporary tables within an RDS database. Subsequently, the Lambda function executes data transfer procedures to move the data from temporary tables to actual tables in the RDS database.
+# Project Title
 
-Setup Instructions
-1. Create an RDS Database
-Create an AWS RDS database named "daiadvisor" with the following configurations:
+Brief description of what the project does.
 
-DB Name: daiadvisor
-Host: daiadvisor.c6d6fdrwzkfo.ap-southeast-1.rds.amazonaws.com
-Port: 3306
-Username: admin
-Password: daiadmin1234
-Database Engine: MySQL (InnoDB)
-2. Configure Lambda Function
-Replace the existing Lambda function code configurations to connect to the created database. Modify the connection parameters in the Lambda function code to match the RDS database configurations.
+## Overview
 
-python
-Copy code
-# Lambda function code
-# Replace the existing database connection configurations with the following:
+An overview of the project, explaining its purpose and functionality.
 
-import pymysql
+## Features
 
-def lambda_handler(event, context):
-    # Database connection parameters
-    host = "daiadvisor.c6d6fdrwzkfo.ap-southeast-1.rds.amazonaws.com"
-    port = 3306
-    user = "admin"
-    password = "daiadmin1234"
-    database = "daiadvisor"
-    
-    # Connect to the database
-    connection = pymysql.connect(host=host, port=port, user=user, password=password, database=database)
-    # Continue with data processing and transfer logic...
-3. Create Database Tables
-You can use MySQL Workbench or any MySQL client to create the necessary tables in the "daiadvisor" database. Execute the provided SQL commands in the MySQL client to create the tables.
+List of key features the project offers.
 
-sql
-Copy code
--- Provided SQL commands to create tables as specified
-These tables will serve as temporary storage for the uploaded data before it's transferred to the actual tables.
+## How it Works
 
-4. Deploy Lambda Function and Set S3 Trigger
-Deploy the modified Lambda function to your AWS environment. Configure the S3 bucket to trigger the Lambda function upon file upload.
+Explanation of how the project works, step by step.
 
-5. Test
-Upload files to the configured S3 bucket and verify that the data gets transferred to the RDS database tables successfully.
+### 1. File Upload to S3
+
+Describe how files are uploaded to S3 and what triggers the Lambda function.
+
+### 2. Lambda Function
+
+Explanation of what the Lambda function does when triggered.
+
+#### a. Reading Uploaded File
+
+Detail on how the Lambda function reads the uploaded file.
+
+#### b. Saving Data to Temporary SQL Tables
+
+Describe how the Lambda function saves the data from the uploaded file into temporary SQL tables.
+
+#### c. Executing Procedure
+
+Explanation of how the Lambda function executes a procedure using the data in the temporary SQL tables.
+
+#### d. Moving Data to Actual Tables
+
+Detail on how the procedure moves the data from temporary SQL tables to actual tables.
+
+## Usage
+
+Instructions on how to use the project, including any setup or configuration required.
+
+## Repository Information
+
+This project is a part of [DAI Advisors Lambda Functions](https://github.com/DAI-Advisors/dai-advisors-lambda-function-script) repository. Refer to the repository README for more information on the Lambda function and its usage.
+
+## Contributing
+
+Guidelines for contributing to the project, if applicable.
+
+## License
+
+Information about the project's license.
+
+## Contact
+
+Contact information for inquiries or support.
