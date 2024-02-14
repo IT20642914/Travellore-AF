@@ -11,7 +11,9 @@ For detailed information about the Lambda function used in this project, refer t
 To set up the necessary database in AWS RDS, follow these steps:
 
 1. Use a tool like Workbench or any other SQL client.
-2. Execute the SQL queries provided below to create the required temporary tables.
+2. create  new schema called 'DaiAdvisor'
+3. Execute the SQL queries provided below to create the required temporary tables and other required tables.
+
 
 ### Temporary Tables
 
@@ -101,3 +103,60 @@ CREATE TABLE `DaiAdvisor`.`bd_core_account_information` (
    coy_cd tinytext,
    st_cd tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+#### `bd_core_reconciliation_position`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`bd_core_reconciliation_position` (
+`id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+ master_id int,
+ custdian_id tinytext,
+ mstracct_number tinytext,
+ master_account_name tinytext,
+ business_date tinytext,
+ account_id tinytext,
+ prod_code tinytext,
+ prodcatg_code tinytext,
+ tax_code tinytext,
+ ly_st tinytext,
+ ticker_symbol  tinytext,
+ industry_ticker_symbol tinytext,
+ cusip tinytext,
+ schwab_sec_nbr tinytext,
+ item_issue_id tinytext,
+ rulst_sufid tinytext,
+ isin tinytext,
+ sedol tinytext,
+ options_display_symbol tinytext,
+ security_description_line_1  tinytext,
+ security_description_line_2 tinytext,
+ security_description_line_3 tinytext,
+ scrtydes_line_4 tinytext,
+ underlying_ticker_symbol tinytext,
+ underlying_industry_ticker_symbol tinytext,
+ underlyng_cusip tinytext,
+ underly_schwab_ tinytext,
+ underlying_itm_iss_id tinytext,
+ unrul_sufid tinytext,
+ underlying_isin tinytext,
+ underly_sedol tinytext,
+ mnymk_code tinytext,
+ d_r tinytext,
+ c_g tinytext,
+ closing_price tinytext,
+ secprice_lstupdte tinytext,
+ quantity_settled_unsettled tinytext,
+ l_s tinytext,
+ market_value_settled_unsettled  tinytext,
+ accounting_rule_code tinytext,
+ quantity_settled tinytext,
+ quantity_unsettled_long  tinytext,
+ quantity_unsettled_short tinytext,
+ tips_factor tinytext,
+ asset_backed_factor tinytext,
+ closing_price_unfactored tinytext,
+ factor tinytext,
+ factor_date tinytext
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
