@@ -462,5 +462,237 @@ CREATE TABLE `DaiAdvisor`.`Accreditation` (
     `Accreditation_Source_Five_File` BLOB
 );
 ```
+#### `Account`
 
+```sql
+CREATE TABLE `DaiAdvisor`.`Account` (
+    `Account_ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `Account_Number` VARCHAR(16),
+    `Account_Client_Group_ID` INT,
+    FOREIGN KEY (`Account_Client_Group_ID`)
+        REFERENCES `Client_Group` (`Client_Group_ID`),
+    `Account_Number_Owners` SMALLINT,
+    `Account_Owner_One_Client_ID` INT,
+    `Account_Owner_Two_Client_ID` INT,
+    `Account_Owner_Three_Client_ID` INT,
+    `Account_Entity_Owner` INT,
+    `Account_Brokerage` VARCHAR(32),
+    `Account_Fee_Class` SMALLINT,
+    `Account_Type` SMALLINT,
+    `Account_Open_Date` DATE,
+    `Account_Link_Date` DATE,
+    `Account_Active` BOOLEAN,
+    `Account_Ini_Deposit` DECIMAL,
+    `Account_Description` VARCHAR(255),
+    `Account_Margin` BOOLEAN,
+    `Account_Option_Level` SMALLINT,
+    `Account_Master` VARCHAR(12),
+    `Account_Trade_Enabled` BOOLEAN,
+    `Account_Fee_Enabled` BOOLEAN
+);
+```
+#### `Transactions`
 
+```sql
+CREATE TABLE `DaiAdvisor`.`Transactions` (
+    `Trans_Date` DATE,
+    `Trans_Time` TIME,
+    `Trans_ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `Trans_Client_Group_ID` INT,
+    FOREIGN KEY (`Trans_Client_Group_ID`) REFERENCES `Client_Group`(`Client_Group_ID`),
+    `Trans_Account_ID` INT,
+    FOREIGN KEY (`Trans_Account_ID`) REFERENCES `Account`(`Account_ID`),
+    `Trans_Invest_ID` INT,
+    FOREIGN KEY (`Trans_Invest_ID`) REFERENCES `Investment`(`Invest_ID`),
+    `Trans_Amount` DECIMAL,
+    `Trans_Type` SMALLINT,
+    `Trans_Symbol` VARCHAR(32),
+    `Trans_Quantity` INT,
+    `Trans_Price` DECIMAL,
+    `Trans_Description` VARCHAR(256)
+);
+```
+#### `Process`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Process` (
+    `Process_ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `Process_Security_ID` INT NOT NULL,
+    FOREIGN KEY (`Process_Security_ID`) REFERENCES `Security` (`Security_ID`),
+    `Process_Date` DATE,
+    `Process_Target_Trans_Date` DATE,
+    `Process_Status` SMALLINT,
+    `Process_Case_ID` VARCHAR(15),
+    `Process_Client_Group_ID` INT NOT NULL,
+    FOREIGN KEY (`Process_Client_Group_ID`) REFERENCES `Client_Group` (`Client_Group_ID`),
+    `Process_Account_ID` INT,
+    FOREIGN KEY (`Process_Account_ID`) REFERENCES `Account` (`Account_ID`),
+    `Process_System` SMALLINT,
+    `Process_Processor` VARCHAR(32),
+    `Process_Processor_Email` VARCHAR(32),
+    `Process_Processor_Phone` VARCHAR(16),
+    `Process_Execution_Date` DATE,
+    `Process_Wire_Date` DATE,
+    `Process_AI_Platform` SMALLINT,
+    `Process_AI_LOA_File` BLOB,
+    `Process_AI_Sub_Doc_File` BLOB
+);
+```
+#### `Investment`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Investment` (
+    `Invest_ID` INT NOT NULL PRIMARY KEY,
+    `Invest_Type` SMALLINT,
+    `Invest_Sub_Type` SMALLINT,
+    `Invest_Category` SMALLINT,
+    `Invest_Symbol` VARCHAR(32),
+    `Invest_Date` DATE,
+    `Invest_Quantity` INT,
+    `Invest_Price` DECIMAL,
+    `Invest_Is_Active` BOOLEAN,
+    `Invest_Commitment` DECIMAL,
+    `Invest_Called` DECIMAL,
+    `Invest_Fully_Called` BOOLEAN,
+    `Invest_Close_Date` DATE,
+    `Invest_IRR` FLOAT,
+    `Invest_Multiple` FLOAT,
+    `Invest_NAV` DECIMAL,
+    `Invest_Distribution` DECIMAL,
+    `Invest_DPI` FLOAT,
+    `Invest_TVPI` FLOAT,
+    `Invest_Firm_Name` VARCHAR(32),
+    `Invest_Fund_Name` VARCHAR(64),
+    `Invest_Fund_Class` VARCHAR(8),
+    `Invest_Subscription_Done` BOOLEAN,
+    `Invest_Wire_Done` BOOLEAN,
+    `Invest_Fee_Collect` BOOLEAN,
+    `Invest_Firm_Contact` VARCHAR(32),
+    `Invest_Firm_Email` VARCHAR(32),
+    `Invest_Firm_Phone` VARCHAR(16),
+    `Invest_Firm_Contact2` VARCHAR(32),
+    `Invest_Firm_Email2` VARCHAR(32),
+    `Invest_Firm_Phone2` VARCHAR(16),
+    `Invest_Firm_IR_Email` VARCHAR(32),
+    `Invest_Fund_Onshore` BOOLEAN,
+    `Invest_Platform` SMALLINT,
+    `Invest_Paying_Account_ID` INT,
+    `Invest_Paying_Account_Num` INT,
+    `Invest_Wire_Account_Num` INT,
+    `Invest_Wire_ABA` INT,
+    `Invest_Wire_Bank_Name` VARCHAR(32),
+    `Invest_Wire_Recipient_Name` VARCHAR(32),
+    `Invest_Wire_FFC_Account_Num` INT,
+    `Invest_Wire_FFC_Account_Name` VARCHAR(32)
+);
+```
+#### `Valuation`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Valuation` (
+    `Valuation_Date` DATE,
+    `Valuation_Time` TIME,
+    `Valuation_ID` INT NOT NULL PRIMARY KEY,
+    `Valuation_Invest_ID` INT NOT NULL,
+    FOREIGN KEY (`Valuation_Invest_ID`) REFERENCES `Investment` (`Invest_ID`),
+    `Valuation_Price` DECIMAL,
+    `Valuation_Currency` SMALLINT,
+    `Valuation_Quote_Open` DECIMAL,
+    `Valuation_Quote_High` DECIMAL,
+    `Valuation_Quote_Low` DECIMAL,
+    `Valuation_Quote_Close` DECIMAL,
+    `Valuation_Quote_Pre_Close` DECIMAL
+);
+```
+#### `Processing_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Processing_Types` (
+    `Process_Type_ID` SMALLINT,
+    `Process_Type_Name` VARCHAR(32)
+);
+```
+#### `Transaction_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Transaction_Types` (
+    `Trans_Type_ID` SMALLINT,
+    `Trans_Type_Name` VARCHAR(32)
+);
+```
+#### `Account_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Account_Types` (
+    `Account_Types_ID` SMALLINT,
+    `Account_Types_Name` VARCHAR(32)
+);
+```
+#### `Investment_Platforms`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Investment_Platforms` (
+    `Platform_ID` SMALLINT,
+    `Platform_Name` VARCHAR(32),
+    `Platform_LOA` BLOB
+);
+```
+#### `Accreditation_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Accreditation_Types` (
+    `Accreditation_Type_ID` SMALLINT,
+    `Accreditation_Type_Name` VARCHAR(32),
+    `Accreditation_Type_Min` DECIMAL,
+    `Accreditation_Type_Max` DECIMAL
+);
+
+```
+#### `Client_Classes`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Client_Classes` (
+    `Client_Class_ID` SMALLINT,
+    `Client_Class_Name` VARCHAR(32),
+    `Client_Class_Fee` FLOAT
+);
+```
+#### `Investment_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Investment_Types` (
+    `Investment_Type_ID` SMALLINT,
+    `Investment_Type_Name` VARCHAR(32)
+);
+
+```
+#### `Currency_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Currency_Types` (
+    `Currency_Type_ID` SMALLINT,
+    `Currency_Type_Name` VARCHAR(32)
+);
+```
+#### `System_Types`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`System_Types` (
+    `System_Type_ID` SMALLINT,
+    `System_Type_Name` VARCHAR(32)
+);
+
+```
+#### `Potential_Clients`
+
+```sql
+CREATE TABLE `DaiAdvisor`.`Potential_Clients` (
+    `Potential_Client_ID` INT NOT NULL PRIMARY KEY,
+    `Potential_Client_First_Name` VARCHAR(64),
+    `Potential_Client_Last_Name` VARCHAR(64),
+    `Potential_Client_Date` DATE,
+    `Potential_Client_Note` VARCHAR(1000),
+    `Potential_Client_Email` VARCHAR(32),
+    `Potenetial_Client_Phone_Number` VARCHAR(16)
+);
+```
