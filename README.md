@@ -8,12 +8,11 @@ For detailed information about the Lambda function used in this project, refer t
 
 ## Database Setup
 
-To set up the necessary database in AWS RDS, follow these steps:
+To set up the necessary database in AWS RDS, follow  these steps:
 
 1. Use a tool like Workbench or any other SQL client.
 2. create  new schema called 'DaiAdvisor'
 3. Execute the SQL queries provided below to create the required temporary tables and other required tables.
-
 
 ### Temporary Tables
 
@@ -695,4 +694,111 @@ CREATE TABLE `DaiAdvisor`.`Potential_Clients` (
     `Potential_Client_Email` VARCHAR(32),
     `Potenetial_Client_Phone_Number` VARCHAR(16)
 );
+```
+
+## Testing
+To test  follow  these steps  (make sure that Db tables created and lamda funtion configured with updated  db values ):
+
+1. create the PROCEDURE with below sql command (once  created no need do it again)
+2. upload a  test files  v1 documents to s3  and check whether   tables are updating  check config table to see  currunt version of document.
+3.  upload a  test files  v2 documents to s3  and check whether   tables are updating and check config table to see  currunt version of document.
+4.  if need  do testing again need  delete coloums added  to the tem table or   update new update version or   to do test with same file drop  all table using  below command and creat tables  againg
+
+#### `PROCEDURE`
+
+```sql
+-- .TRN data to Transactions table
+DELIMITER //
+CREATE PROCEDURE MoveTRNDataToTransactions()
+BEGIN
+    DECLARE rowCount INT;
+	SET FOREIGN_KEY_CHECKS=0;
+    -- Get the row count from the main table
+    SELECT COUNT(*) INTO rowCount FROM DaiAdvisor.bd_core_transaction;
+
+    -- Check if there are rows to process
+    IF rowCount > 0 THEN
+        -- Insert some data from the main table to another table
+        INSERT INTO DaiAdvisor.Transactions (Trans_Date, Trans_Amount, Trans_Type, Trans_Symbol, Trans_Quantity, Trans_Price, Trans_Description)
+        SELECT
+            bd_core_transaction.business_date,
+            bd_core_transaction.net_amount,
+            bd_core_transaction.tr_cd,
+            bd_core_transaction.ticker_symbol,
+            bd_core_transaction.quantity,
+            bd_core_transaction.price,
+            bd_core_transaction.transaction_detail_description
+        FROM DaiAdvisor.bd_core_transaction;
+
+        -- You can add more INSERT statements or customize the SELECT query based on your needs
+    ELSE
+        -- If there are no rows, you may choose to do something else or not execute the INSERT
+        -- For example, you can leave this block empty or add additional logic as needed
+        SELECT 'No rows to process.';
+    END IF;
+END //
+DELIMITER ;
+
+CALL DaiAdvisor.MoveTRNDataToTransactions();
+
+
+-- .ACC data to Account table
+DELIMITER //
+CREATE PROCEDURE MoveACCDataToAccount()
+BEGIN
+    DECLARE rowCount INT;
+	SET FOREIGN_KEY_CHECKS=0;
+    -- Get the row count from the main table
+    SELECT COUNT(*) INTO rowCount FROM DaiAdvisor.bd_core_account_information;
+
+    -- Check if there are rows to process
+    IF rowCount > 0 THEN
+        -- Insert some data from the main table to another table
+        INSERT INTO DaiAdvisor.Account(Account_Number, Account_Open_Date, Account_Active)
+        SELECT
+            bd_core_account_information.account_id,
+            bd_core_account_information.date_opened,
+            bd_core_account_information.account_status
+        FROM DaiAdvisor.bd_core_account_information;
+
+        -- You can add more INSERT statements or customize the SELECT query based on your needs
+    ELSE
+        -- If there are no rows, you may choose to do something else or not execute the INSERT
+        -- For example, you can leave this block empty or add additional logic as needed
+        SELECT 'No rows to process.';
+    END IF;
+END //
+DELIMITER ;
+
+CALL DaiAdvisor.MoveACCDataToAccount();
+```
+
+#### `drop all tables`
+```sql
+Drop Table  `DaiAdvisor`.`bd_core_account_information`;
+Drop Table  `DaiAdvisor`.`bd_core_reconciliation_position`;
+Drop Table  `DaiAdvisor`.`bd_core_reconciliation_position_2`;
+Drop Table  `DaiAdvisor`.`bd_core_security_information`;
+Drop Table  `DaiAdvisor`.`bd_core_transaction`;
+Drop Table  `DaiAdvisor`.`config`;
+Drop Table  `DaiAdvisor`.`meta_data`;
+Drop Table `DaiAdvisor`.`Processing_Types`; 
+Drop Table `DaiAdvisor`.`Transaction_Types`;
+Drop Table  `DaiAdvisor`.`Account_Types`;
+Drop Table  `DaiAdvisor`.`Investment_Platforms`;
+Drop Table `DaiAdvisor`.`Investment_Types`;
+Drop Table `DaiAdvisor`.`Client_Classes`;
+Drop Table `DaiAdvisor`.`Accreditation_Types`;
+Drop Table `DaiAdvisor`.`Currency_Types`;
+Drop Table `DaiAdvisor`.`Accreditation`;
+Drop Table `DaiAdvisor`.`Transactions`;
+Drop Table `DaiAdvisor`.`Valuation`;
+Drop Table `DaiAdvisor`.`Process`;
+Drop Table `DaiAdvisor`.`Investment`;
+Drop Table `DaiAdvisor`.`Account`;
+Drop Table `DaiAdvisor`.`Client`;
+Drop Table `DaiAdvisor`.`Client_Group`;
+Drop Table `DaiAdvisor`.`Potential_Clients`;
+Drop Table `DaiAdvisor`.`Security`;
+Drop Table `DaiAdvisor`.`System_Types`;
 ```
