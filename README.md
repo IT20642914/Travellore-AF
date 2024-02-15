@@ -16,6 +16,29 @@ To set up the Lambda function, follow these steps:
 
 3. Upload the zipped file to the code source in the Lambda function.
 
+4. Configure the Lambda function:
+   - In the AWS Management Console, navigate to the Lambda service.
+   - Create a new Lambda function or select an existing one.
+   - Set the runtime environment to Python (or your preferred language).
+   - Upload the zip file containing your Lambda function code.
+   - Configure the handler and other settings as needed.
+   - Ensure to update the Lambda function configuration with the database connection details (endpoint, port, username, and password).
+
+5. Set up an S3 Bucket:
+   - If an S3 bucket for file storage does not exist, create one:
+     - Log in to the AWS Management Console.
+     - Navigate to the S3 service.
+     - Click on "Create bucket".
+     - Follow the prompts to configure the bucket settings, such as name, region, and permissions.
+
+6. Add Trigger to Lambda:
+   - After creating the S3 bucket, add a trigger to the Lambda function:
+     - Go to the Lambda function configuration page.
+     - Click on "Add trigger".
+     - Choose S3 as the trigger type.
+     - Select the S3 bucket you created as the event source.
+     - Configure the event type as `s3:ObjectCreated:*` and other settings as needed.
+
 ## Database Setup
 
 To set up the necessary database in AWS RDS, follow these steps:
@@ -24,7 +47,7 @@ To set up the necessary database in AWS RDS, follow these steps:
    - Log in to the AWS Management Console.
    - Navigate to the RDS service.
    - Click on "Create database".
-   - Choose the database engine you prefer (e.g., MySQL).
+   - Choose the database engine you prefer (e.g., MySQL, PostgreSQL).
    - Configure the settings such as DB instance class, storage, username, and password.
    - Optionally, configure additional settings like VPC, subnet group, security group, etc.
    - Review and launch the RDS instance.
