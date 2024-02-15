@@ -1,7 +1,3 @@
-# S3 File to Lambda to Temporary SQL Tables to Actual Tables
-
-This project automates the process of updating files to an S3 bucket, triggering a Lambda function. The Lambda function reads the uploaded file and saves the data into temporary SQL tables. Then, it executes stored procedures to move the data from the temporary tables to actual tables.
-
 ## Lambda Function Setup
 
 To set up the Lambda function, follow these steps:
@@ -32,6 +28,8 @@ To set up the necessary database in AWS RDS, follow these steps:
    - Configure the settings such as DB instance class, storage, username, and password.
    - Optionally, configure additional settings like VPC, subnet group, security group, etc.
    - Review and launch the RDS instance.
+
+   **Note:** After creating the RDS instance, make sure to update the Lambda function configuration with the database connection details (endpoint, port, username, and password).
 
 ### 2. Connect to the RDS Instance
    - Once the instance is created, note down the endpoint and port details.
