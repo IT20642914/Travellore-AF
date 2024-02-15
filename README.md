@@ -2,9 +2,23 @@
 
 This project automates the process of updating files to an S3 bucket, triggering a Lambda function. The Lambda function reads the uploaded file and saves the data into temporary SQL tables. Then, it executes stored procedures to move the data from the temporary tables to actual tables.
 
-## Lambda Function
+## Lambda Function Setup
 
-For detailed information about the Lambda function used in this project, please refer to the [README](https://github.com/DAI-Advisors/dai-advisors-lambda-function-script) in the following repository: [DAI Advisors Lambda Function Script](https://github.com/DAI-Advisors/dai-advisors-lambda-function-script)
+To set up the Lambda function, follow these steps:
+
+1. Install the necessary libraries using pip:
+    ```bash
+    pip install -t . pymysql
+    ```
+
+2. Zip the files. Ensure that the `lambda_function.py` and other library files are in the same root directory. For example:
+    ```
+    ├── pymysql
+    ├── PyMySQL-1.1.0.dist-info
+    └── lambda_function.py
+    ```
+
+3. Upload the zipped file to the code source in the Lambda function.
 
 ## Database Setup
 
