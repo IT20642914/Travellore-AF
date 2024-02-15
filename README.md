@@ -16,7 +16,7 @@ To set up the necessary database in AWS RDS, follow  these steps:
 ## Testing
 To test  follow  these steps  (make sure that Db tables created and lamda funtion configured with updated  db values ):
 
-1.  create the PROCEDURE can use samplePROCEDURE.sql file (once  created no need do it again)
+1.  create the PROCEDURE can use ## samplePROCEDURE.sql file (once  created no need do it again)
 2.  upload a  test files  v1 documents to s3  and check whether   tables are updating  check config table to see  currunt version of document.
 3.  upload a  test files  v2 documents to s3  and check whether   tables are updating and check config table to see  currunt version of document.
 
