@@ -24,7 +24,7 @@ To set up the necessary database in AWS RDS, follow these steps:
    - Log in to the AWS Management Console.
    - Navigate to the RDS service.
    - Click on "Create database".
-   - Choose the database engine you prefer (e.g., MySQL, PostgreSQL).
+   - Choose the database engine you prefer (e.g., MySQL).
    - Configure the settings such as DB instance class, storage, username, and password.
    - Optionally, configure additional settings like VPC, subnet group, security group, etc.
    - Review and launch the RDS instance.
